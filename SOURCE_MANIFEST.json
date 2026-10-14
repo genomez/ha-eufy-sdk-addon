@@ -1,33 +1,74 @@
 {
-  "schemaVersion": 1,
-  "preview": "s1-source-preview-1",
+  "schemaVersion": 2,
   "component": "addon",
-  "sourceOnly": true,
-  "binaryArtifactsIncluded": false,
+  "installerVersion": "0.4.1-s1.experimental.1",
+  "runtimeSourceReleaseTag": "s1-runtime-0.4.1.experimental.1",
+  "runtimeSourceReleaseUrl": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1",
+  "imageConfigId": "sha256:5ed4831e9c2bac67f88269163d5684c8ee6df0aa8951b0b754fe755d4642b9f9",
+  "registryAndRecipientVerificationRecord": "CANDIDATE.json",
+  "manifestScope": "frozen image recipe and installer/docs; release automation excluded",
+  "frozenRecipeChanged": false,
+  "binaryArtifactsIncludedInSourceTree": false,
+  "stockCoreMediaQualified": false,
+  "supervisorMigrationAccepted": false,
+  "previewManifestPath": "PREVIEW_SOURCE_MANIFEST.json",
+  "previewManifestSha256": "be1ea4d567c977023ebbd88e3595d54a77911995f919071dca9fdf22d3a3e75e",
   "files": [
     {
       "path": ".dockerignore",
       "sha256": "e8648c41444ecdb3766cd3872e80eeef3b7452c6ab5581b2a0089f2b6a279226"
     },
     {
-      "path": "config.yaml.example",
-      "sha256": "8a06acb847735dd5fd97294137833966c29da50baebf8dbc15e1c77e9be28ef4"
+      "path": "CANDIDATE.json",
+      "sha256": "750b9e8f5bf2667290d2e21cfec078f434b77969925a0530fab36344c5c6b064"
+    },
+    {
+      "path": "DOCS.md",
+      "sha256": "1f4a6b1ee98bdeb17ed0ab6f7c35086522f95097a85eb010ef0b34d90a88bc2d"
     },
     {
       "path": "Dockerfile",
       "sha256": "fd2e3b87f812dcc4952831632bc60eb9536bf491b2f49308ccbeb2ae6a0b809e"
     },
     {
-      "path": "DOCS.md",
-      "sha256": "9d821b429242a979f805a9ada16cde9a4b37b616008926df772fa59063be1a9d"
-    },
-    {
       "path": "EXPERIMENTAL.md",
-      "sha256": "daf03fa07ee90273f9f3d35c6ea35a54291974f51bddbada78d85d852be7bb31"
+      "sha256": "180554242e6ea6ab41f3a652d496a9535f1c16f8af580b2d4d05675c6a9ec6a8"
     },
     {
       "path": "LICENSE",
       "sha256": "5bb16b4d7e40b22e7b36ef9ce1693fcea91693525b1797e9c0ba56e08e1ce9ad"
+    },
+    {
+      "path": "MIGRATION.md",
+      "sha256": "df5ff6fc5f2dc35e2db0b115cc7587f332c1d54512e2c6424600a7af83921577"
+    },
+    {
+      "path": "PREVIEW_SOURCE_MANIFEST.json",
+      "sha256": "be1ea4d567c977023ebbd88e3595d54a77911995f919071dca9fdf22d3a3e75e"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e6e2ef420bef7f045508f9d763fc6cfd539a980d8e0e6752f6a6c428db7e70a8"
+    },
+    {
+      "path": "RELEASE_CHECKLIST.md",
+      "sha256": "32deb526d66d0b54366717c79d9e6fe1e029e72e67cb826930c72cbd748349ea"
+    },
+    {
+      "path": "config.yaml.example",
+      "sha256": "8a06acb847735dd5fd97294137833966c29da50baebf8dbc15e1c77e9be28ef4"
+    },
+    {
+      "path": "eufy_sdk_s1/CHANGELOG.md",
+      "sha256": "86dcce2f8f727edb2db31652f6c7648e6a9a7515210b27ab34d0916648704d73"
+    },
+    {
+      "path": "eufy_sdk_s1/DOCS.md",
+      "sha256": "97528e50b72c4b572d3a1ed69408dfdeaf5ad91f43026c1fbe732d4979da2c7b"
+    },
+    {
+      "path": "eufy_sdk_s1/config.yaml",
+      "sha256": "92b4b8c23d887b481dee28aea76dcbd36ef11a979fc4cd6bd4e4b406b8ede227"
     },
     {
       "path": "licenses/eufy-sdk-LICENSE",
@@ -62,12 +103,13 @@
       "sha256": "6b7720d9c0fd8935e657762d856d73593a5aa51068ff921f2a0731c6dcb1e40c"
     },
     {
-      "path": "README.md",
-      "sha256": "843ad14839d7fdc93a8cc189491d4343190b4c01576ade799445a586ed723da9"
+      "path": "repository.yaml",
+      "sha256": "3be49f2fd52c29ecbc10484105b2d1fe7a8220d31c708336ece64cc806a86428"
     },
     {
       "path": "run.sh",
       "sha256": "13292373b2e639d366597371b984861921740c3e177b09de08ae221b73e9fc3f"
     }
-  ]
+  ],
+  "selfHashLocation": "external publication receipt"
 }

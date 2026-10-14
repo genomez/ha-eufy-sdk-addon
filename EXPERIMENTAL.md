@@ -1,8 +1,8 @@
-# Experimental source preview
+# Experimental runtime and installer
 
-This branch is for source review and development. It is not a supported installation or a published binary release. No npm package, container image, HACS release or add-on-store release accompanies it.
+This branch supplies the experimental amd64 installer `0.4.1-s1.experimental.1` and frozen image recipe. The [runtime/source release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1) carries exact image/source/notices artifacts. Use only the completed registry/source verification in [CANDIDATE.json](CANDIDATE.json); pending verification is a stop checkpoint. Publication is separate from installation and live acceptance; this is not a supported general installation.
 
-The source is a composite S1/T9000 baseline, not a byte-equivalent copy of an official upstream version. Inherited version fields identify its preparation inputs; they do not identify a downloadable fork release. Existing contribution branches and upstream history remain separate.
+The source is a composite S1/T9000 baseline, not a byte-equivalent copy of an official upstream version. Inherited SDK/bridge version fields identify historical preparation inputs; installer/runtime release records identify the exact experimental distribution. Existing contribution branches and upstream history remain separate.
 
 ## Scope and evidence
 
@@ -16,11 +16,11 @@ The tested streaming environment used six separate, version-specific Home Assist
 
 ## Installation boundary
 
-Do not replace a working installation with this source preview. The integration retains the upstream `eufy_sdk` domain and cannot be installed alongside another copy under that domain. Add-on repository identity affects data directories and discovery; migration has not been validated for other installations. There is no public binary rollback target in this preview.
+Installation requires the [migration/rollback contract](MIGRATION.md) and matching [integration `0.3.1.dev1` checkpoints](https://github.com/genomez/ha-eufy-sdk/blob/0.3.1.dev1/INSTALL.md). The integration retains `eufy_sdk` and one HACS/manual file owner; preserve the existing HA entry. Keep the exact old component, image and coherent private configuration/data snapshot. The new repository/slug has separate private data and does not automatically migrate sessions; complete Supervisor migration has not been accepted.
 
-The bridge's historical registry SDK dependency is not the customized SDK used during qualification. Running `npm ci` in the bridge alone does not produce the qualified component pair. The add-on recipe requires exact paired build inputs which are not a public install bundle. A coherent public dependency lock, distributable images, migration instructions and rollback procedure will accompany a later installable release.
+The bridge's historical registry SDK dependency is not the customized SDK used during qualification. Running `npm ci` in the bridge alone does not produce the qualified component pair. The exact paired image/build inputs, dependency/native notices and corresponding sources are supplied through the runtime/source release. Verify their concrete URLs and retained checksums. The nested prebuilt installer has no local build fallback; do not use a root source rebuild as an unreviewed replacement image.
 
-No workflow in this branch publishes packages, images or releases. Native dependency provenance and binary corresponding-source/notices requirements remain separate release work. Existing licenses and upstream credit are preserved.
+Release automation publishes only the reviewed exact image/artifact set through its separate release process. Dependency provenance and corresponding-source/notices receipts accompany the runtime release; they do not establish device, Supervisor migration or stock-Core acceptance. Existing licenses and upstream credit are preserved.
 
 ## Contributing useful findings
 
@@ -30,4 +30,4 @@ Do not post credentials, tokens, session files, account identifiers, device seri
 
 Fixes should retain explicit stream start/stop, cleanup on navigation/removal/visibility changes, and ordinary state-read/session-renewal behavior. No automatic retries or hidden camera starts should be added to hide a failure.
 
-Target contributions at `s1-experimental`. Existing default-branch workflows and support claims are separate from this preview.
+Target contributions at `s1-experimental`. Existing default-branch workflows and support claims are separate from this experimental release.

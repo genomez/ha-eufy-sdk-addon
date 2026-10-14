@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "preview": "s1-source-preview-1",
+  "component": "addon",
+  "sourceOnly": true,
+  "binaryArtifactsIncluded": false,
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "e8648c41444ecdb3766cd3872e80eeef3b7452c6ab5581b2a0089f2b6a279226"
+    },
+    {
+      "path": "config.yaml.example",
+      "sha256": "8a06acb847735dd5fd97294137833966c29da50baebf8dbc15e1c77e9be28ef4"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "fd2e3b87f812dcc4952831632bc60eb9536bf491b2f49308ccbeb2ae6a0b809e"
+    },
+    {
+      "path": "DOCS.md",
+      "sha256": "9d821b429242a979f805a9ada16cde9a4b37b616008926df772fa59063be1a9d"
+    },
+    {
+      "path": "EXPERIMENTAL.md",
+      "sha256": "daf03fa07ee90273f9f3d35c6ea35a54291974f51bddbada78d85d852be7bb31"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "5bb16b4d7e40b22e7b36ef9ce1693fcea91693525b1797e9c0ba56e08e1ce9ad"
+    },
+    {
+      "path": "licenses/eufy-sdk-LICENSE",
+      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b"
+    },
+    {
+      "path": "licenses/go2rtc-LICENSE",
+      "sha256": "b0dcf4855af5a72b4dfbd9117c207b330f4cc35658576a0b5351d6e2becac546"
+    },
+    {
+      "path": "packaging/fetch-os.mjs",
+      "sha256": "40911a4a74387747f54f3d2a8147920f899f30947ef8eb13aa36dd397801189c"
+    },
+    {
+      "path": "packaging/image-inputs.lock.json",
+      "sha256": "bcd91a66fce80bb5810928b42e30ead212bd6628bf3c8093a1563310b1ace959"
+    },
+    {
+      "path": "packaging/media-check.mjs",
+      "sha256": "a56883f558e7519b1dd15d58167972e0044b0049f46890aaa496a770eafc3684"
+    },
+    {
+      "path": "packaging/native-check.mjs",
+      "sha256": "845c1d976794233fca8a718b09fdbda0f8c07157868502ae65e563b8a03424f8"
+    },
+    {
+      "path": "packaging/prepare-context.py",
+      "sha256": "01f29bda7696a5b5f5712b5d256bbe22af961641e2682e2e7b52ae699bc84789"
+    },
+    {
+      "path": "packaging/verify-inputs.mjs",
+      "sha256": "6b7720d9c0fd8935e657762d856d73593a5aa51068ff921f2a0731c6dcb1e40c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "843ad14839d7fdc93a8cc189491d4343190b4c01576ade799445a586ed723da9"
+    },
+    {
+      "path": "run.sh",
+      "sha256": "13292373b2e639d366597371b984861921740c3e177b09de08ae221b73e9fc3f"
+    }
+  ]
+}
