@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "releaseDate": "2026-10-14",
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.2",
+  "candidateSourceManifest": "SOURCE_MANIFEST.json",
+  "candidatePreparationReceiptsAreHistorical": true,
+  "repositoryPreservedFiles": [
+    ".dockerignore",
+    ".github/workflows/publish-s1-image.yml",
+    "Dockerfile",
+    "PREVIEW_SOURCE_MANIFEST.json",
+    "config.yaml.example",
+    "packaging/fetch-os.mjs",
+    "packaging/image-inputs.lock.json",
+    "packaging/media-check.mjs",
+    "packaging/native-check.mjs",
+    "packaging/prepare-context.py",
+    "packaging/verify-inputs.mjs"
+  ],
+  "knownLimitations": [
+    "Dashboard configuration refresh can replace a player card and interrupt playback; initiating trigger remains unknown.",
+    "Stock-Core media, camera switching, ARM and non-S1 behavior remain unqualified."
+  ],
+  "verification": {
+    "integrationStockCore2026_9_4SyntheticChecks": 25,
+    "realAuthenticationInThatTest": false,
+    "runtimeSyntheticMediaRoutes": 3,
+    "runtimeSyntheticLifecycleCases": 4
+  },
+  "npmPublication": false,
+  "publicationWorkflowChange": "Preserved existing guarded image publication; retargeted only exact .2 asset identities, image config, layer and version. Frozen candidate wording about unchanged automation describes preservation of the publication mechanism.",
+  "publicationWorkflowSha256": "00d693df8ae517611900fbbdb3a5172cf1713550cc235d0d0ef223e1f4dbd746",
+  "currentRuntimeRecipe": "Use final-context.tar and safety-source-inputs.tar from runtimeSourceRelease. Preserved root Dockerfile and packaging files describe the earlier baseline.",
+  "publicationDocumentationOverrides": {
+    "MIGRATION.md": {
+      "candidateSha256": "5ff2d9f0fd379c3e001fcdb144f38d02aebc01b50d0b0293adb2aadb8a3dfcd0",
+      "publicationSha256": "10c19cb8461a64a1d8a23adc896763c3568d643f590d2b90502dc6db34b32693",
+      "reason": "Correct paired integration link to dev2 and distinguish legacy new-domain migration; frozen candidate ZIP preserved."
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Configuration
 
-Experimental installer `0.4.1-s1.experimental.1` uses the prebuilt amd64 image `ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.1`. Review the [runtime/source release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1), [release record](../CANDIDATE.json), [release checklist](../RELEASE_CHECKLIST.md) and [migration/rollback](../MIGRATION.md) before installation. Registry digest, anonymous pull and source-download verification must be complete; installation/live acceptance remains separate from publication.
+Experimental installer `0.4.1-s1.experimental.2` uses the exact matching prebuilt amd64 image. Review [candidate bindings](../CANDIDATE.json), [runtime/source recipes](../DOCS.md), [release prerequisites](../RELEASE_CHECKLIST.md) and [migration/rollback](../MIGRATION.md) before any owner-approved installation. A published release requires verified registry manifest/config/layer identity and corresponding-source downloads; installation and live acceptance remain separate.
 
 Enter your own Eufy account email, password and account country in the add-on's private configuration. `GB` is an inherited placeholder default, not automatic country detection. Do not post options, session files, account details or raw logs in an issue. Complete any requested authentication yourself through the integration's supported authentication flow; repeated logins are not a troubleshooting strategy.
 

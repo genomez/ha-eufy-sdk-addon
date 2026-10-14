@@ -1,11 +1,32 @@
-# Installer and frozen image recipe
+# Installer and exact runtime recipe
 
-For the experimental amd64 add-on, use the nested [configuration guide](eufy_sdk_s1/DOCS.md), [migration/rollback contract](MIGRATION.md), [release checklist](RELEASE_CHECKLIST.md) and [exact release record](CANDIDATE.json). The canonical Supervisor repository URL is `https://github.com/genomez/ha-eufy-sdk-addon#s1-experimental`. The root `config.yaml.example` is inert reference configuration, not the discoverable installer; the installer is `eufy_sdk_s1/config.yaml`.
+The current installer metadata is `eufy_sdk_s1/config.yaml`, version
+`0.4.1-s1.experimental.2`. Use only an owner-approved local bundle or an exact
+matching published image with its checksum, registry manifest/config identity
+verification and all corresponding-source assets. `CANDIDATE.json` binds the
+exact local runtime config ID and source assets. A config ID is distinct from a
+registry manifest digest; the latter must be established during publication.
 
-The [paired runtime/source release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1) supplies the exact retained image archive, final build context, complete source/recipe inputs, Debian/Node source bundle and notices. CANDIDATE.json records concrete download URLs/checksums and the exact image configuration ID. Do not install until its registry manifest digest, independent anonymous pull/config/layer checks and recipient-download verification are complete. An image configuration ID is not a registry manifest digest.
+`CANDIDATE.json` is a preparation-time receipt. Its unpublished/not-installed status and null registry fields describe that preparation checkpoint, not future artifact availability. A later publication supplies a separate receipt binding the registry manifest, exact config/layers and independently verified corresponding-source downloads; consult that matching publication receipt as well as this preparation record.
 
-The root Dockerfile, run.sh, packaging tools, input lock and dependency licenses preserve the frozen publicly reviewed recipe; installer documentation does not change that runtime implementation. The recipe uses a digest-pinned Node/Debian base, pinned OS archives, the exact paired SDK/bridge and go2rtc. Build inputs exclude private options, sessions, captures and home configuration. The nested installer uses the prebuilt image with no local Dockerfile fallback. Rebuilding root reference files is not a substitute for verifying the released image and corresponding source.
+The authoritative updated runtime recipe is `container/Dockerfile` in the safety
+source kit and `final-context.tar`. Its default base is the immutable published
+manifest recorded in `BASE_BINDING.json`. The offline driver asserts that base's
+local config ID/RepoDigest before using an explicit local override. The original
+complete base build recipe, SDK/bridge source kit, source-built native/Go inputs,
+and OS/Node corresponding-source archives also accompany delivery, so rebuilding
+does not depend only on an opaque runtime image.
 
-The SDK is Apache-2.0; preserve its license and all dependency notices. PREVIEW_SOURCE_MANIFEST.json preserves the prior source-preview receipt; SOURCE_MANIFEST.json binds the frozen recipe and new installer/docs. Release automation is separate from that frozen image-input set.
+Historical root preview Dockerfile/example/packaging files are excluded from this
+installer export. The source-repository publication workflow is excluded from the
+installation archive and remains unchanged in the published repository. Preserve
+it when applying a future approved source patch. No npm publication is intended;
+the exact SDK/bridge local tarballs belong in the corresponding-source delivery.
 
-This integration/add-on never installs or patches Core. Six version-specific Core modifications used during private streaming qualification are excluded. Stock-Core media/playback, camera switching, HACS replacement UI, complete Supervisor migration and physical-device acceptance remain unverified. Installation, upgrade and rollback acceptance require separate controlled checks; publication does not establish a supported Core version range.
+All prior runtime options/defaults, add-on slug and launcher remain. Identity and
+Supervisor-discovery migration are deferred. The integration does not add a
+Supervisor discovery handler. Follow the existing single-entry reconfiguration
+and private backup/rollback procedure only within a separately approved window.
+Six existing Core overlays are separate; synthetic qualification does not accept
+stock-Core playback, Supervisor installation, physical-camera behavior or camera
+switching. Preserve the SDK Apache-2.0 and all dependency/native/Go/OS notices.

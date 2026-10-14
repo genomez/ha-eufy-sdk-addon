@@ -1,115 +1,84 @@
 {
-  "schemaVersion": 2,
-  "component": "addon",
-  "installerVersion": "0.4.1-s1.experimental.1",
-  "runtimeSourceReleaseTag": "s1-runtime-0.4.1.experimental.1",
-  "runtimeSourceReleaseUrl": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1",
-  "imageConfigId": "sha256:5ed4831e9c2bac67f88269163d5684c8ee6df0aa8951b0b754fe755d4642b9f9",
-  "registryAndRecipientVerificationRecord": "CANDIDATE.json",
-  "manifestScope": "frozen image recipe and installer/docs; release automation excluded",
-  "frozenRecipeChanged": false,
-  "binaryArtifactsIncludedInSourceTree": false,
-  "stockCoreMediaQualified": false,
-  "supervisorMigrationAccepted": false,
-  "previewManifestPath": "PREVIEW_SOURCE_MANIFEST.json",
-  "previewManifestSha256": "be1ea4d567c977023ebbd88e3595d54a77911995f919071dca9fdf22d3a3e75e",
-  "files": [
-    {
-      "path": ".dockerignore",
-      "sha256": "e8648c41444ecdb3766cd3872e80eeef3b7452c6ab5581b2a0089f2b6a279226"
+  "schemaVersion": 1,
+  "version": "0.4.1-s1.experimental.2",
+  "files": {
+    "CANDIDATE.json": {
+      "sha256": "12300d7be93011f073a11ef778e9cd96cc7128430c9ff920dc26f11104e67efd",
+      "bytes": 2720
     },
-    {
-      "path": "CANDIDATE.json",
-      "sha256": "750b9e8f5bf2667290d2e21cfec078f434b77969925a0530fab36344c5c6b064"
+    "DOCS.md": {
+      "sha256": "bd0744de4abb591f2381e8fb505ff040ddf8389b0079b20129f97748a3233663",
+      "bytes": 2421
     },
-    {
-      "path": "DOCS.md",
-      "sha256": "1f4a6b1ee98bdeb17ed0ab6f7c35086522f95097a85eb010ef0b34d90a88bc2d"
+    "eufy_sdk_s1/CHANGELOG.md": {
+      "sha256": "4e5da9ab61c2cc3d8450e6b9c1fe94bb52099a08a463726ffc599bfeda5b326f",
+      "bytes": 1127
     },
-    {
-      "path": "Dockerfile",
-      "sha256": "fd2e3b87f812dcc4952831632bc60eb9536bf491b2f49308ccbeb2ae6a0b809e"
+    "eufy_sdk_s1/config.yaml": {
+      "sha256": "d0d87dab6961abae804a7e97e3a22a304da08aed5fb21e32f5889fe588a50567",
+      "bytes": 1644
     },
-    {
-      "path": "EXPERIMENTAL.md",
-      "sha256": "180554242e6ea6ab41f3a652d496a9535f1c16f8af580b2d4d05675c6a9ec6a8"
+    "eufy_sdk_s1/DOCS.md": {
+      "sha256": "6b3519ab4d980cf2bf2e44a91631da5e0274082705c199fc005621625039de31",
+      "bytes": 3468
     },
-    {
-      "path": "LICENSE",
-      "sha256": "5bb16b4d7e40b22e7b36ef9ce1693fcea91693525b1797e9c0ba56e08e1ce9ad"
+    "EXPERIMENTAL.md": {
+      "sha256": "6c05d468658590bae8b4d0f1e7e864004340cd6b4dda1fc85874f41d079d596d",
+      "bytes": 968
     },
-    {
-      "path": "MIGRATION.md",
-      "sha256": "df5ff6fc5f2dc35e2db0b115cc7587f332c1d54512e2c6424600a7af83921577"
+    "LICENSE": {
+      "sha256": "5bb16b4d7e40b22e7b36ef9ce1693fcea91693525b1797e9c0ba56e08e1ce9ad",
+      "bytes": 1066
     },
-    {
-      "path": "PREVIEW_SOURCE_MANIFEST.json",
-      "sha256": "be1ea4d567c977023ebbd88e3595d54a77911995f919071dca9fdf22d3a3e75e"
+    "licenses/eufy-sdk-LICENSE": {
+      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b",
+      "bytes": 11339
     },
-    {
-      "path": "README.md",
-      "sha256": "e6e2ef420bef7f045508f9d763fc6cfd539a980d8e0e6752f6a6c428db7e70a8"
+    "licenses/go2rtc-LICENSE": {
+      "sha256": "b0dcf4855af5a72b4dfbd9117c207b330f4cc35658576a0b5351d6e2becac546",
+      "bytes": 1068
     },
-    {
-      "path": "RELEASE_CHECKLIST.md",
-      "sha256": "32deb526d66d0b54366717c79d9e6fe1e029e72e67cb826930c72cbd748349ea"
+    "MIGRATION.md": {
+      "sha256": "5ff2d9f0fd379c3e001fcdb144f38d02aebc01b50d0b0293adb2aadb8a3dfcd0",
+      "bytes": 6750
     },
-    {
-      "path": "config.yaml.example",
-      "sha256": "8a06acb847735dd5fd97294137833966c29da50baebf8dbc15e1c77e9be28ef4"
+    "README.md": {
+      "sha256": "6c05d468658590bae8b4d0f1e7e864004340cd6b4dda1fc85874f41d079d596d",
+      "bytes": 968
     },
-    {
-      "path": "eufy_sdk_s1/CHANGELOG.md",
-      "sha256": "86dcce2f8f727edb2db31652f6c7648e6a9a7515210b27ab34d0916648704d73"
+    "RELEASE_CHECKLIST.md": {
+      "sha256": "2c5cb88ec9404fa8a2485572e3fc5e12d5be2317adc66f7a22bdc7d8affecce8",
+      "bytes": 1074
     },
-    {
-      "path": "eufy_sdk_s1/DOCS.md",
-      "sha256": "97528e50b72c4b572d3a1ed69408dfdeaf5ad91f43026c1fbe732d4979da2c7b"
+    "repository.yaml": {
+      "sha256": "3be49f2fd52c29ecbc10484105b2d1fe7a8220d31c708336ece64cc806a86428",
+      "bytes": 105
     },
-    {
-      "path": "eufy_sdk_s1/config.yaml",
-      "sha256": "92b4b8c23d887b481dee28aea76dcbd36ef11a979fc4cd6bd4e4b406b8ede227"
-    },
-    {
-      "path": "licenses/eufy-sdk-LICENSE",
-      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b"
-    },
-    {
-      "path": "licenses/go2rtc-LICENSE",
-      "sha256": "b0dcf4855af5a72b4dfbd9117c207b330f4cc35658576a0b5351d6e2becac546"
-    },
-    {
-      "path": "packaging/fetch-os.mjs",
-      "sha256": "40911a4a74387747f54f3d2a8147920f899f30947ef8eb13aa36dd397801189c"
-    },
-    {
-      "path": "packaging/image-inputs.lock.json",
-      "sha256": "bcd91a66fce80bb5810928b42e30ead212bd6628bf3c8093a1563310b1ace959"
-    },
-    {
-      "path": "packaging/media-check.mjs",
-      "sha256": "a56883f558e7519b1dd15d58167972e0044b0049f46890aaa496a770eafc3684"
-    },
-    {
-      "path": "packaging/native-check.mjs",
-      "sha256": "845c1d976794233fca8a718b09fdbda0f8c07157868502ae65e563b8a03424f8"
-    },
-    {
-      "path": "packaging/prepare-context.py",
-      "sha256": "01f29bda7696a5b5f5712b5d256bbe22af961641e2682e2e7b52ae699bc84789"
-    },
-    {
-      "path": "packaging/verify-inputs.mjs",
-      "sha256": "6b7720d9c0fd8935e657762d856d73593a5aa51068ff921f2a0731c6dcb1e40c"
-    },
-    {
-      "path": "repository.yaml",
-      "sha256": "3be49f2fd52c29ecbc10484105b2d1fe7a8220d31c708336ece64cc806a86428"
-    },
-    {
-      "path": "run.sh",
-      "sha256": "13292373b2e639d366597371b984861921740c3e177b09de08ae221b73e9fc3f"
+    "run.sh": {
+      "sha256": "13292373b2e639d366597371b984861921740c3e177b09de08ae221b73e9fc3f",
+      "bytes": 5912
     }
+  },
+  "manifestSelfExcluded": true,
+  "sourceRecipeRole": "Current runtime build recipe is in the paired container source kit, not obsolete root previews.",
+  "excludedFromInstallArchive": [
+    "Git metadata",
+    "Source-repository publication workflow"
   ],
-  "selfHashLocation": "external publication receipt"
+  "preserveInPublishedSourceRepository": [
+    ".github/workflows/publish-s1-image.yml"
+  ],
+  "retiredHistoricalPreviewPaths": [
+    ".dockerignore",
+    "Dockerfile",
+    "config.yaml.example",
+    "packaging/fetch-os.mjs",
+    "packaging/image-inputs.lock.json",
+    "packaging/media-check.mjs",
+    "packaging/native-check.mjs",
+    "packaging/prepare-context.py",
+    "packaging/verify-inputs.mjs"
+  ],
+  "runtimeOptionsDefaultsUnchanged": true,
+  "runScriptSha256": "13292373b2e639d366597371b984861921740c3e177b09de08ae221b73e9fc3f"
 }

@@ -1,14 +1,16 @@
-# Release verification and installation checkpoints
+# Release prerequisites
 
-Experimental installer `0.4.1-s1.experimental.1` pairs with the [runtime/source release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1). Publication is separate from installation. This checklist records required evidence and does not authorize a production cutover.
-
-1. Preserve the reviewed amd64-only nested add-on metadata, manual-start default, private options, disabled host mappings and 60-second shutdown grace. Repository/app metadata passed isolated checks against pinned Supervisor source schemas; that does not establish live Supervisor acceptance. Runtime options/schema and exact image implementation are unchanged.
-2. Verify the exact image tag in CANDIDATE.json against its retained image configuration ID. Complete `registryManifestDigest`, `registryVerification.status`, `independentAnonymousPullVerified` and `imageConfigAndLayerIdentityVerified` after independent registry readback/pull. The existing image configuration ID is not a registry manifest digest. Stop if any registry check is pending or mismatched. Do not rebuild silently under this version/tag or claim another architecture works.
-3. Verify recipient downloads for every `requiredReleaseAssets` URL against its retained SHA-256 and byte size, plus SOURCE_DELIVERY.json/SHA256SUMS. Set `recipientSourceDownloadsVerified` only after those checks pass. The release supplies exact image, final build context, source/recipe inputs, Debian/Node source bundle and notices; source URLs alone do not prove accessibility or byte identity.
-4. Select this exact nested add-on version and the paired [integration prerelease `0.3.1.dev1`](https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1.dev1). The integration retains domain `eufy_sdk` and requires one HACS/manual file owner. Its Python version is independent of the add-on Docker tag. Preserve the existing HA entry. Complete the migration/identity/recovery checkpoints before changing files or endpoints.
-5. A separately scheduled, isolated stock-Core/Supervisor installation check must establish configuration loading, dependencies and migration behavior before broader use. HACS replacement UI, full Supervisor migration, stock-Core media/playback, camera switching and physical-device acceptance remain unverified. Private modified-Core and synthetic framework evidence do not qualify a stock-Core support range.
-6. Any production cutover follows the approved maintenance/rollback window and controlled acceptance. Keep account/session/configuration/registry recovery data private and preserve the old image/component/data until acceptance. No private-state bulk migration or automated cleanup is supplied.
-
-The canonical repository URL is `https://github.com/genomez/ha-eufy-sdk-addon#s1-experimental`; keep it fixed. The nested installer has no Dockerfile build fallback: an absent/mismatched registry image is a release failure, not permission for Supervisor to build unreviewed inputs. The root frozen recipe is provenance/source documentation, not the installer path.
-
-References: [Supervisor application configuration](https://developers.home-assistant.io/docs/apps/configuration/), [repository layout](https://developers.home-assistant.io/docs/apps/repository/).
+1. Obtain the owner decision for this exact reviewed runtime/add-on and paired
+   integration candidate. Keep SDK/bridge packages as checksum-bound local tarball
+   assets; do not publish them to npm.
+2. Deliver the exact candidate image archive, final context, updated sources and
+   compiler inputs, full base source/build kit and OS/Node corresponding sources.
+   Preserve all notices and verify recipient downloads and checksums.
+3. If publishing a registry image, bind the registry manifest digest to the exact
+   reviewed image config ID and every layer; independently verify anonymous
+   download/pull before recommending that version to a tester.
+4. Preserve the published source-repository workflow while applying only reviewed
+   source and metadata changes. The installation archive intentionally omits it.
+5. Use a separately approved installation window with the documented private
+   backup, exclusive bridge ownership, migration and rollback checks. Publication
+   does not authorize installation, restart or physical-device control.
