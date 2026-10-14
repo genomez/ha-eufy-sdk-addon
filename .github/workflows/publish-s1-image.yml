@@ -1,0 +1,109 @@
+name: Publish verified S1 image
+
+on:
+  push:
+    branches: [s1-experimental]
+    paths: [.github/workflows/publish-s1-image.yml]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: s1-experimental-image-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'genomez/ha-eufy-sdk-addon'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: genomez/ha-eufy-sdk-addon
+      RELEASE_TAG: s1-runtime-0.4.1.experimental.1
+      IMAGE_ID: sha256:5ed4831e9c2bac67f88269163d5684c8ee6df0aa8951b0b754fe755d4642b9f9
+      IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.1
+    steps:
+      - name: Verify source delivery and load the accepted image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/s1-delivery"
+          cd "$RUNNER_TEMP/s1-delivery"
+          gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > assets.json
+          python3 - <<'PY'
+          import json
+          r = json.load(open('assets.json'))
+          assert r['draft'] is False
+          expected = {
+              'experimental-bridge-image.tar': ('eee66d8a72a9399ddb90e09daa9faec26f019e59487edad9e33172bbb2bc0eab', 724674048),
+              'final-context.tar': ('4c804598127cfcb25bc0d3c1ccaf74f42f52275d8c158a0e54b71c237ebe2c38', 24872960),
+              'delivery-source-inputs-v2.tar': ('c544129555d260eb17f8f4ef85826c0a11668e9d22c428b698008a0eb02c5f05', 179998720),
+              'OS_NODE_YARN_SOURCES.tar': ('0c0104d2a694c45b40593b726300b1ae8fefc70cfeb7c9b068133808539e353d', 1152604160),
+          }
+          actual = {a['name']: a for a in r['assets']}
+          for name, (digest, size) in expected.items():
+              assert actual[name]['size'] == size, name
+              assert actual[name]['digest'] == 'sha256:' + digest, name
+          PY
+          gh release download "$RELEASE_TAG" --repo "$GH_REPO" --pattern experimental-bridge-image.tar
+          printf '%s\n' 'eee66d8a72a9399ddb90e09daa9faec26f019e59487edad9e33172bbb2bc0eab  experimental-bridge-image.tar' | sha256sum --check
+          docker load --input experimental-bridge-image.tar
+          docker image inspect "$IMAGE_ID" > image.json
+          python3 - <<'PY'
+          import json, os
+          i = json.load(open('image.json'))[0]
+          assert i['Id'] == os.environ['IMAGE_ID']
+          assert i['Architecture'] == 'amd64' and i['Os'] == 'linux'
+          assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.1'
+          assert i['RootFS']['Layers'] == [
+              'sha256:7d34bc8ba0bb0b641a224766c8f3e00a151ca675c980db8cc0cbd565cb948232',
+              'sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef',
+          ]
+          PY
+      - name: Publish without rebuilding or replacing a different image
+        shell: bash
+        run: |
+          set -euo pipefail
+          export DOCKER_CONFIG="$RUNNER_TEMP/s1-registry-auth"
+          mkdir -p "$DOCKER_CONFIG"
+          trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io --username genomez --password-stdin
+          python3 - <<'PY'
+          import base64, json, os, urllib.error, urllib.parse, urllib.request
+          repo = 'genomez/eufy-sdk-s1-amd64'
+          query = urllib.parse.urlencode({'service': 'ghcr.io', 'scope': 'repository:' + repo + ':pull,push'})
+          basic = base64.b64encode(('genomez:' + os.environ['GH_TOKEN']).encode()).decode()
+          request = urllib.request.Request('https://ghcr.io/token?' + query, headers={'Authorization': 'Basic ' + basic})
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  token = json.load(response)['token']
+              request = urllib.request.Request('https://ghcr.io/v2/' + repo + '/manifests/0.4.1-s1.experimental.1', headers={
+                  'Authorization': 'Bearer ' + token,
+                  'Accept': 'application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json'})
+              try:
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      manifest = json.load(response)
+                  assert manifest['config']['digest'] == os.environ['IMAGE_ID'], 'Refusing to replace a different image'
+                  absent = False
+              except urllib.error.HTTPError as error:
+                  if error.code != 404:
+                      raise RuntimeError('Registry lookup failed with HTTP ' + str(error.code)) from None
+                  codes = {e.get('code') for e in json.load(error).get('errors', [])}
+                  if not codes or not codes.issubset({'MANIFEST_UNKNOWN', 'NAME_UNKNOWN'}):
+                      raise RuntimeError('Registry lookup did not establish tag absence')
+                  absent = True
+              with open(os.environ['RUNNER_TEMP'] + '/s1-tag-absent', 'w') as output:
+                  output.write('true' if absent else 'false')
+          except Exception as error:
+              raise SystemExit('Registry guard stopped publication: ' + type(error).__name__) from None
+          PY
+          if [ "$(cat "$RUNNER_TEMP/s1-tag-absent")" = true ]; then
+            docker tag "$IMAGE_ID" "$IMAGE_TAG"
+            docker push "$IMAGE_TAG"
+          fi
+          docker pull "$IMAGE_TAG"
+          test "$(docker image inspect "$IMAGE_TAG" --format '{{.Id}}')" = "$IMAGE_ID"
+          docker image inspect "$IMAGE_TAG" --format '{{json .RepoDigests}}' >> "$GITHUB_STEP_SUMMARY"
+          printf '%s\n' 'Exact image published. Anonymous access and recipient source downloads require independent verification.' >> "$GITHUB_STEP_SUMMARY"
