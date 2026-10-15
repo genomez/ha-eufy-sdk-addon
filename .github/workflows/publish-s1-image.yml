@@ -21,9 +21,9 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: genomez/ha-eufy-sdk-addon
-      RELEASE_TAG: s1-runtime-0.4.1.experimental.2
-      IMAGE_ID: sha256:68bcaa6898c2a73df646aca4e33a52368f2cbf06bfb5704581ff1c63a4e68807
-      IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.2
+      RELEASE_TAG: s1-runtime-0.4.1.experimental.4
+      IMAGE_ID: sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f
+      IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.4
     steps:
       - name: Verify source delivery and load the accepted image
         shell: bash
@@ -37,24 +37,14 @@ jobs:
           r = json.load(open('assets.json'))
           assert r['draft'] is False
           expected = {
-              'BASE_BINDING.json': ('44fe20d03fa4eba4b1a2bbcd5f4af7e2544401decb4852cba789ba80bf980170', 821),
-              'CANDIDATE_MANIFEST.json': ('f98402fbb2b77ecc0b83b874745aaa4b52bea6e94686ddb9c67cc3ef65f59d68', 3264),
-              'EXECUTED_SOURCE_BINDING.json': ('52fb0d56d8b6826d3374216a3a1e10d96ab694e8360e942344321f8e33df0dcf', 1686),
-              'OS_NODE_YARN_SOURCES.tar': ('0c0104d2a694c45b40593b726300b1ae8fefc70cfeb7c9b068133808539e353d', 1152604160),
-              'PREPARED_INPUT_BINDING.json': ('d55644b5a39e4a50fe6f7439f7fcbdcd92674bfd8ba8312db505419e94f76a8a', 172),
-              'README.md': ('0bdf3de4abe193c2486cb04efc667b2fab34ec64ce0a79888255b8b973949f93', 1718),
-              'REBUILD.md': ('a8e2817a11b8f3c0d8b2a004d6770574d8619eb496001e47df43545a8788160d', 3575),
-              'SHA256SUMS': ('3b01a1b7a5566e1ac5c3d11b5068088bffd02628019e0a7139338ad98a9e156b', 1588),
-              'SOURCE_INPUTS_MANIFEST.json': ('428604d55cf608a4db97c94e941d5dd50c38b054437fb3c79648a9a4fd6bdb8c', 135820),
-              'base-corresponding-sources.tar': ('c544129555d260eb17f8f4ef85826c0a11668e9d22c428b698008a0eb02c5f05', 179998720),
-              'base-final-context.tar': ('4c804598127cfcb25bc0d3c1ccaf74f42f52275d8c158a0e54b71c237ebe2c38', 24872960),
-              'eufy-sdk-s1-addon-0.4.1-s1.experimental.2.zip': ('b1bb1741887e62c3a8f76305051def0a902e38279ced62e4156b408023f1c477', 20509),
-              'experimental-bridge-image.tar': ('10aa442893b5d943baccca00c82fd8ca117df69dc0051559cf1409977b0c4cb5', 724685824),
-              'final-context.tar': ('29d1d18e1ebc3178ed11c51bf95e20102a55edbc2ff46c272c8ed2589fd6f8c9', 8386560),
-              'genomez-eufy-sdk-0.2.1-s1.experimental.2.tgz': ('b5d8ecb03f71b8bac5ec69577c54c0f98f760810bf0f4814702dd5937f246374', 1717972),
-              'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.2.tgz': ('93a71cf7ff03d10a25bbc41a7cfe8da2b99989f39f93919c13510c779e6d3e67', 92108),
-              'prepared-inputs.tar': ('9815595a54e107d92e22e203ea27bcd16792240a6ebf5917479f6dbe36eb4ba6', 31068160),
-              'safety-source-inputs.tar': ('5fcd841710510a420fe642dac5cbd058223dc6d4a5a097d50ec631f4d45daa96', 45916160),
+              'README.md': ('7868bed3a890efa87bf59f39fb9ea9e1af19059f72b2745466cb8118f0585ad9', 1084),
+              'REBUILD.md': ('236dbba485ae8b2cee22d375a840a7aac141bb5b3ceba970f92403a3fc0a75ac', 3229),
+              'SHA256SUMS': ('67bb46ac6855d7b6777e876ef7e23412f0914703bf396ffc4c0dc2f7bb84ffb1', 678),
+              'eufy-sdk-0.2.1-s1.experimental.4-source.tar.gz': ('611cde1d3bac2ce52eea688dc08d1f88593b16f52d3f82503ea1769bd4689274', 1442069),
+              'experimental-bridge-image.tar': ('956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7', 731084800),
+              'final-context.tar': ('691d8905c8f9057911df5308bda460e6d34bfb04120b7ae30d57b8c0dcbb1c63', 6451200),
+              'genomez-eufy-sdk-0.2.1-s1.experimental.4.tgz': ('215078c6563fd53b0e78f6a235814ac7738e31b226f99f70e79d8146234e520f', 1720855),
+              'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.4.tgz': ('c34d03cd7ab8d097e418adf426814d11e86e57dc44d67fd2cfae24f5d87dff7a', 92791),
           }
           actual = {a['name']: a for a in r['assets']}
           for name, (digest, size) in expected.items():
@@ -62,7 +52,7 @@ jobs:
               assert actual[name]['digest'] == 'sha256:' + digest, name
           PY
           gh release download "$RELEASE_TAG" --repo "$GH_REPO" --pattern experimental-bridge-image.tar
-          printf '%s\n' '10aa442893b5d943baccca00c82fd8ca117df69dc0051559cf1409977b0c4cb5  experimental-bridge-image.tar' | sha256sum --check
+          printf '%s\n' '956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7  experimental-bridge-image.tar' | sha256sum --check
           docker load --input experimental-bridge-image.tar
           docker image inspect "$IMAGE_ID" > image.json
           python3 - <<'PY'
@@ -70,10 +60,11 @@ jobs:
           i = json.load(open('image.json'))[0]
           assert i['Id'] == os.environ['IMAGE_ID']
           assert i['Architecture'] == 'amd64' and i['Os'] == 'linux'
-          assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.2'
+          assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.4'
           assert i['RootFS']['Layers'] == [
               'sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592',
               'sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef',
+              'sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c',
           ]
           PY
       - name: Publish without rebuilding or replacing a different image
@@ -93,7 +84,7 @@ jobs:
           try:
               with urllib.request.urlopen(request, timeout=30) as response:
                   token = json.load(response)['token']
-              request = urllib.request.Request('https://ghcr.io/v2/' + repo + '/manifests/0.4.1-s1.experimental.2', headers={
+              request = urllib.request.Request('https://ghcr.io/v2/' + repo + '/manifests/0.4.1-s1.experimental.4', headers={
                   'Authorization': 'Bearer ' + token,
                   'Accept': 'application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json'})
               try:
