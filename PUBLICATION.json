@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseDate": "2026-10-14",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.2",
+  "releaseDate": "2026-10-15",
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
   "candidateSourceManifest": "SOURCE_MANIFEST.json",
   "candidatePreparationReceiptsAreHistorical": true,
   "repositoryPreservedFiles": [
@@ -22,15 +22,18 @@
     "Stock-Core media, camera switching, ARM and non-S1 behavior remain unqualified."
   ],
   "verification": {
-    "integrationStockCore2026_9_4SyntheticChecks": 25,
-    "realAuthenticationInThatTest": false,
-    "runtimeSyntheticMediaRoutes": 3,
-    "runtimeSyntheticLifecycleCases": 4
+    "sdkTests": 4983,
+    "sdkPassed": 4981,
+    "sdkWindowsOnlyDocSnippetFailures": 2,
+    "bridgeTests": 103,
+    "bridgePassed": 103,
+    "inImageSmokeTest": true,
+    "physicalHardwareTested": false
   },
   "npmPublication": false,
-  "publicationWorkflowChange": "Preserved existing guarded image publication; retargeted only exact .2 asset identities, image config, layer and version. Frozen candidate wording about unchanged automation describes preservation of the publication mechanism.",
-  "publicationWorkflowSha256": "00d693df8ae517611900fbbdb3a5172cf1713550cc235d0d0ef223e1f4dbd746",
-  "currentRuntimeRecipe": "Use final-context.tar and safety-source-inputs.tar from runtimeSourceRelease. Preserved root Dockerfile and packaging files describe the earlier baseline.",
+  "publicationWorkflowChange": "Preserved the existing guarded image publication; retargeted only the experimental.4 release asset identities, image config, layers and version.",
+  "publicationWorkflowSha256": "fdddd4734d058d137f18788587c0200ce45fe69c994c4838a7de463cb8ced938",
+  "currentRuntimeRecipe": "Use final-context.tar from runtimeSourceRelease on top of the experimental.2 base image; base corresponding sources stay attached to the experimental.2 runtime release (see REBUILD.md). Preserved root Dockerfile and packaging files describe the earlier baseline.",
   "publicationDocumentationOverrides": {
     "MIGRATION.md": {
       "candidateSha256": "5ff2d9f0fd379c3e001fcdb144f38d02aebc01b50d0b0293adb2aadb8a3dfcd0",

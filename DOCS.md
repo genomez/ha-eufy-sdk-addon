@@ -1,7 +1,7 @@
 # Installer and exact runtime recipe
 
 The current installer metadata is `eufy_sdk_s1/config.yaml`, version
-`0.4.1-s1.experimental.2`. Use only an owner-approved local bundle or an exact
+`0.4.1-s1.experimental.4`. Use only an owner-approved local bundle or an exact
 matching published image with its checksum, registry manifest/config identity
 verification and all corresponding-source assets. `CANDIDATE.json` binds the
 exact local runtime config ID and source assets. A config ID is distinct from a

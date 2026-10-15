@@ -1,73 +1,39 @@
 {
   "schemaVersion": 1,
-  "status": "offline-unpublished-safety-candidate",
-  "version": "0.4.1-s1.experimental.2",
-  "sdkVersion": "0.2.1-s1.experimental.2",
-  "bridgeVersion": "0.3.1-s1.experimental.2",
+  "status": "published-experimental-prerelease",
+  "version": "0.4.1-s1.experimental.4",
+  "sdkVersion": "0.2.1-s1.experimental.4",
+  "bridgeVersion": "0.3.1-s1.experimental.4",
+  "integrationVersion": "0.3.1.dev2",
   "addonSlug": "eufy_sdk_s1",
   "architecture": "amd64",
-  "baseImageConfigId": "sha256:5ed4831e9c2bac67f88269163d5684c8ee6df0aa8951b0b754fe755d4642b9f9",
-  "basePublishedManifestDigest": "sha256:bf8f99a013c775de112ef60756ca7ca456f39ba8730dbfe7093718908ffc0421",
-  "sourceBaseCommits": {
-    "sdk": "5e81218e0a14109b1f002fe7a3ebd3e4accb7f31",
-    "bridge": "400fb42ab79631ba51d344abb1da262474961098"
+  "baseImageConfigId": "sha256:68bcaa6898c2a73df646aca4e33a52368f2cbf06bfb5704581ff1c63a4e68807",
+  "basePublishedManifestDigest": "sha256:46c1bd935e0f5f17e15c6d34b4ebbd43e34c1b6ecdd62a9d3417085ee255b5a4",
+  "sourceCommits": {
+    "sdk": "7ba370cea5a18bccc0ba61018265a2098c1bf0d0",
+    "bridge": "bdb8d957585ec5cb7575823b406b3f036cb46433"
   },
-  "sdkReviewedPatchHashes": {
-    "src/transport/rtc/session.ts": "007e3824531e71611e0706c2d0648de05505007e12979e29c6fe986d28f5bdde",
-    "src/transport/rtc/__tests__/signaling.spec.ts": "a6729cc5e61459d2aa8521506df3ae1836a9b6a216848a61bf8c9d58fe82670e"
-  },
-  "candidateImageConfigId": "sha256:68bcaa6898c2a73df646aca4e33a52368f2cbf06bfb5704581ff1c63a4e68807",
-  "registryManifestDigest": null,
-  "published": false,
-  "installed": false,
-  "recipientDownloadsAvailable": false,
-  "checks": {
-    "syntheticContainerQualified": true,
-    "supervisorInstallAccepted": false,
-    "stockCoreMediaAccepted": false,
-    "realDeviceAccepted": false
-  },
-  "requiredCorrespondingSourceAssets": [
-    {
-      "file": "final-context.tar",
-      "bytes": 8386560,
-      "sha256": "29d1d18e1ebc3178ed11c51bf95e20102a55edbc2ff46c272c8ed2589fd6f8c9"
-    },
-    {
-      "file": "base-corresponding-sources.tar",
-      "bytes": 179998720,
-      "sha256": "c544129555d260eb17f8f4ef85826c0a11668e9d22c428b698008a0eb02c5f05"
-    },
-    {
-      "file": "OS_NODE_YARN_SOURCES.tar",
-      "bytes": 1152604160,
-      "sha256": "0c0104d2a694c45b40593b726300b1ae8fefc70cfeb7c9b068133808539e353d"
-    },
-    {
-      "file": "prepared-inputs.tar",
-      "bytes": 31068160,
-      "sha256": "9815595a54e107d92e22e203ea27bcd16792240a6ebf5917479f6dbe36eb4ba6"
-    },
-    {
-      "file": "safety-source-inputs.tar",
-      "bytes": 45916160,
-      "sha256": "5fcd841710510a420fe642dac5cbd058223dc6d4a5a097d50ec631f4d45daa96"
-    },
-    {
-      "file": "base-final-context.tar",
-      "bytes": 24872960,
-      "sha256": "4c804598127cfcb25bc0d3c1ccaf74f42f52275d8c158a0e54b71c237ebe2c38"
-    }
+  "candidateImageConfigId": "sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f",
+  "registryManifestDigest": "sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
+  "imageLayerDiffIds": [
+    "sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c"
   ],
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
+  "baseCorrespondingSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.2",
   "localRuntimeArchive": {
     "file": "experimental-bridge-image.tar",
-    "bytes": 724685824,
-    "sha256": "10aa442893b5d943baccca00c82fd8ca117df69dc0051559cf1409977b0c4cb5"
+    "bytes": 731084800,
+    "sha256": "956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7"
   },
-  "publicationPrerequisites": [
-    "Explicit owner decision",
-    "Exact immutable registry manifest and config/layer verification",
-    "All corresponding-source assets delivered and downloads independently verified"
-  ],
-  "savedImageHostnameNeutral": true
+  "published": true,
+  "installed": false,
+  "checks": {
+    "syntheticTests": true,
+    "inImageSmokeTest": true,
+    "anonymousRegistryAndAssetVerification": true,
+    "supervisorInstallAccepted": false,
+    "realDeviceAccepted": false
+  }
 }

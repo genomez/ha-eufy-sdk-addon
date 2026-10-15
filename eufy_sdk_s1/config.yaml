@@ -1,5 +1,5 @@
 name: Eufy SDK S1 experimental
-version: 0.4.1-s1.experimental.2
+version: 0.4.1-s1.experimental.4
 slug: eufy_sdk_s1
 stage: experimental
 description: Experimental S1 bridge; read migration and compatibility limits before

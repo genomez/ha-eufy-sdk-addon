@@ -1,6 +1,6 @@
 # Configuration
 
-Experimental installer `0.4.1-s1.experimental.2` uses the exact matching prebuilt amd64 image. Review [candidate bindings](../CANDIDATE.json), [runtime/source recipes](../DOCS.md), [release prerequisites](../RELEASE_CHECKLIST.md) and [migration/rollback](../MIGRATION.md) before any owner-approved installation. A published release requires verified registry manifest/config/layer identity and corresponding-source downloads; installation and live acceptance remain separate.
+Experimental installer `0.4.1-s1.experimental.4` uses the exact matching prebuilt amd64 image. Review [candidate bindings](../CANDIDATE.json), [runtime/source recipes](../DOCS.md), [release prerequisites](../RELEASE_CHECKLIST.md) and [migration/rollback](../MIGRATION.md) before any owner-approved installation. A published release requires verified registry manifest/config/layer identity and corresponding-source downloads; installation and live acceptance remain separate.
 
 Enter your own Eufy account email, password and account country in the add-on's private configuration. `GB` is an inherited placeholder default, not automatic country detection. Do not post options, session files, account details or raw logs in an issue. Complete any requested authentication yourself through the integration's supported authentication flow; repeated logins are not a troubleshooting strategy.
 
