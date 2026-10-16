@@ -1,3 +1,14 @@
+# 0.4.1-s1.experimental.5 experimental
+
+SDK `0.2.1-s1.experimental.5` and bridge `0.3.1-s1.experimental.5`, paired with unchanged integration `0.3.1.dev2`, for Linux amd64.
+
+- Confirm floodlight writes, close every command channel during teardown, and back off after empty refresh replies.
+- Do not report a battery charge source for known mains cameras; treat the `-100` Wi-Fi placeholder as no reading.
+- Report storage collection attempts and failures; redact tokens from RTC signing refusals.
+- Enable command-session keepalive at 29 seconds in the image (`BRIDGE_RTC_COMMAND_KEEPALIVE_MS=29000`). The SDK facility remains opt-in outside the image. A prior approximately 9.5-hour HomeBase S1 experiment recorded 1,138 of 1,138 echoes and zero drops; the exact .5 image passed an in-image smoke test but has not itself been run on hardware.
+
+Built on the immutable published experimental.4 image with one new layer. Live view is not included. Runtime and sources: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.5
+
 # 0.4.1-s1.experimental.4 experimental
 
 SDK `0.2.1-s1.experimental.4` and bridge `0.3.1-s1.experimental.4`, paired with integration `0.3.1.dev2`.

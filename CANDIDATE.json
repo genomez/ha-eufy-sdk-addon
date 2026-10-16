@@ -1,31 +1,32 @@
 {
   "schemaVersion": 1,
   "status": "published-experimental-prerelease",
-  "version": "0.4.1-s1.experimental.4",
-  "sdkVersion": "0.2.1-s1.experimental.4",
-  "bridgeVersion": "0.3.1-s1.experimental.4",
+  "version": "0.4.1-s1.experimental.5",
+  "sdkVersion": "0.2.1-s1.experimental.5",
+  "bridgeVersion": "0.3.1-s1.experimental.5",
   "integrationVersion": "0.3.1.dev2",
   "addonSlug": "eufy_sdk_s1",
   "architecture": "amd64",
-  "baseImageConfigId": "sha256:68bcaa6898c2a73df646aca4e33a52368f2cbf06bfb5704581ff1c63a4e68807",
-  "basePublishedManifestDigest": "sha256:46c1bd935e0f5f17e15c6d34b4ebbd43e34c1b6ecdd62a9d3417085ee255b5a4",
+  "baseImageConfigId": "sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f",
+  "basePublishedManifestDigest": "sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
   "sourceCommits": {
-    "sdk": "7ba370cea5a18bccc0ba61018265a2098c1bf0d0",
-    "bridge": "bdb8d957585ec5cb7575823b406b3f036cb46433"
+    "sdk": "4712a574c76200ab5b7323b299f4bc24f5de59d6",
+    "bridge": "bf749e6c23618310d753fb742d285065d53506e2"
   },
-  "candidateImageConfigId": "sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f",
-  "registryManifestDigest": "sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
+  "candidateImageConfigId": "sha256:a8fdf6b1ea9c69931688fc099cd99db329ccaeae8c83f88380b5c758d83ab042",
+  "registryManifestDigest": "sha256:2eab296b5f99419192f19c3d4c1fe1a7c500d08e76018cd68d0d922327a5d00b",
   "imageLayerDiffIds": [
     "sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592",
     "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c"
+    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c",
+    "sha256:509a95688d01b4cfb0bd21c8691191bac060a7315f9cdbb730a0ab1d029b3025"
   ],
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
-  "baseCorrespondingSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.2",
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.5",
+  "baseCorrespondingSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
   "localRuntimeArchive": {
     "file": "experimental-bridge-image.tar",
-    "bytes": 731084800,
-    "sha256": "956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7"
+    "bytes": 737559552,
+    "sha256": "23a49fdfdcedd094ba41222588c1dfe479633261cba22cb21ba4a050171f6025"
   },
   "published": true,
   "installed": false,
@@ -35,5 +36,6 @@
     "anonymousRegistryAndAssetVerification": true,
     "supervisorInstallAccepted": false,
     "realDeviceAccepted": false
-  }
+  },
+  "commandSessionKeepaliveMs": 29000
 }

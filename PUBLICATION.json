@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseDate": "2026-10-15",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
+  "releaseDate": "2026-10-16",
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.5",
   "candidateSourceManifest": "SOURCE_MANIFEST.json",
   "candidatePreparationReceiptsAreHistorical": true,
   "repositoryPreservedFiles": [
@@ -19,26 +19,38 @@
   ],
   "knownLimitations": [
     "Dashboard configuration refresh can replace a player card and interrupt playback; initiating trigger remains unknown.",
-    "Stock-Core media, camera switching, ARM and non-S1 behavior remain unqualified."
+    "Stock-Core media, camera switching, ARM and non-S1 behavior remain unqualified.",
+    "Live view is not included in experimental.5. The exact image remains unbuilt and unqualified at this local preparation checkpoint."
   ],
   "verification": {
-    "sdkTests": 4983,
-    "sdkPassed": 4981,
+    "sdkTests": 5076,
+    "sdkPassed": 5074,
     "sdkWindowsOnlyDocSnippetFailures": 2,
-    "bridgeTests": 103,
-    "bridgePassed": 103,
-    "inImageSmokeTest": true,
-    "physicalHardwareTested": false
+    "bridgeTests": 130,
+    "bridgePassed": 130,
+    "inImageSmokeTest": false,
+    "physicalHardwareTested": false,
+    "priorKeepaliveExperiment": {
+      "durationHoursApprox": 9.5,
+      "echoes": 1138,
+      "replies": 1138,
+      "drops": 0,
+      "acceptsThisImage": false
+    },
+    "sdkTypecheck": true,
+    "sdkBuild": true,
+    "bridgeSdkResolution": "Local monorepo SDK 0.2.1-s1.experimental.5 dist/index.js via NODE_OPTIONS import hook."
   },
   "npmPublication": false,
-  "publicationWorkflowChange": "Preserved the existing guarded image publication; retargeted only the experimental.4 release asset identities, image config, layers and version.",
-  "publicationWorkflowSha256": "fdddd4734d058d137f18788587c0200ce45fe69c994c4838a7de463cb8ced938",
-  "currentRuntimeRecipe": "Use final-context.tar from runtimeSourceRelease on top of the experimental.2 base image; base corresponding sources stay attached to the experimental.2 runtime release (see REBUILD.md). Preserved root Dockerfile and packaging files describe the earlier baseline.",
+  "publicationWorkflowChange": "Preserved the existing guarded image publication; retargeted only the experimental.5 release asset identities, image config, layers and version.",
+  "publicationWorkflowSha256": "65b28081a30676079f1c148afc9cb2ad4e0da35750d81a87ed8448ee45ca6f50",
+  "currentRuntimeRecipe": "Use final-context.tar from runtimeSourceRelease on top of the immutable published experimental.4 base image, adding one replacement layer and BRIDGE_RTC_COMMAND_KEEPALIVE_MS=29000. Preserve the experimental.4 and experimental.2 corresponding-source chain (see REBUILD.md). Preserved root Dockerfile and packaging files describe the earlier baseline.",
   "publicationDocumentationOverrides": {
     "MIGRATION.md": {
       "candidateSha256": "5ff2d9f0fd379c3e001fcdb144f38d02aebc01b50d0b0293adb2aadb8a3dfcd0",
-      "publicationSha256": "10c19cb8461a64a1d8a23adc896763c3568d643f590d2b90502dc6db34b32693",
-      "reason": "Correct paired integration link to dev2 and distinguish legacy new-domain migration; frozen candidate ZIP preserved."
+      "publicationSha256": "35c27f76ed830f19ea82961daec8b4677ccfaaf81108383084ef2f1169b040d1",
+      "reason": "Retains the integration dev2 and legacy migration correction, updates the add-on version to experimental.5; frozen candidate ZIP remains historical."
     }
-  }
+  },
+  "registryManifestDigest": "sha256:2eab296b5f99419192f19c3d4c1fe1a7c500d08e76018cd68d0d922327a5d00b"
 }
