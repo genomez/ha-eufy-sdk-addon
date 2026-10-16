@@ -21,9 +21,9 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: genomez/ha-eufy-sdk-addon
-      RELEASE_TAG: s1-runtime-0.4.1.experimental.4
-      IMAGE_ID: sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f
-      IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.4
+      RELEASE_TAG: s1-runtime-0.4.1.experimental.5
+      IMAGE_ID: sha256:a8fdf6b1ea9c69931688fc099cd99db329ccaeae8c83f88380b5c758d83ab042
+      IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.5
     steps:
       - name: Verify source delivery and load the accepted image
         shell: bash
@@ -37,14 +37,14 @@ jobs:
           r = json.load(open('assets.json'))
           assert r['draft'] is False
           expected = {
-              'README.md': ('7868bed3a890efa87bf59f39fb9ea9e1af19059f72b2745466cb8118f0585ad9', 1084),
-              'REBUILD.md': ('236dbba485ae8b2cee22d375a840a7aac141bb5b3ceba970f92403a3fc0a75ac', 3229),
-              'SHA256SUMS': ('67bb46ac6855d7b6777e876ef7e23412f0914703bf396ffc4c0dc2f7bb84ffb1', 678),
-              'eufy-sdk-0.2.1-s1.experimental.4-source.tar.gz': ('611cde1d3bac2ce52eea688dc08d1f88593b16f52d3f82503ea1769bd4689274', 1442069),
-              'experimental-bridge-image.tar': ('956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7', 731084800),
-              'final-context.tar': ('691d8905c8f9057911df5308bda460e6d34bfb04120b7ae30d57b8c0dcbb1c63', 6451200),
-              'genomez-eufy-sdk-0.2.1-s1.experimental.4.tgz': ('215078c6563fd53b0e78f6a235814ac7738e31b226f99f70e79d8146234e520f', 1720855),
-              'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.4.tgz': ('c34d03cd7ab8d097e418adf426814d11e86e57dc44d67fd2cfae24f5d87dff7a', 92791),
+              'README.md': ('bd560c255cef88fbd6d37066fa102824d330f5c9114c4eb4870601fdec0c0949', 1731),
+              'REBUILD.md': ('3df42d98be0d8e908d5aa43f98f2bfe56481c7db9460dffca7584afee619835d', 6869),
+              'SHA256SUMS': ('d5dd2964d1d3f42eef70abc93044c2ece6a915b360a3c161d4e127c7f31a7baf', 678),
+              'eufy-sdk-0.2.1-s1.experimental.5-source.tar.gz': ('95faf3e018fd9afdd0ef96b2effb968e6dc2d5fa6d490a2e6c96270b706a4ed0', 1464923),
+              'experimental-bridge-image.tar': ('23a49fdfdcedd094ba41222588c1dfe479633261cba22cb21ba4a050171f6025', 737559552),
+              'final-context.tar': ('4986824401bb2ee20fda090a6adadb6a02f777fa31a639c67060cfc88218e73f', 6543360),
+              'genomez-eufy-sdk-0.2.1-s1.experimental.5.tgz': ('07c697dddf08539cd85cd4a3126abb0a2adfca04f7b31477abd230b28779d20f', 1732570),
+              'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.5.tgz': ('0e6381768dd768ade4994cf1df3a51ec4e9cda70365e5ed576d9accc59b230da', 93843),
           }
           actual = {a['name']: a for a in r['assets']}
           for name, (digest, size) in expected.items():
@@ -52,7 +52,7 @@ jobs:
               assert actual[name]['digest'] == 'sha256:' + digest, name
           PY
           gh release download "$RELEASE_TAG" --repo "$GH_REPO" --pattern experimental-bridge-image.tar
-          printf '%s\n' '956a711b8f02ca0d9571f7bd9289054d3ea495c25e1ecd4f00e4fa527f6d86b7  experimental-bridge-image.tar' | sha256sum --check
+          printf '%s\n' '23a49fdfdcedd094ba41222588c1dfe479633261cba22cb21ba4a050171f6025  experimental-bridge-image.tar' | sha256sum --check
           docker load --input experimental-bridge-image.tar
           docker image inspect "$IMAGE_ID" > image.json
           python3 - <<'PY'
@@ -60,11 +60,12 @@ jobs:
           i = json.load(open('image.json'))[0]
           assert i['Id'] == os.environ['IMAGE_ID']
           assert i['Architecture'] == 'amd64' and i['Os'] == 'linux'
-          assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.4'
+          assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.5'
           assert i['RootFS']['Layers'] == [
               'sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592',
               'sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef',
               'sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c',
+              'sha256:509a95688d01b4cfb0bd21c8691191bac060a7315f9cdbb730a0ab1d029b3025',
           ]
           PY
       - name: Publish without rebuilding or replacing a different image
@@ -84,7 +85,7 @@ jobs:
           try:
               with urllib.request.urlopen(request, timeout=30) as response:
                   token = json.load(response)['token']
-              request = urllib.request.Request('https://ghcr.io/v2/' + repo + '/manifests/0.4.1-s1.experimental.4', headers={
+              request = urllib.request.Request('https://ghcr.io/v2/' + repo + '/manifests/0.4.1-s1.experimental.5', headers={
                   'Authorization': 'Bearer ' + token,
                   'Accept': 'application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json'})
               try:
