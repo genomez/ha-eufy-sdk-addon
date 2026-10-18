@@ -1,16 +1,13 @@
 # Release prerequisites
 
-1. Obtain the owner decision for this exact reviewed runtime/add-on and paired
-   integration candidate. Keep SDK/bridge packages as checksum-bound local tarball
-   assets; do not publish them to npm.
-2. Deliver the exact candidate image archive, final context, updated sources and
-   compiler inputs, full base source/build kit and OS/Node corresponding sources.
-   Preserve all notices and verify recipient downloads and checksums.
-3. If publishing a registry image, bind the registry manifest digest to the exact
-   reviewed image config ID and every layer; independently verify anonymous
-   download/pull before recommending that version to a tester.
-4. Preserve the published source-repository workflow while applying only reviewed
-   source and metadata changes. The installation archive intentionally omits it.
-5. Use a separately approved installation window with the documented private
-   backup, exclusive bridge ownership, migration and rollback checks. Publication
-   does not authorize installation, restart or physical-device control.
+This published experimental release includes the approved versions and default-off relay. Installation and live acceptance remain separate decisions.
+
+1. Verify the exact trial image, file/hash map, native imports, option propagation and image/archive identities against retained receipts. Preserve qualification limits.
+2. Deliver exact current SDK/bridge sources, SDK tarball, integration ZIP, overlay context/recipe and checksum index, plus the complete experimental.4 and experimental.2 corresponding-source chain and OS/Node/native/Go inputs.
+3. Only after explicit publication approval, bind the pushed registry manifest to the verified image config and layers, publish matching assets and independently verify anonymous downloads/pulls.
+4. The fully bound workflow published the exact accepted image after runtime release/assets verification. Registry verification completed before version/config metadata publication. The accepted context retains its historical disabled template.
+5. Installation, restart, private backup, exclusive bridge ownership and physical-device checks require their own approved window. Retain recovery material.
+
+Verified runtime/source release: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.6
+
+Verified companion integration release: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.6

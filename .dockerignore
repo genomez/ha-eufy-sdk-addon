@@ -58,3 +58,9 @@
 !pair/package-lock.json
 !pair/package.json
 !run.sh
+
+# Experimental.6 overlay context.
+!root/
+!root/**
+!packaging/experimental6-overlay.Dockerfile
+!packaging/EXPERIMENTAL6_OVERLAY.json

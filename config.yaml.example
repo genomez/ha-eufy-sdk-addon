@@ -1,6 +1,6 @@
-# Local candidate, built by Supervisor from the accompanying source context.
+# Historical source-preview configuration with proposed experimental.6 options; not an installable release.
 name: S1 source preview (not an installable release)
-version: "0.4.0-s1.1"
+version: "0.4.1-s1.experimental.6"
 slug: eufy_sdk_t9000_pilot
 stage: experimental
 description: Reference configuration for experimental S1 source; public installation is not qualified.
@@ -34,6 +34,7 @@ options:
   rtc_state_refresh_ms: 0
   # Optional S1 storage: hourly admission on an existing idle session, no retries.
   s1_storage_telemetry: false
+  webrtc_relay: false
   stream_idle_ms: 300000
   # Disable unsolicited native RTSP setting writes initially; deliberate controls remain available.
   rtsp_idle_off_ms: 0
@@ -60,6 +61,7 @@ schema:
   # Optional shared RTC state reads: 0 disables; otherwise 30000..600000 ms.
   rtc_state_refresh_ms: int(0,600000)
   s1_storage_telemetry: bool
+  webrtc_relay: bool
   # Auto-off a camera's live P2P feed after this long with no detection (ms); 0 disables. Saves battery.
   stream_idle_ms: int(0,)
   # Turn a BATTERY camera's native rtspStream OFF after this long idle (ms); 0 disables. Wired untouched.

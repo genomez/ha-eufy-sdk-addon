@@ -1,56 +1,179 @@
 {
   "schemaVersion": 1,
-  "releaseDate": "2026-10-16",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.5",
+  "status": "published",
+  "version": "0.4.1-s1.experimental.6",
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.6",
+  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.6",
   "candidateSourceManifest": "SOURCE_MANIFEST.json",
-  "candidatePreparationReceiptsAreHistorical": true,
-  "repositoryPreservedFiles": [
-    ".dockerignore",
-    ".github/workflows/publish-s1-image.yml",
+  "preparationBaseCommit": "76a0764d278e1f3e6ade3b9fa8a4d1a71d00fe42",
+  "historicalBaseSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
+  "retainedHistoricalFiles": [
     "Dockerfile",
-    "PREVIEW_SOURCE_MANIFEST.json",
-    "config.yaml.example",
-    "packaging/fetch-os.mjs",
     "packaging/image-inputs.lock.json",
-    "packaging/media-check.mjs",
-    "packaging/native-check.mjs",
+    "packaging/fetch-os.mjs",
     "packaging/prepare-context.py",
-    "packaging/verify-inputs.mjs"
+    "packaging/verify-inputs.mjs",
+    "packaging/native-check.mjs",
+    "packaging/media-check.mjs",
+    "PREVIEW_SOURCE_MANIFEST.json"
   ],
-  "knownLimitations": [
-    "Dashboard configuration refresh can replace a player card and interrupt playback; initiating trigger remains unknown.",
-    "Stock-Core media, camera switching, ARM and non-S1 behavior remain unqualified.",
-    "Live view is not included in experimental.5. The exact image remains unbuilt and unqualified at this local preparation checkpoint."
-  ],
-  "verification": {
-    "sdkTests": 5076,
-    "sdkPassed": 5074,
-    "sdkWindowsOnlyDocSnippetFailures": 2,
-    "bridgeTests": 130,
-    "bridgePassed": 130,
-    "inImageSmokeTest": false,
-    "physicalHardwareTested": false,
-    "priorKeepaliveExperiment": {
-      "durationHoursApprox": 9.5,
-      "echoes": 1138,
-      "replies": 1138,
-      "drops": 0,
-      "acceptsThisImage": false
-    },
-    "sdkTypecheck": true,
-    "sdkBuild": true,
-    "bridgeSdkResolution": "Local monorepo SDK 0.2.1-s1.experimental.5 dist/index.js via NODE_OPTIONS import hook."
-  },
+  "currentRuntimeRecipe": "packaging/experimental6-overlay.Dockerfile installs the complete review.9 code payload, release package versions, option-selecting startup and current source/license records; the manifest binds root inputs. Historical base recipes remain preserved.",
+  "publicationWorkflowStatus": "Guarded exact-image publication succeeded; registry and source assets independently verified.",
+  "publicationWorkflowSha256": "808ea847ffb86045eb8c830a1857082579a22f6c1f1e5aeb3a3dbc539b79d199",
+  "registryManifestDigest": "sha256:a1e25c4c21b0017f4d63ee01b68f47e54d63b36fba67c030f758cee412935f7a",
   "npmPublication": false,
-  "publicationWorkflowChange": "Preserved the existing guarded image publication; retargeted only the experimental.5 release asset identities, image config, layers and version.",
-  "publicationWorkflowSha256": "65b28081a30676079f1c148afc9cb2ad4e0da35750d81a87ed8448ee45ca6f50",
-  "currentRuntimeRecipe": "Use final-context.tar from runtimeSourceRelease on top of the immutable published experimental.4 base image, adding one replacement layer and BRIDGE_RTC_COMMAND_KEEPALIVE_MS=29000. Preserve the experimental.4 and experimental.2 corresponding-source chain (see REBUILD.md). Preserved root Dockerfile and packaging files describe the earlier baseline.",
-  "publicationDocumentationOverrides": {
-    "MIGRATION.md": {
-      "candidateSha256": "5ff2d9f0fd379c3e001fcdb144f38d02aebc01b50d0b0293adb2aadb8a3dfcd0",
-      "publicationSha256": "35c27f76ed830f19ea82961daec8b4677ccfaaf81108383084ef2f1169b040d1",
-      "reason": "Retains the integration dev2 and legacy migration correction, updates the add-on version to experimental.5; frozen candidate ZIP remains historical."
+  "qualifiedFinalImage": false,
+  "review6OvernightSoakStatus": "pending",
+  "knownLimitations": [
+    "Exact-image physical-device, live HA/HACS installation and soak acceptance remain separate from independently verified publication."
+  ],
+  "sourceManifestRole": "Current candidate inventory; historical preview manifest is retained and is not current.",
+  "localImplementationCommit": "d4335b908cd0ad9d0b6d7260e70172398943fe02",
+  "localIntegration": {
+    "sourceCommit": "071c55bf4a9f606eea7603ff3946a52965b2e774",
+    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.6.zip",
+    "sha256": "23d90f50a19494d411f071864dd40122bcc8ef47468d5b949e669cc1b0f99154",
+    "bytes": 526898,
+    "installedByRuntimeOverlay": false
+  },
+  "localSourcePackagingCommit": "c254aac11d4ad8e599cd14fa89e5e47e33264516",
+  "sourcePackagingRecords": {
+    "packaging/source-records/sdk/package.json": {
+      "sha256": "d2f38c31a7384284228f4c72e705d1d5384f9ad3847e12ed5c36bfcdfcb6510e",
+      "bytes": 2991,
+      "source": "sdk/package.json"
+    },
+    "packaging/source-records/sdk/package-lock.json": {
+      "sha256": "b1d71685ca1c40ebad1ab74a47b84be55c1ad77e51338b0d70e25f8e6c211ebc",
+      "bytes": 88832,
+      "source": "sdk/package-lock.json"
+    },
+    "packaging/source-records/sdk/SOURCE_MANIFEST.json": {
+      "sha256": "2fa476ab729f12b0ae4599e7392a79e532e943989ea6291e79b089b82d4de086",
+      "bytes": 89407,
+      "source": "sdk/SOURCE_MANIFEST.json"
+    },
+    "packaging/source-records/sdk/BUILD_PROVENANCE.json": {
+      "sha256": "225e3adfa40f65603f8ec85e7be2c2a9fbc993dc7f8057aad3e08fc313534ed8",
+      "bytes": 29130,
+      "source": "sdk/BUILD_PROVENANCE.json"
+    },
+    "packaging/source-records/sdk/MODIFICATIONS.md": {
+      "sha256": "58325f51e7de57acf2e21d93c3c48d5b3a9db79a54d3aae240c2b960467c4057",
+      "bytes": 27559,
+      "source": "sdk/MODIFICATIONS.md"
+    },
+    "packaging/source-records/sdk/EXPERIMENTAL.md": {
+      "sha256": "a74d402ec66e21d3ab5c74d50caafa6cf5e8d638ea3a71611fa5cc43a768e681",
+      "bytes": 8664,
+      "source": "sdk/EXPERIMENTAL.md"
+    },
+    "packaging/source-records/sdk/LICENSE": {
+      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b",
+      "bytes": 11339,
+      "source": "sdk/LICENSE"
+    },
+    "packaging/source-records/sdk/README.md": {
+      "sha256": "b4eeef7a2949c1984f6c14162449b2b88a0dc1993a52cd7e9061abb704000b56",
+      "bytes": 3142,
+      "source": "sdk/README.md"
+    },
+    "packaging/source-records/sdk/AUTHORS": {
+      "sha256": "af49ab1d26bc29f756bbe4544cf5b6e956b516071ea4649119f53251cde6e65b",
+      "bytes": 146,
+      "source": "sdk/AUTHORS"
+    },
+    "packaging/source-records/bridge/package.json": {
+      "sha256": "0b8cdfcde57b1580b96f0d8635376749d02b74f38c4dfc3e2825212dc2ce878f",
+      "bytes": 1371,
+      "source": "bridge/package.json"
+    },
+    "packaging/source-records/bridge/package-lock.json": {
+      "sha256": "1950e8a470c2488f53df657c4cce63fbbef3a89dbd568d3a7a65322243b3ce10",
+      "bytes": 26727,
+      "source": "bridge/package-lock.json"
+    },
+    "packaging/source-records/bridge/SOURCE_MANIFEST.json": {
+      "sha256": "946e3a3baa3cc3f21cf754fc3f76468fd17eed4218ab9822f2f63f30cd8344c4",
+      "bytes": 18134,
+      "source": "bridge/SOURCE_MANIFEST.json"
+    },
+    "packaging/source-records/bridge/BUILD_PROVENANCE.json": {
+      "sha256": "385040ca91f1967d455422c12634a5e24f7d59452c34d478866a7d3f759964e3",
+      "bytes": 10041,
+      "source": "bridge/BUILD_PROVENANCE.json"
+    },
+    "packaging/source-records/bridge/MODIFICATIONS.md": {
+      "sha256": "430514d22285ac8828570d52cd0689efb9de45aae2c48471f12dc2edad24f926",
+      "bytes": 14294,
+      "source": "bridge/MODIFICATIONS.md"
+    },
+    "packaging/source-records/bridge/EXPERIMENTAL.md": {
+      "sha256": "fcbaeffb8b728123cbdf3b09af69c983e9612ca3d42b5d675f03b16e6e49b222",
+      "bytes": 11562,
+      "source": "bridge/EXPERIMENTAL.md"
+    },
+    "packaging/source-records/bridge/LICENSE": {
+      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b",
+      "bytes": 11339,
+      "source": "bridge/LICENSE"
+    },
+    "packaging/source-records/bridge/README.md": {
+      "sha256": "3282c87fe2429dbc1e5b2f96d0bc89656cb968c2c2fa307e0d5303a52b10a121",
+      "bytes": 2207,
+      "source": "bridge/README.md"
     }
   },
-  "registryManifestDigest": "sha256:2eab296b5f99419192f19c3d4c1fe1a7c500d08e76018cd68d0d922327a5d00b"
+  "published": true,
+  "sourceCommits": {
+    "sdk": "249eccef7f226e653f3745032d128465f8f7dbdf",
+    "bridge": "bee38ea57ec29b5d40f82314bf76896f582bf90c"
+  },
+  "runtimeAssets": {
+    "eufy-sdk-0.2.1-s1.experimental.6-source.tar.gz": {
+      "bytes": 1508369,
+      "sha256": "6e67b5b5c030d7062c3f802673e93a3f5917d8fb3c59f81d1aeb384358ac3f2c"
+    },
+    "experimental-bridge-image.tar": {
+      "bytes": 738032640,
+      "sha256": "8e1e8a93efb7d81d9d2dde3f93c10e8887efb1c641014d28ba6c5c9a8be94a69"
+    },
+    "final-context.tar": {
+      "bytes": 7567360,
+      "sha256": "f7a795ad62dd91310f06bff8bde7bd27bb2a86963702c6b5cbf293ccaa7f016d"
+    },
+    "genomez-eufy-sdk-0.2.1-s1.experimental.6.tgz": {
+      "bytes": 1769689,
+      "sha256": "aa60bdbb8a8205fdc35a059e2295a2f63f25df64dbb8d805b3c48e1d0c8b39ae"
+    },
+    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.6.tgz": {
+      "bytes": 109285,
+      "sha256": "83f6475af16f5b9e0c0918dfc8a10c9c1728a821a7602bee5356323eae3a8d9e"
+    },
+    "README.md": {
+      "bytes": 2161,
+      "sha256": "02afe29b8d3041b87c690895666b580ac4bad1b2ae5c5bd88b8bec36f060e815"
+    },
+    "REBUILD.md": {
+      "bytes": 8353,
+      "sha256": "4426ac05f7075e80c131ba40014a0ad8901d5240be6a8fa531bab89e3963e21b"
+    },
+    "SHA256SUMS": {
+      "bytes": 678,
+      "sha256": "d6e8881bf6e7f1605240414bc83df3f8aa611b42c752620f88fe060452d44b61"
+    }
+  },
+  "candidateImageConfigId": "sha256:0cd6293ee618e3ec74b30bb74230992debe182b137f615e464750720460ac7a5",
+  "imageLayerDiffIds": [
+    "sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c",
+    "sha256:97b3b99c630691feda191b7f7f9da114c7f451c0f2f2b9bf7f94eb0969d1499d",
+    "sha256:a881d02e14378a8d1bb3c309d6e2420febb57e743d9237aec7a15811a6beef51",
+    "sha256:be2f8cdd941e1b98d70014828659ca50f0b8bdc9bab1d470be61c6fd4ca01bd4",
+    "sha256:44ab3f04d02f0454e05d83048b8ce53677c83af7e57197927552efd4b2221ee1",
+    "sha256:6d67526d3fc1990db95d7a760119a07e3adc399581f3e4afb56906db2238e424"
+  ],
+  "acceptedContextSourceCommit": "0b8e9070fe3f2f0106711cca5346ef651307bedb",
+  "preservedImageRecipeBinding": "packaging/EXPERIMENTAL6_OVERLAY.json remains byte-identical to the accepted image; public publication bindings are separate metadata."
 }

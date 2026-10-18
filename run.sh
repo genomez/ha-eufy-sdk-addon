@@ -24,6 +24,8 @@ export EUFY_POLL_MS="$(jq -r '.poll_ms // 600000' "$OPTS")"
 export BRIDGE_RTC_STATE_REFRESH_MS="$(jq -r '.rtc_state_refresh_ms // 0' "$OPTS")"
 # Strict opt-in; inherited environment cannot enable storage when the option is off.
 export BRIDGE_S1_STORAGE_TELEMETRY="$(jq -r 'if .s1_storage_telemetry == true then "1" else "0" end' "$OPTS")"
+# Strict opt-in; inherited environment cannot enable the relay when the option is off.
+export BRIDGE_WEBRTC_RELAY="$(jq -r 'if .webrtc_relay == true then "1" else "0" end' "$OPTS")"
 export STREAM_IDLE_MS="$(jq -r '.stream_idle_ms // 300000' "$OPTS")"
 export RTSP_IDLE_OFF_MS="$(jq -r '.rtsp_idle_off_ms // 300000' "$OPTS")"
 # Optional: battery stream budget. Unset keeps the SDK default, so only pass it when the user sets one.

@@ -1,5 +1,5 @@
 name: Eufy SDK S1 experimental
-version: 0.4.1-s1.experimental.5
+version: 0.4.1-s1.experimental.6
 slug: eufy_sdk_s1
 stage: experimental
 description: Experimental S1 bridge; read migration and compatibility limits before
@@ -32,6 +32,7 @@ options:
   poll_ms: 600000
   rtc_state_refresh_ms: 0
   s1_storage_telemetry: false
+  webrtc_relay: false
   stream_idle_ms: 300000
   rtsp_idle_off_ms: 0
   prewarm: false
@@ -52,6 +53,7 @@ schema:
   poll_ms: int(0,)
   rtc_state_refresh_ms: int(0,600000)
   s1_storage_telemetry: bool
+  webrtc_relay: bool
   stream_idle_ms: int(0,)
   rtsp_idle_off_ms: int(0,)
   stream_battery_budget_ms: int(1,)?

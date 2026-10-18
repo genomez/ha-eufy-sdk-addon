@@ -1,0 +1,3 @@
+run.sh text eol=lf
+root/run.sh text eol=lf
+root/app/** -text

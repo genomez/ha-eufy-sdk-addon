@@ -1,3 +1,16 @@
+# 0.4.1-s1.experimental.6 experimental
+
+SDK `0.2.1-s1.experimental.6`, bridge `0.3.1-s1.experimental.6`, integration `0.3.1-s1.experimental.6`; Linux amd64. Published experimental prerelease.
+
+- Optional native live view in Home Assistant's player: set `webrtc_relay` to true and restart the add-on. Off by default; integration selects it automatically.
+- Fix battery-camera streaming; update both components and turn off Preload camera stream on battery cameras.
+- Handle eligible floodlight late replies without a spurious error and reconcile state automatically.
+- Add siren support on supported S1 cameras and a standard doorbell ring event; reduce live-view start overhead.
+- Retain freshness guards, power classification, redaction, bounded recovery and independent 29000 ms command keepalive.
+- Refresh to review.9 code and its exact experimental.4 base. Trial image evidence is separate from physical-device and stock-Core qualification.
+
+A slow camera can fail at 15 seconds on its first live-view attempt; retry. Doorbell presses may arrive more than once. Live view takes a few seconds to release. This remains experimental.
+
 # 0.4.1-s1.experimental.5 experimental
 
 SDK `0.2.1-s1.experimental.5` and bridge `0.3.1-s1.experimental.5`, paired with unchanged integration `0.3.1.dev2`, for Linux amd64.
@@ -25,3 +38,7 @@ The SDK local ICE callback sends only while its signaling socket is open. The pa
 # 0.4.1-s1.experimental.1 experimental
 
 Separate S1 experimental add-on identity and prebuilt-image metadata around the retained synthetic-qualified amd64 container; [runtime archive and corresponding sources](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.1). SDK/bridge runtime sources are unchanged from the reviewed source preview. Added migration, single integration ownership, private-data and rollback instructions. Registry digest/anonymous-pull verification is recorded separately in CANDIDATE.json. Supervisor migration, HACS replacement UI, stock-Core media, camera switching and physical-device acceptance remain unverified.
+
+Verified runtime/source release: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.6
+
+Verified companion integration release: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.6
