@@ -1,193 +1,54 @@
 {
-  "schemaVersion": 1,
-  "status": "published",
-  "version": "0.4.1-s1.experimental.6",
-  "sdkVersion": "0.2.1-s1.experimental.6",
-  "bridgeVersion": "0.3.1-s1.experimental.6",
-  "integrationVersion": "0.3.1-s1.experimental.6",
-  "addonSlug": "eufy_sdk_s1",
-  "architecture": "amd64",
-  "ownerVersionApprovalPending": false,
-  "ownerRelayDefaultApprovalPending": false,
-  "webrtcRelayDefault": false,
-  "commandSessionKeepaliveMs": 29000,
-  "baseImageConfigId": "sha256:2aef6bccf189a3c142fe665b770a6f8fe95f70eadbea1edcc85288106cfd026f",
-  "basePublishedManifestDigest": "sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
-  "baseCorrespondingSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.4",
-  "sourceCommits": {
-    "sdk": "249eccef7f226e653f3745032d128465f8f7dbdf",
-    "bridge": "bee38ea57ec29b5d40f82314bf76896f582bf90c"
-  },
-  "localImplementationInput": "d4335b908cd0ad9d0b6d7260e70172398943fe02",
-  "integrationImplementationInput": "071c55bf4a9f606eea7603ff3946a52965b2e774",
-  "candidateImageConfigId": "sha256:0cd6293ee618e3ec74b30bb74230992debe182b137f615e464750720460ac7a5",
-  "registryManifestDigest": "sha256:a1e25c4c21b0017f4d63ee01b68f47e54d63b36fba67c030f758cee412935f7a",
-  "imageLayerDiffIds": [
-    "sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592",
-    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c",
-    "sha256:97b3b99c630691feda191b7f7f9da114c7f451c0f2f2b9bf7f94eb0969d1499d",
-    "sha256:a881d02e14378a8d1bb3c309d6e2420febb57e743d9237aec7a15811a6beef51",
-    "sha256:be2f8cdd941e1b98d70014828659ca50f0b8bdc9bab1d470be61c6fd4ca01bd4",
-    "sha256:44ab3f04d02f0454e05d83048b8ce53677c83af7e57197927552efd4b2221ee1",
-    "sha256:6d67526d3fc1990db95d7a760119a07e3adc399581f3e4afb56906db2238e424"
-  ],
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.6",
-  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.6",
-  "proposedRuntimeReleaseTag": "s1-runtime-0.4.1.experimental.6",
-  "localRuntimeArchive": {
-    "file": "experimental-bridge-image.tar",
-    "bytes": 738032640,
-    "sha256": "8e1e8a93efb7d81d9d2dde3f93c10e8887efb1c641014d28ba6c5c9a8be94a69"
-  },
-  "published": true,
-  "installed": false,
-  "checks": {
-    "addonStaticValidation": true,
-    "finalImageSmokeTest": true,
-    "anonymousRegistryAndAssetVerification": true,
-    "supervisorInstallAccepted": false,
-    "finalImageRealDeviceAccepted": false,
-    "review6OvernightSoakPassed": false,
-    "finalImageSmokeScope": "Retained isolated trial of the exact accepted image; no HA/device/soak acceptance"
-  },
-  "localSourcePackagingCommit": "c254aac11d4ad8e599cd14fa89e5e47e33264516",
-  "localSdkBundleSha256": "55b77a769e362bed4df0b515e537aeb3cac470851edf13316eef8075e0f1fa0b",
-  "localSdkTarball": {
-    "file": "genomez-eufy-sdk-0.2.1-s1.experimental.6.tgz",
-    "bytes": 1769689,
-    "sha256": "aa60bdbb8a8205fdc35a059e2295a2f63f25df64dbb8d805b3c48e1d0c8b39ae"
-  },
-  "integrationZip": {
-    "sourceCommit": "071c55bf4a9f606eea7603ff3946a52965b2e774",
-    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.6.zip",
-    "sha256": "23d90f50a19494d411f071864dd40122bcc8ef47468d5b949e669cc1b0f99154",
-    "bytes": 526898,
-    "installedByRuntimeOverlay": false
-  },
-  "runtimeOverlayManifest": "packaging/EXPERIMENTAL6_OVERLAY.json",
-  "sourcePackagingRecords": {
-    "packaging/source-records/sdk/package.json": {
-      "sha256": "d2f38c31a7384284228f4c72e705d1d5384f9ad3847e12ed5c36bfcdfcb6510e",
-      "bytes": 2991,
-      "source": "sdk/package.json"
-    },
-    "packaging/source-records/sdk/package-lock.json": {
-      "sha256": "b1d71685ca1c40ebad1ab74a47b84be55c1ad77e51338b0d70e25f8e6c211ebc",
-      "bytes": 88832,
-      "source": "sdk/package-lock.json"
-    },
-    "packaging/source-records/sdk/SOURCE_MANIFEST.json": {
-      "sha256": "2fa476ab729f12b0ae4599e7392a79e532e943989ea6291e79b089b82d4de086",
-      "bytes": 89407,
-      "source": "sdk/SOURCE_MANIFEST.json"
-    },
-    "packaging/source-records/sdk/BUILD_PROVENANCE.json": {
-      "sha256": "225e3adfa40f65603f8ec85e7be2c2a9fbc993dc7f8057aad3e08fc313534ed8",
-      "bytes": 29130,
-      "source": "sdk/BUILD_PROVENANCE.json"
-    },
-    "packaging/source-records/sdk/MODIFICATIONS.md": {
-      "sha256": "58325f51e7de57acf2e21d93c3c48d5b3a9db79a54d3aae240c2b960467c4057",
-      "bytes": 27559,
-      "source": "sdk/MODIFICATIONS.md"
-    },
-    "packaging/source-records/sdk/EXPERIMENTAL.md": {
-      "sha256": "a74d402ec66e21d3ab5c74d50caafa6cf5e8d638ea3a71611fa5cc43a768e681",
-      "bytes": 8664,
-      "source": "sdk/EXPERIMENTAL.md"
-    },
-    "packaging/source-records/sdk/LICENSE": {
-      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b",
-      "bytes": 11339,
-      "source": "sdk/LICENSE"
-    },
-    "packaging/source-records/sdk/README.md": {
-      "sha256": "b4eeef7a2949c1984f6c14162449b2b88a0dc1993a52cd7e9061abb704000b56",
-      "bytes": 3142,
-      "source": "sdk/README.md"
-    },
-    "packaging/source-records/sdk/AUTHORS": {
-      "sha256": "af49ab1d26bc29f756bbe4544cf5b6e956b516071ea4649119f53251cde6e65b",
-      "bytes": 146,
-      "source": "sdk/AUTHORS"
-    },
-    "packaging/source-records/bridge/package.json": {
-      "sha256": "0b8cdfcde57b1580b96f0d8635376749d02b74f38c4dfc3e2825212dc2ce878f",
-      "bytes": 1371,
-      "source": "bridge/package.json"
-    },
-    "packaging/source-records/bridge/package-lock.json": {
-      "sha256": "1950e8a470c2488f53df657c4cce63fbbef3a89dbd568d3a7a65322243b3ce10",
-      "bytes": 26727,
-      "source": "bridge/package-lock.json"
-    },
-    "packaging/source-records/bridge/SOURCE_MANIFEST.json": {
-      "sha256": "946e3a3baa3cc3f21cf754fc3f76468fd17eed4218ab9822f2f63f30cd8344c4",
-      "bytes": 18134,
-      "source": "bridge/SOURCE_MANIFEST.json"
-    },
-    "packaging/source-records/bridge/BUILD_PROVENANCE.json": {
-      "sha256": "385040ca91f1967d455422c12634a5e24f7d59452c34d478866a7d3f759964e3",
-      "bytes": 10041,
-      "source": "bridge/BUILD_PROVENANCE.json"
-    },
-    "packaging/source-records/bridge/MODIFICATIONS.md": {
-      "sha256": "430514d22285ac8828570d52cd0689efb9de45aae2c48471f12dc2edad24f926",
-      "bytes": 14294,
-      "source": "bridge/MODIFICATIONS.md"
-    },
-    "packaging/source-records/bridge/EXPERIMENTAL.md": {
-      "sha256": "fcbaeffb8b728123cbdf3b09af69c983e9612ca3d42b5d675f03b16e6e49b222",
-      "bytes": 11562,
-      "source": "bridge/EXPERIMENTAL.md"
-    },
-    "packaging/source-records/bridge/LICENSE": {
-      "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b",
-      "bytes": 11339,
-      "source": "bridge/LICENSE"
-    },
-    "packaging/source-records/bridge/README.md": {
-      "sha256": "3282c87fe2429dbc1e5b2f96d0bc89656cb968c2c2fa307e0d5303a52b10a121",
-      "bytes": 2207,
-      "source": "bridge/README.md"
-    }
-  },
-  "review9FullImageEquivalent": false,
-  "review9FileEquivalenceScope": "195 code payload files (179 SDK dist, 15 bridge src, server.mjs) exactly match review.9. Both installed package objects differ only in version. REVIEW_TEST_PROVENANCE.json omitted. Configurable relay startup and refreshed source/license records differ intentionally; whole-image equivalence is not asserted.",
+  "version": "0.4.1-s1.experimental.7",
+  "sourceMonorepoCommit": "6deea127459f368edb24d7d3df59dcaf60d5b508",
+  "integrationInputFile": "integration-input.json",
+  "published": false,
+  "realDeviceAcceptance": false,
+  "runtimeReference": "review.14 r3 implementation; release packaging checked separately",
+  "imageId": "sha256:b2890965263078f8f3ba675476610f42c6d91d06f18c76e191e516070a7ce861",
   "runtimeAssets": {
-    "eufy-sdk-0.2.1-s1.experimental.6-source.tar.gz": {
-      "bytes": 1508369,
-      "sha256": "6e67b5b5c030d7062c3f802673e93a3f5917d8fb3c59f81d1aeb384358ac3f2c"
+    "eufy-sdk-0.2.1-s1.experimental.7-source.tar.gz": {
+      "bytes": 1578814,
+      "sha256": "b97be2650f9a787230611c5c49941e51be697dea848ead8ba7f1d62d51e05055"
     },
     "experimental-bridge-image.tar": {
-      "bytes": 738032640,
-      "sha256": "8e1e8a93efb7d81d9d2dde3f93c10e8887efb1c641014d28ba6c5c9a8be94a69"
+      "bytes": 739129856,
+      "sha256": "e73cec30e41645286d5438c780147cce1742d69b939329ffe59885739de14dd1"
     },
     "final-context.tar": {
-      "bytes": 7567360,
-      "sha256": "f7a795ad62dd91310f06bff8bde7bd27bb2a86963702c6b5cbf293ccaa7f016d"
+      "bytes": 8775680,
+      "sha256": "b6ba76057665a0773fb1f9f25be1984ce1075d2eaa55359a0eb061356bca2909"
     },
-    "genomez-eufy-sdk-0.2.1-s1.experimental.6.tgz": {
-      "bytes": 1769689,
-      "sha256": "aa60bdbb8a8205fdc35a059e2295a2f63f25df64dbb8d805b3c48e1d0c8b39ae"
+    "genomez-eufy-sdk-0.2.1-s1.experimental.7.tgz": {
+      "bytes": 1845615,
+      "sha256": "19bf92f2062ae103ede942896ffa1310996778b5a9a5876b9ae2c9df91c60ffe"
     },
-    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.6.tgz": {
-      "bytes": 109285,
-      "sha256": "83f6475af16f5b9e0c0918dfc8a10c9c1728a821a7602bee5356323eae3a8d9e"
+    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.7.tgz": {
+      "bytes": 120466,
+      "sha256": "592fb6ae22edca39c80978c73e245ac9f88938fbbdf4d6cfaa40f3fc7dc5d3bc"
     },
     "README.md": {
-      "bytes": 2161,
-      "sha256": "02afe29b8d3041b87c690895666b580ac4bad1b2ae5c5bd88b8bec36f060e815"
+      "bytes": 1502,
+      "sha256": "47aca26b10e3abbfec524274e19e0575a665f70edee714d2daaa32d0663bdd93"
     },
     "REBUILD.md": {
-      "bytes": 8353,
-      "sha256": "4426ac05f7075e80c131ba40014a0ad8901d5240be6a8fa531bab89e3963e21b"
+      "bytes": 7265,
+      "sha256": "179f3e0b3615262943b28fe5a241017e671a0e767b513d4a10d571aa7565be59"
     },
     "SHA256SUMS": {
       "bytes": 678,
-      "sha256": "d6e8881bf6e7f1605240414bc83df3f8aa611b42c752620f88fe060452d44b61"
+      "sha256": "ac619d1043e42a17220f3ae9941d4a165c21b9c0497c255836872e0c3ded0e48"
     }
   },
-  "acceptedContextSourceCommit": "0b8e9070fe3f2f0106711cca5346ef651307bedb"
+  "integrationVersion": "0.3.1-s1.experimental.7",
+  "integrationSourceCommit": "689ee3c33b995734085e99089f5fb1ce7605c176",
+  "integrationReleaseCommit": "b3922d91fcd73a10b763b69dfcf1c4d72ccc7a1f",
+  "integrationZip": {
+    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.7.zip",
+    "bytes": 633821,
+    "sha256": "d944bb4c1db048d6edc2372640e56caea51a4806bd9cb2d91df7c09b840806ca",
+    "memberCount": 59
+  },
+  "relayDefault": false,
+  "keepaliveMs": 29000
 }

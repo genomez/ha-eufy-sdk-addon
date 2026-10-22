@@ -1,3 +1,10 @@
+# 0.4.1-s1.experimental.7
+
+- Back off RTC renewals after busy responses and preserve the cause of connection initialization failures.
+- Add passive connection, watchdog and cloud-poll diagnostics.
+- Pair integration 0.3.1-s1.experimental.7 for four app-aligned presets and motion-aware floodlight correction.
+- Live view remains opt-in with webrtc_relay; default false and 29-second command keepalive retained.
+
 # 0.4.1-s1.experimental.6 experimental
 
 SDK `0.2.1-s1.experimental.6`, bridge `0.3.1-s1.experimental.6`, integration `0.3.1-s1.experimental.6`; Linux amd64. Published experimental prerelease.

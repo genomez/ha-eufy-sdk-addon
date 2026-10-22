@@ -1,3 +1,7 @@
+# Experimental.7 local preparation
+
+Current pairing: add-on `0.4.1-s1.experimental.7`, integration `0.3.1-s1.experimental.7`, bridge `0.3.1-s1.experimental.7`, SDK `0.2.1-s1.experimental.7`. This release is unpublished. Public relay default remains false; opt into live view with `webrtc_relay: true`. Integration owns optional automatic floodlight correction. Runtime source is `6deea127459f368edb24d7d3df59dcaf60d5b508`. Current recipe is `packaging/experimental7-overlay.Dockerfile`; earlier version-specific instructions below are historical. Publication and installation require separate approval.
+
 # Migration and rollback contract
 
 Published experimental.6: exact image, source and release identities are bound in CANDIDATE.json. Installation and live acceptance remain separate. Do not use the procedure until exact approved artifacts and qualification are available. Integration release URL: `https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.6`.

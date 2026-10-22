@@ -1,3 +1,7 @@
+# Experimental.7 local preparation
+
+Current pairing: add-on `0.4.1-s1.experimental.7`, integration `0.3.1-s1.experimental.7`, bridge `0.3.1-s1.experimental.7`, SDK `0.2.1-s1.experimental.7`. This release is unpublished. Public relay default remains false; opt into live view with `webrtc_relay: true`. Integration owns optional automatic floodlight correction. Runtime source is `6deea127459f368edb24d7d3df59dcaf60d5b508`. Current recipe is `packaging/experimental7-overlay.Dockerfile`; earlier version-specific instructions below are historical. Publication and installation require separate approval.
+
 # Experimental.6 release
 
 Add-on `0.4.1-s1.experimental.6` pairs SDK `0.2.1-s1.experimental.6`, bridge `0.3.1-s1.experimental.6` and integration `0.3.1-s1.experimental.6` for Linux amd64. Versions and the default-off relay option are owner approved. The runtime and integration prereleases are published; see the verified links below.
