@@ -1,16 +1,17 @@
 {
-  "status": "prepared-locally-unpublished",
-  "published": false,
+  "status": "published-runtime-and-source-delivery",
+  "published": true,
   "version": "0.4.1-s1.experimental.7",
   "sourceMonorepoCommit": "6deea127459f368edb24d7d3df59dcaf60d5b508",
   "sourceCommits": {
-    "eufy-sdk": "7c28a03145f8c413f9cdf72f44ae91b49e03eb7e",
-    "ha-eufy-sdk-bridge": "ac010388e6b8c3f7db95b4ef15b1c56ce7a98f44"
+    "eufy-sdk": "4e4f572536a6d3af1235d84019b06e0032e23652",
+    "ha-eufy-sdk-bridge": "fdbe7560073302d9b31885deca0055952f9d3417",
+    "ha-eufy-sdk": "e59fbe2eaaae39ceae9418b6f422494048329dc7"
   },
   "relayDefault": false,
-  "runtimeSourceRelease": null,
-  "integrationRelease": null,
-  "registryManifestDigest": null,
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.7",
+  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.7",
+  "registryManifestDigest": "sha256:7ac0e563cb46e7cf97ed95072b5f94dc0ef7ee18ba7f5ee72de52a118bdbfd17",
   "publicBaseCommit": "21cc03fec44075c5f5ab1d53fc47682572398ca8",
   "workflowCommit": "cd61e94afa4f354dccfe8368758428b9e087a24c",
   "workflowSha256": "e728c5e514b9e2adfdd11b2798783582bc27a900ef3307b22f7ad2959833bedb",
@@ -69,5 +70,32 @@
     "sha256": "d944bb4c1db048d6edc2372640e56caea51a4806bd9cb2d91df7c09b840806ca",
     "memberCount": 59
   },
-  "publicationWorkflowStatus": "Prepared locally and unpushed; publish workflow-only commit only after release/assets verification. Publish metadata only after anonymous registry verification."
+  "publicationWorkflowStatus": "Publication independently verified; pinned workflow binding retained unchanged. Metadata binding does not require another image run.",
+  "publicationVerifiedAt": "2026-10-23T14:05:42.052398+00:00",
+  "publicationDocumentationOverrides": {
+    "README.md": {
+      "preparedSha256": "fa3b4dc249d65a1985cd82b6fdbefd3bad397123a965a019719110e89955333e",
+      "publicationSha256": "0158e874c8175f60d654b35ce340a0a041a890490116997fb7f00ea4a348b69f"
+    },
+    "DOCS.md": {
+      "preparedSha256": "c840c4fd960923a5c0890c1cde8b693a0b49f91b4efdaccdf10ef16fbef288b5",
+      "publicationSha256": "c6f9890ab2e06f64d783da31793dff55558b7dde471d0a3984de765f3ffd88d3"
+    },
+    "EXPERIMENTAL.md": {
+      "preparedSha256": "117962e14337873c57e508db1099eb74bb3044a7e3da56c43f88549237035162",
+      "publicationSha256": "bf7f45023d85e92292af21db62cadeffb6c017ada9e126ee206ce12a94323b9e"
+    },
+    "MIGRATION.md": {
+      "preparedSha256": "1073b0d8952e77a54c37e9e636102adb5501154821d4a37cdf6a3f5c20bc3182",
+      "publicationSha256": "7a94c804160cc3eed42ff4c55b455731b061013f5852c5758a2638ccc512835e"
+    },
+    "RELEASE_CHECKLIST.md": {
+      "preparedSha256": "d53914cf35fdeea664ebe0d61917f81a39e7e1085b3d0d5e1f3f13348947cae6",
+      "publicationSha256": "5fa2cef507e5dea2b46ba0511bde580370efb0e52ac3efa998ee0a46057a8140"
+    },
+    "eufy_sdk_s1/DOCS.md": {
+      "preparedSha256": "14faf7cd5b6efc3c72f1295b7b713d9e8e6e387dc42cac917c23f892fe544cb9",
+      "publicationSha256": "6453f6de4dfdf86581f70b3f7a0c615e564bc89d5f48c0eda7bb1118dcdb1767"
+    }
+  }
 }
