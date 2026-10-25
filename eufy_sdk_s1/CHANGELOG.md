@@ -1,3 +1,9 @@
+# 0.4.1-s1.experimental.8
+
+RTC late-viewer keyframe gating; bounded refresh backoff and recovery; isolated slow replies; camera connectivity and hub reply evidence; T8171 detection; opt-in floodlight safety with bounded confirmation and problem notices; observation-only media stall evidence.
+
+Historical .7 changelog follows.
+
 # 0.4.1-s1.experimental.7
 
 - Back off RTC renewals after busy responses and preserve the cause of connection initialization failures.

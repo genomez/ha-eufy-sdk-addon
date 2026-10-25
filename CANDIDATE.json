@@ -1,90 +1,60 @@
 {
-  "version": "0.4.1-s1.experimental.7",
-  "sourceMonorepoCommit": "6deea127459f368edb24d7d3df59dcaf60d5b508",
-  "integrationInputFile": "integration-input.json",
-  "published": true,
-  "realDeviceAcceptance": false,
-  "runtimeReference": "review.14 r3 implementation; release packaging checked separately",
-  "imageId": "sha256:b2890965263078f8f3ba675476610f42c6d91d06f18c76e191e516070a7ce861",
-  "runtimeAssets": {
-    "eufy-sdk-0.2.1-s1.experimental.7-source.tar.gz": {
-      "bytes": 1578814,
-      "sha256": "b97be2650f9a787230611c5c49941e51be697dea848ead8ba7f1d62d51e05055"
-    },
-    "experimental-bridge-image.tar": {
-      "bytes": 739129856,
-      "sha256": "e73cec30e41645286d5438c780147cce1742d69b939329ffe59885739de14dd1"
-    },
-    "final-context.tar": {
-      "bytes": 8775680,
-      "sha256": "b6ba76057665a0773fb1f9f25be1984ce1075d2eaa55359a0eb061356bca2909"
-    },
-    "genomez-eufy-sdk-0.2.1-s1.experimental.7.tgz": {
-      "bytes": 1845615,
-      "sha256": "19bf92f2062ae103ede942896ffa1310996778b5a9a5876b9ae2c9df91c60ffe"
-    },
-    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.7.tgz": {
-      "bytes": 120466,
-      "sha256": "592fb6ae22edca39c80978c73e245ac9f88938fbbdf4d6cfaa40f3fc7dc5d3bc"
-    },
-    "README.md": {
-      "bytes": 1502,
-      "sha256": "47aca26b10e3abbfec524274e19e0575a665f70edee714d2daaa32d0663bdd93"
-    },
-    "REBUILD.md": {
-      "bytes": 7265,
-      "sha256": "179f3e0b3615262943b28fe5a241017e671a0e767b513d4a10d571aa7565be59"
-    },
-    "SHA256SUMS": {
-      "bytes": 678,
-      "sha256": "ac619d1043e42a17220f3ae9941d4a165c21b9c0497c255836872e0c3ded0e48"
-    }
+  "version": "0.4.1-s1.experimental.8",
+  "status": "prepared-locally-unpublished",
+  "published": false,
+  "sourceMonorepoCommit": "b13c23cb3ecc270d07107b726264faea37d998ce",
+  "sourceCommits": {
+    "eufy-sdk": "f9c1e0995ddf9bd5642cdc06c156ba8d65f9ed15",
+    "ha-eufy-sdk-bridge": "c7da7a0375238983d839242ab37b2c030078804f",
+    "ha-eufy-sdk": "6bb1365de39615d9e094b44b7665118451326e8d"
   },
-  "integrationVersion": "0.3.1-s1.experimental.7",
-  "integrationSourceCommit": "689ee3c33b995734085e99089f5fb1ce7605c176",
-  "integrationReleaseCommit": "b3922d91fcd73a10b763b69dfcf1c4d72ccc7a1f",
+  "integrationInput": "9dd9c7fb035926000340d14f8134712e215fb32e",
+  "integrationReleaseCommit": "6bb1365de39615d9e094b44b7665118451326e8d",
   "integrationZip": {
-    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.7.zip",
-    "bytes": 633821,
-    "sha256": "d944bb4c1db048d6edc2372640e56caea51a4806bd9cb2d91df7c09b840806ca",
-    "memberCount": 59
+    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.8.zip",
+    "bytes": 743869,
+    "sha256": "c6402a686c65691ad950b40e50d14a35d22afedd96c1441c2a4e7e538a97df7c",
+    "memberCount": 60
   },
   "relayDefault": false,
   "keepaliveMs": 29000,
-  "status": "published-runtime-and-source-delivery",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.7",
-  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.7",
-  "registryManifestDigest": "sha256:7ac0e563cb46e7cf97ed95072b5f94dc0ef7ee18ba7f5ee72de52a118bdbfd17",
-  "sourceCommits": {
-    "eufy-sdk": "4e4f572536a6d3af1235d84019b06e0032e23652",
-    "ha-eufy-sdk-bridge": "fdbe7560073302d9b31885deca0055952f9d3417",
-    "ha-eufy-sdk": "e59fbe2eaaae39ceae9418b6f422494048329dc7"
-  },
-  "publicationVerifiedAt": "2026-10-23T14:05:42.052398+00:00",
-  "publicationDocumentationOverrides": {
+  "lightCorrectionDefault": false,
+  "runtimeImageId": "sha256:2dd51f74ef63af80abb21c89a21ab602a3f69c83dbcb6d8608a31de86ba347f2",
+  "registryManifestDigest": null,
+  "workflowStatus": "Prepared locally; publish only after separate approval and independent release asset verification",
+  "runtimeAssets": {
+    "eufy-sdk-0.2.1-s1.experimental.8-source.tar.gz": {
+      "bytes": 1628731,
+      "sha256": "bdda83514ad9b53d28963c49b7cbdaaa1942e5f7f122bef4198d4831762e940a"
+    },
+    "experimental-bridge-image.tar": {
+      "bytes": 742427648,
+      "sha256": "9439349d84482548f30a6e3416c218c447966af6e81dd08dade22776f4487b9d"
+    },
+    "final-context.tar": {
+      "bytes": 11325440,
+      "sha256": "4f54a6f6362ed67fe3d3e2c8edcfc365aa760a7d8d5960751d20f9c3e00860af"
+    },
+    "genomez-eufy-sdk-0.2.1-s1.experimental.8.tgz": {
+      "bytes": 1886913,
+      "sha256": "ab4d3bb1170dcae45535058da39b7c1a821274603144f5c916068a8914398b77"
+    },
+    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.8.tgz": {
+      "bytes": 130777,
+      "sha256": "800e798e717618c83c63b67dd54c2cf2594cac724922525323fd70ede9ed0ec7"
+    },
     "README.md": {
-      "preparedSha256": "fa3b4dc249d65a1985cd82b6fdbefd3bad397123a965a019719110e89955333e",
-      "publicationSha256": "0158e874c8175f60d654b35ce340a0a041a890490116997fb7f00ea4a348b69f"
+      "bytes": 4101,
+      "sha256": "a8dcb30b07384ec3e79abb1aba65a79fd19cea231009badd33707087c738af0f"
     },
-    "DOCS.md": {
-      "preparedSha256": "c840c4fd960923a5c0890c1cde8b693a0b49f91b4efdaccdf10ef16fbef288b5",
-      "publicationSha256": "c6f9890ab2e06f64d783da31793dff55558b7dde471d0a3984de765f3ffd88d3"
+    "REBUILD.md": {
+      "bytes": 9721,
+      "sha256": "fa48318302564d921268fe85713bc788a5a71975e7aaf92505fda489a1d0e90d"
     },
-    "EXPERIMENTAL.md": {
-      "preparedSha256": "117962e14337873c57e508db1099eb74bb3044a7e3da56c43f88549237035162",
-      "publicationSha256": "bf7f45023d85e92292af21db62cadeffb6c017ada9e126ee206ce12a94323b9e"
-    },
-    "MIGRATION.md": {
-      "preparedSha256": "1073b0d8952e77a54c37e9e636102adb5501154821d4a37cdf6a3f5c20bc3182",
-      "publicationSha256": "7a94c804160cc3eed42ff4c55b455731b061013f5852c5758a2638ccc512835e"
-    },
-    "RELEASE_CHECKLIST.md": {
-      "preparedSha256": "d53914cf35fdeea664ebe0d61917f81a39e7e1085b3d0d5e1f3f13348947cae6",
-      "publicationSha256": "5fa2cef507e5dea2b46ba0511bde580370efb0e52ac3efa998ee0a46057a8140"
-    },
-    "eufy_sdk_s1/DOCS.md": {
-      "preparedSha256": "14faf7cd5b6efc3c72f1295b7b713d9e8e6e387dc42cac917c23f892fe544cb9",
-      "publicationSha256": "6453f6de4dfdf86581f70b3f7a0c615e564bc89d5f48c0eda7bb1118dcdb1767"
+    "SHA256SUMS": {
+      "bytes": 678,
+      "sha256": "60304a412cad9eab1647e2361a02bef0b958fe7470891fb4f48ee376cc335f8a"
     }
-  }
+  },
+  "workflowCommit": "2709e0a54ee96ea0979b09c84592237b899e8e08"
 }
