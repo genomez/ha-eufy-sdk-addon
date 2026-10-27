@@ -1,3 +1,9 @@
+# 0.4.1-s1.experimental.9
+
+Guard failed SDK read-through refreshes; reduce routine camera health recorder writes; report persisted unconfirmed OFF incidents when optional floodlight safety is enabled. SDK documentation formatting only.
+
+Historical .8 changelog follows.
+
 # 0.4.1-s1.experimental.8
 
 RTC late-viewer keyframe gating; bounded refresh backoff and recovery; isolated slow replies; camera connectivity and hub reply evidence; T8171 detection; opt-in floodlight safety with bounded confirmation and problem notices; observation-only media stall evidence.
