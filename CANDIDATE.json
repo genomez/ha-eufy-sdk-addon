@@ -12,11 +12,11 @@
   "runtimeSourceRelease": null,
   "installationAcceptance": false,
   "sourceCommits": {
-    "eufy-sdk": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
-    "ha-eufy-sdk-bridge": "230e730d950947e1587d65e6a08f18c76b36a791",
-    "ha-eufy-sdk": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc"
+    "eufy-sdk": "ff258691b99617f7c4ae246060d5f0243cc022f0",
+    "ha-eufy-sdk-bridge": "92f7ec9627d7e49fdb9742cd50a0518dd35626fd",
+    "ha-eufy-sdk": "bcaa58e38d66b48786c33dcd5f0aba82a2890785"
   },
-  "integrationReleaseCommit": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc",
+  "integrationReleaseCommit": "bcaa58e38d66b48786c33dcd5f0aba82a2890785",
   "integrationZip": null,
   "runtimeImageId": null,
   "buildRecipe": "packaging/experimental11-overlay.Dockerfile",

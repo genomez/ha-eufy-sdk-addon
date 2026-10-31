@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "runtimeVersion": "0.4.1-s1.experimental.11",
   "sourceCommits": {
-    "eufy-sdk": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
-    "ha-eufy-sdk-bridge": "230e730d950947e1587d65e6a08f18c76b36a791",
-    "ha-eufy-sdk": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc"
+    "eufy-sdk": "ff258691b99617f7c4ae246060d5f0243cc022f0",
+    "ha-eufy-sdk-bridge": "92f7ec9627d7e49fdb9742cd50a0518dd35626fd",
+    "ha-eufy-sdk": "bcaa58e38d66b48786c33dcd5f0aba82a2890785"
   },
   "sdkArtifact": {
     "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.11.tgz",
-    "bytes": 1875711,
-    "sha256": "390fe9b241bf684f1aedff19308d009ad82bba2d063d036caed5b36ad0c9fe70",
-    "integrity": "sha512-yx6xRW8Xib9myuEkwFCyTyJteP4aL3bZQVvIlJPGBXTFepJn8QR1A7PCbB0rW3TppfOBwxfy2W5b8ip9gK5ROQ=="
+    "bytes": 1875710,
+    "sha256": "a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973",
+    "integrity": "sha512-w4LBjm9BfihKNEy9/Bf/Z1cfTmkCmdFWEkbH5xwWhnCWblTC9GFXxWFcmOnbIQo4b0qZCo/+VfS+YB8bhXprsg=="
   },
   "buildRecipe": "packaging/experimental11-overlay.Dockerfile",
   "installedBuildRecipe": "/recipe/experimental11/Dockerfile",
