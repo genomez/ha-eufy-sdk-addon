@@ -1,73 +1,25 @@
 {
   "schemaVersion": 1,
-  "version": "0.4.1-s1.experimental.9",
-  "status": "published-runtime-and-source-delivery",
-  "published": true,
-  "sourceCommits": {
-    "eufy-sdk": "02312bfe2eee3107ce19252c7b8730a9d5ac4c67",
-    "ha-eufy-sdk-bridge": "2e230cc8a978bc29b14dd64837146553289140b4",
-    "ha-eufy-sdk": "700f35dca69ff65ba5de8cc832d03000437ee37b"
-  },
-  "sdkGuardInputCommit": "8328df917f796b84fc96c6d29746e6314417010f",
-  "integrationInput": "7bfd76217985072c01c60ac375ea70f69ef8e3bc",
-  "integrationReleaseCommit": "bf6d218faa3df8734c8bfee594ed6ae6e807e1f3",
-  "integrationZip": {
-    "filename": "eufy-sdk-s1-0.3.1-s1.experimental.9.zip",
-    "bytes": 763030,
-    "sha256": "544e4f23e927f5c27585cba9379dc47c4bc08aa03bbead4a3cb3188b04313213",
-    "memberCount": 60
-  },
+  "version": "0.4.1-s1.experimental.11",
+  "status": "prepared-locally-unpublished",
+  "published": false,
+  "publicBaseCommit": "95f97578519e56c84fc0b455153f7f9c5c4a1013",
+  "exactInputCommit": "95f97578519e56c84fc0b455153f7f9c5c4a1013",
   "relayDefault": false,
   "keepaliveMs": 29000,
   "lightCorrectionDefault": false,
-  "runtimeImageId": "sha256:dd0c396bc96beb74cf97a910ad78e5ba276fcc7270052f29bd62beb39722f5a1",
-  "registryManifestDigest": "sha256:fe2fca682ecf41655402abc7ba2da970995eeed4a6010f51865409b60141bd0e",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.9",
-  "workflowStatus": "Publication independently verified; pinned workflow unchanged; no additional image run required",
-  "runtimeAssets": {
-    "eufy-sdk-0.2.1-s1.experimental.9-source.tar.gz": {
-      "bytes": 1630064,
-      "sha256": "f26cbf602c0c231a5c5170c169e400f19f855a69e85225ed82667431fb2e8613"
-    },
-    "experimental-bridge-image.tar": {
-      "bytes": 742442496,
-      "sha256": "41ee9cba77f60e04789c49304f01faa7a156391a14f8e5639e29cfe95db86931"
-    },
-    "final-context.tar": {
-      "bytes": 11345920,
-      "sha256": "33ec25a8a90b08baf762376483629eb1cc1e7cf02e0a0224728e55e42af02ab4"
-    },
-    "genomez-eufy-sdk-0.2.1-s1.experimental.9.tgz": {
-      "bytes": 1888831,
-      "sha256": "39673f48efdb33ce8a91bccfaecf428cad4e128ee18a52cb56d9ab8a8b055848"
-    },
-    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.9.tgz": {
-      "bytes": 132864,
-      "sha256": "a4bbf99003063f2b8c9407b5f44e01076a6b2666265636234da0a05f936c572e"
-    },
-    "README.md": {
-      "bytes": 6535,
-      "sha256": "b95748e33ae8a5af0032b47d497acc4f6542497077a5a852e6382971aabd5182"
-    },
-    "REBUILD.md": {
-      "bytes": 12155,
-      "sha256": "3a0ecf40aeadbb738f0fbdfaecb2ca6ebee8839059119d4e21fa1ee685a90c5a"
-    },
-    "SHA256SUMS": {
-      "bytes": 678,
-      "sha256": "c22dff60a56fa1a0ded4a771dd0e3cf5e6643503f0d48e430775619f0196973d"
-    }
-  },
-  "workflowCommit": "564d07646e88c1e4685fd583ea4ef7c1fa51036d",
-  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.9",
-  "publicationVerifiedAt": "2026-10-27T13:41:22.391861+00:00",
-  "sourcePreparationCommit": "ba26b8819398b74445fde4dd0080604b7994a919",
-  "sourcePreparationCommits": {
-    "eufy-sdk": "ff0c0c47981bede161544a1e410f55499afc5e44",
-    "ha-eufy-sdk-bridge": "f9ec2278eae82baa805863cc372cbbcba3b726fd",
-    "ha-eufy-sdk": "bf6d218faa3df8734c8bfee594ed6ae6e807e1f3"
-  },
-  "releasePreparationRecordHistorical": true,
+  "registryManifestDigest": null,
+  "runtimeSourceRelease": null,
   "installationAcceptance": false,
-  "hacsAvailabilityVerified": false
+  "sourceCommits": {
+    "eufy-sdk": "bd7a136d6f0873e324dcd23222ffc699a6d8e022",
+    "ha-eufy-sdk-bridge": "c6f7933de4e31842878703d795c7831e84f67677",
+    "ha-eufy-sdk": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea"
+  },
+  "integrationReleaseCommit": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea",
+  "integrationZip": null,
+  "runtimeImageId": null,
+  "buildRecipe": "packaging/experimental11-overlay.Dockerfile",
+  "pinnedBase": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
+  "workflowStatus": "Historical image workflow retained; current image delivery pins pending validation"
 }

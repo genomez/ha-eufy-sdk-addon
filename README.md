@@ -41,14 +41,48 @@ Modified for genomez experimental.9, 2026-10-27.
 
 Modified for genomez experimental.11, 2026-10-31.
 
+- `CANDIDATE.json`
 - `DOCS.md`
 - `EXPERIMENTAL.md`
 - `MIGRATION.md`
+- `PUBLICATION.json`
 - `README.md`
 - `RELEASE_CHECKLIST.md`
+- `SOURCE_MANIFEST.json`
 - `eufy_sdk_s1/CHANGELOG.md`
 - `eufy_sdk_s1/DOCS.md`
 - `eufy_sdk_s1/config.yaml`
+- `packaging/EXPERIMENTAL11_OVERLAY.json`
+- `packaging/experimental11-overlay.Dockerfile`
+- `root/app/BUILD_PROVENANCE.json`
+- `root/app/EXPERIMENTAL.md`
+- `root/app/MODIFICATIONS.md`
+- `root/app/PUBLICATION.json`
+- `root/app/README.md`
+- `root/app/REVIEW_TEST_PROVENANCE.json`
+- `root/app/SOURCE_MANIFEST.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/BUILD_PROVENANCE.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/EXPERIMENTAL.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/MODIFICATIONS.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/PUBLICATION.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/README.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/SOURCE_MANIFEST.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/camera-health-ingress.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/eufy-mega.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js.map`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/camera.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/index.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/rtsp.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/command-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/command-router.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package-lock.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package.json`
+- `root/app/package-lock.json`
+- `root/app/package.json`
+- `root/app/src/camera-health.mjs`
+- `root/app/src/diagnostics.mjs`
+- `root/app/src/ws-server.mjs`
 
 ## Historical experimental.9 / experimental.10 documentation
 
