@@ -83,6 +83,23 @@ Modified for genomez experimental.11, 2026-10-31.
 - `root/app/src/camera-health.mjs`
 - `root/app/src/diagnostics.mjs`
 - `root/app/src/ws-server.mjs`
+- `root/recipe/experimental11/Dockerfile`
+- `root/recipe/experimental11/SOURCE_INPUTS.json`
+- `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`
+- `root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json`
+- `root/usr/share/licenses/eufy/bridge/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/bridge/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/bridge/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/bridge/README.md`
+- `root/usr/share/licenses/eufy/experimental7/HISTORICAL_RECORD.json`
+- `root/usr/share/licenses/eufy/experimental7/SOURCE_ACCESS.md`
+- `root/usr/share/licenses/eufy/experimental7/SOURCE_COMPONENTS.json`
+- `root/usr/share/licenses/eufy/experimental7/bridge/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/experimental7/sdk/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/sdk/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/sdk/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/sdk/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/sdk/README.md`
 
 ## Historical experimental.9 / experimental.10 documentation
 

@@ -1,3 +1,9 @@
+# Historical experimental.7 sdk documentation
+
+The complete document below is retained historical material. Current experimental.11 component records are in `/app/node_modules/@mega-yfue/eufy-sdk/`; `BUILD_PROVENANCE.json` beside this file mirrors the current component provenance. See `../SOURCE_ACCESS.md` and `../SOURCE_COMPONENTS.json` for the current source commits, SDK archive and recipe. The package and source-inventory files beside this document are historical experimental.7 records.
+
+---
+
 # Experimental.7 local preparation
 
 Version `0.2.1-s1.experimental.7` is prepared locally and unpublished. Pair add-on `0.4.1-s1.experimental.7` and integration `0.3.1-s1.experimental.7`. Automatic floodlight correction is OFF-only and cannot re-send ON. A shared command-health gate pauses automatic writes for ten minutes after two fast correlated refusals, while explicit commands remain eligible. Includes review.14 upstream beta.73/beta.80 adaptations, RTC renewal cooldowns and passive diagnostics.

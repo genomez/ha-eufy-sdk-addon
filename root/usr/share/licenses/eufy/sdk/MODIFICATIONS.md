@@ -1,3 +1,9 @@
+# Historical experimental.7 sdk documentation
+
+The complete document below is retained historical material. Current experimental.11 component records are in `/app/node_modules/@mega-yfue/eufy-sdk/`; `BUILD_PROVENANCE.json` beside this file mirrors the current component provenance. See `../SOURCE_ACCESS.md` and `../SOURCE_COMPONENTS.json` for the current source commits, SDK archive and recipe. The package and source-inventory files beside this document are historical experimental.7 records.
+
+---
+
 # Source modification index
 
 Modified for genomez S1 experimental source preview, 2026-10-17.

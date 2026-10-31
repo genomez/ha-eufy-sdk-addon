@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "historical": true,
+  "runtimeVersion": "0.4.1-s1.experimental.7",
+  "inheritedFromAddonCommit": "28cd91c78826d7112ed52ae6e5eff1cab0c83be6",
+  "description": "These exact experimental.7 entry-point and provenance bytes are historical. Current records are one directory above. The other retained experimental.7 component documents and package/source inventories are identified there as historical."
+}
