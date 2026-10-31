@@ -4,7 +4,7 @@
   "status": "prepared-locally-unpublished",
   "published": false,
   "publicBaseCommit": "95f97578519e56c84fc0b455153f7f9c5c4a1013",
-  "exactInputCommit": "95f97578519e56c84fc0b455153f7f9c5c4a1013",
+  "exactInputCommit": "6455660e3681639115a095f0c58892d1191abe03",
   "relayDefault": false,
   "keepaliveMs": 29000,
   "lightCorrectionDefault": false,
@@ -12,11 +12,11 @@
   "runtimeSourceRelease": null,
   "installationAcceptance": false,
   "sourceCommits": {
-    "eufy-sdk": "bd7a136d6f0873e324dcd23222ffc699a6d8e022",
-    "ha-eufy-sdk-bridge": "c6f7933de4e31842878703d795c7831e84f67677",
-    "ha-eufy-sdk": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea"
+    "eufy-sdk": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
+    "ha-eufy-sdk-bridge": "230e730d950947e1587d65e6a08f18c76b36a791",
+    "ha-eufy-sdk": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc"
   },
-  "integrationReleaseCommit": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea",
+  "integrationReleaseCommit": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc",
   "integrationZip": null,
   "runtimeImageId": null,
   "buildRecipe": "packaging/experimental11-overlay.Dockerfile",

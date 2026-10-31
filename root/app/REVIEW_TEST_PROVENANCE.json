@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "version": "0.4.1-s1.experimental.11",
   "preparedSourceHeads": {
-    "eufy-sdk": "bd7a136d6f0873e324dcd23222ffc699a6d8e022",
-    "ha-eufy-sdk-bridge": "c6f7933de4e31842878703d795c7831e84f67677",
-    "ha-eufy-sdk": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea"
+    "eufy-sdk": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
+    "ha-eufy-sdk-bridge": "230e730d950947e1587d65e6a08f18c76b36a791",
+    "ha-eufy-sdk": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc"
   },
   "exactInputCommits": {
-    "eufy-sdk": "7dc2a3709bbeb8005fefa816e15642e567760158",
-    "ha-eufy-sdk-bridge": "92701f99978bab55ce5dc394d34dc91c3ad48e5b",
-    "ha-eufy-sdk": "a51d21216e84c007a1932330741bfcf466910a48"
+    "eufy-sdk": "6d36e0adc9a02f2e72ea705779d323efc545e690",
+    "ha-eufy-sdk-bridge": "3e028a4a8de8595ac8aacd8c54297a9c6e47e360",
+    "ha-eufy-sdk": "01482b7fac0286758f1d7b868eac0e21348789e7"
   },
   "published": false,
   "fullSdkDistIncluded": true,
-  "sdkArtifactSha256": "8ffe669c60a9ef94990a199b384c56a56bf8e01b107558aaeefe78f6f51fba7d",
+  "sdkArtifactSha256": "390fe9b241bf684f1aedff19308d009ad82bba2d063d036caed5b36ad0c9fe70",
   "relayDefault": false,
   "keepaliveMs": 29000,
   "lightCorrectionDefault": false,

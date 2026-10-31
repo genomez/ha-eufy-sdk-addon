@@ -20,12 +20,12 @@
   "schemaVersion": 1,
   "runtimeVersion": "0.4.1-s1.experimental.11",
   "sdkArtifactFilename": "genomez-eufy-sdk-0.2.1-s1.experimental.11.tgz",
-  "sdkArtifactSha256": "8ffe669c60a9ef94990a199b384c56a56bf8e01b107558aaeefe78f6f51fba7d",
-  "sdkArtifactIntegrity": "sha512-o9u7zUzGm9yG1k6gpBfUx1Yh31v8yqwkuRIPC+Woix+43Pbfb4rvEuZ2lLPQwpYLs4v8aqAKrc99YyYK4lfOhw==",
+  "sdkArtifactSha256": "390fe9b241bf684f1aedff19308d009ad82bba2d063d036caed5b36ad0c9fe70",
+  "sdkArtifactIntegrity": "sha512-yx6xRW8Xib9myuEkwFCyTyJteP4aL3bZQVvIlJPGBXTFepJn8QR1A7PCbB0rW3TppfOBwxfy2W5b8ip9gK5ROQ==",
   "sourceCommits": {
-    "eufy-sdk": "bd7a136d6f0873e324dcd23222ffc699a6d8e022",
-    "ha-eufy-sdk-bridge": "c6f7933de4e31842878703d795c7831e84f67677",
-    "ha-eufy-sdk": "40a572ca8e9455aebbbabd0ed6d7a622b49bfaea"
+    "eufy-sdk": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
+    "ha-eufy-sdk-bridge": "230e730d950947e1587d65e6a08f18c76b36a791",
+    "ha-eufy-sdk": "efc066a0163cd86a57cc8e83f1c4f5457d7151dc"
   },
   "sourceProvenance": {
     "sdk": {
@@ -34,7 +34,7 @@
       "status": "prepared-locally-unpublished",
       "published": false,
       "publicBaseCommit": "02312bfe2eee3107ce19252c7b8730a9d5ac4c67",
-      "exactInputCommit": "7dc2a3709bbeb8005fefa816e15642e567760158",
+      "exactInputCommit": "6d36e0adc9a02f2e72ea705779d323efc545e690",
       "relayDefault": false,
       "keepaliveMs": 29000,
       "lightCorrectionDefault": false,
@@ -48,16 +48,16 @@
       "status": "prepared-locally-unpublished",
       "published": false,
       "publicBaseCommit": "2e230cc8a978bc29b14dd64837146553289140b4",
-      "exactInputCommit": "92701f99978bab55ce5dc394d34dc91c3ad48e5b",
+      "exactInputCommit": "3e028a4a8de8595ac8aacd8c54297a9c6e47e360",
       "relayDefault": false,
       "keepaliveMs": 29000,
       "lightCorrectionDefault": false,
       "registryManifestDigest": null,
       "runtimeSourceRelease": null,
       "installationAcceptance": false,
-      "sdkSourceCommit": "bd7a136d6f0873e324dcd23222ffc699a6d8e022",
-      "sdkArtifactSha256": "8ffe669c60a9ef94990a199b384c56a56bf8e01b107558aaeefe78f6f51fba7d",
-      "sdkArtifactIntegrity": "sha512-o9u7zUzGm9yG1k6gpBfUx1Yh31v8yqwkuRIPC+Woix+43Pbfb4rvEuZ2lLPQwpYLs4v8aqAKrc99YyYK4lfOhw=="
+      "sdkSourceCommit": "d61e89a0aa971f07ce46e353b5eccc70906799d9",
+      "sdkArtifactSha256": "390fe9b241bf684f1aedff19308d009ad82bba2d063d036caed5b36ad0c9fe70",
+      "sdkArtifactIntegrity": "sha512-yx6xRW8Xib9myuEkwFCyTyJteP4aL3bZQVvIlJPGBXTFepJn8QR1A7PCbB0rW3TppfOBwxfy2W5b8ip9gK5ROQ=="
     }
   },
   "sourceBaseCommits": {
@@ -69,8 +69,8 @@
   "installedBuildRecipe": "/recipe/experimental11/Dockerfile",
   "buildRecipeSha256": "5993de90ad2c50da9ad4941628179df8828c8be5d1540745754f75e1cd4bd01a",
   "installedSourceInputs": "/recipe/experimental11/SOURCE_INPUTS.json",
-  "sdkSourceManifestSha256": "b5df000190996dbffd97567bc2d34285900221fc4e5cdcefc865c32eaf5ed6b5",
-  "bridgeSourceManifestSha256": "e7c3d5a2bab5f368da9a02d0c5fe73486b0172c465db76f2ee383178b12663de",
+  "sdkSourceManifestSha256": "8478804bc18d4dfdbbc08e99cad193c042f4deb91b07cca27266fa6926dcbff8",
+  "bridgeSourceManifestSha256": "52f8b59decddb8ffb5a647d1b54d3fd0f7293b75d0335a1c7f51c2c0f746e7aa",
   "sdkSourceArchiveSha256": null,
   "qualification": "Experimental.11 source and archive binding only; image qualification, publication and installation acceptance are not asserted.",
   "historicalRecords": {
