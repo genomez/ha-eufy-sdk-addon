@@ -1,3 +1,97 @@
+# S1 experimental.12
+
+Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
+
+- Push-store save failures are caught and reported through push-connection diagnostics (#539).
+- Session and FCM files use an owner-only temporary file and atomic rename where the filesystem permits (#540). On restricted directories or single-file mounts, the existing in-place fallback is non-atomic and retains existing file permissions.
+- Stored snapshots recover after a successful re-login, including when an older in-flight download fails afterwards (#545).
+- Optional HomeBase S1 storage telemetry also supports firmware 4.4.1.4; it remains off by default.
+- After an acknowledged light command, Home Assistant holds the requested display value for up to 45 seconds. A matching boolean report releases it early. The acknowledgement does not confirm the physical light state.
+- A registry identity conflict invalidates the affected child-camera status to unknown.
+- HomeBase firmware metadata updates from newly received inventory without a Home Assistant restart. A new Firmware version sensor exposes the received version.
+- Dated experimental.11 and experimental.12 modification notices are retained, including the restored integration notice.
+
+Defaults are unchanged. Live view and optional floodlight safety remain off by default. Keep battery-camera preload off. Verify the integration ZIP checksum and restart Home Assistant after replacing the integration. Changing live-view opt-in requires an add-on restart. Command keepalive remains 29000 ms.
+
+Known live-view stalls, unexplained floodlight ON events and brightness/spotlight formatting issues remain unresolved. This is an experimental fork.
+
+Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.12
+
+Integration ZIP and checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.12
+
+Publication availability is pending. The accepted image is delivered without rebuilding. Earlier release records below are historical.
+
+Modified for genomez experimental.11, 2026-10-31
+
+Modified for genomez experimental.12, 2026-11-02
+
+## Files modified in experimental.12
+
+- `.github/workflows/publish-s1-image.yml`
+- `CANDIDATE.json`
+- `DOCS.md`
+- `EXPERIMENTAL.md`
+- `MIGRATION.md`
+- `PUBLICATION.json`
+- `README.md`
+- `RELEASE_CHECKLIST.md`
+- `SOURCE_MANIFEST.json`
+- `eufy_sdk_s1/CHANGELOG.md`
+- `eufy_sdk_s1/DOCS.md`
+- `eufy_sdk_s1/config.yaml`
+- `packaging/EXPERIMENTAL12_OVERLAY.json`
+- `packaging/experimental12-overlay.Dockerfile`
+- `root/app/BUILD_PROVENANCE.json`
+- `root/app/EXPERIMENTAL.md`
+- `root/app/MODIFICATIONS.md`
+- `root/app/PUBLICATION.json`
+- `root/app/README.md`
+- `root/app/REVIEW_TEST_PROVENANCE.json`
+- `root/app/SOURCE_MANIFEST.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/BUILD_PROVENANCE.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/EXPERIMENTAL.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/MODIFICATIONS.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/PUBLICATION.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/README.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/SOURCE_MANIFEST.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/camera-health.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/eufy-mega.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/types.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/core/store.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js.map`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/device.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/push/store.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/stored-image-cache.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package-lock.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package.json`
+- `root/app/package-lock.json`
+- `root/app/package.json`
+- `root/app/src/device-events.mjs`
+- `root/app/src/storage-telemetry.mjs`
+- `root/recipe/experimental12/Dockerfile`
+- `root/recipe/experimental12/SOURCE_INPUTS.json`
+- `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`
+- `root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json`
+- `root/usr/share/licenses/eufy/bridge/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/bridge/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/bridge/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/bridge/PUBLICATION.json`
+- `root/usr/share/licenses/eufy/bridge/README.md`
+- `root/usr/share/licenses/eufy/bridge/SOURCE_MANIFEST.json`
+- `root/usr/share/licenses/eufy/bridge/package-lock.json`
+- `root/usr/share/licenses/eufy/bridge/package.json`
+- `root/usr/share/licenses/eufy/sdk/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/sdk/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/sdk/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/sdk/PUBLICATION.json`
+- `root/usr/share/licenses/eufy/sdk/README.md`
+- `root/usr/share/licenses/eufy/sdk/SOURCE_MANIFEST.json`
+- `root/usr/share/licenses/eufy/sdk/package-lock.json`
+- `root/usr/share/licenses/eufy/sdk/package.json`
+
+## Historical modification notices
+
 Modified for genomez experimental.12, 2026-11-02
 
 Current local candidate: experimental.12 (2026-11-02). Unpublished; no installation or device acceptance. Earlier release references below are historical.

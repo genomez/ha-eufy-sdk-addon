@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "version": "0.4.1-s1.experimental.12",
-  "status": "local-build-unpublished",
-  "exactInputCommit": "5d39287a931234aa73696152948ba0a325694492",
+  "status": "publication-prepared-unpublished",
+  "acceptedSourceCommit": "42bc24cd1f5bf93300f97bff249ad08b5f29747d",
   "files": {
     ".dockerignore": {
       "bytes": 1545,
@@ -13,64 +13,64 @@
       "sha256": "68f66b4754b22141520fa47ee8510a1a9982dce42f8332c1010ad0462796999b"
     },
     ".github/workflows/publish-s1-image.yml": {
-      "bytes": 9096,
-      "sha256": "aa9215601355a87460af92a7be251ade91184b99a1794fc44d64651695d10c01"
+      "bytes": 9094,
+      "sha256": "0eae5adfa0777a850c6533c19e5d10ebcef8c672418ac936502667cc194c6a76"
     },
     "CANDIDATE.json": {
-      "bytes": 1030,
-      "sha256": "522b52ae6b73b19ea1c3f07ec258c9922e8c5dbc95e078f37dd313cf881a94e9"
+      "bytes": 1239,
+      "sha256": "52927942343e67c29f41b9fa89773cc8dba4e40234c0a25b2acb3194c9cec18d"
     },
     "DOCS.md": {
-      "bytes": 13832,
-      "sha256": "3c83fa43fc7c92175dfa39d286134cd1d4aca7baac1dfb632f4ec05c62dc591e"
+      "bytes": 16163,
+      "sha256": "2558a8178dadbcd83599123809aec7c41b98bbecec2e97091e12b15cf0497c76"
     },
     "Dockerfile": {
       "bytes": 2798,
       "sha256": "fd2e3b87f812dcc4952831632bc60eb9536bf491b2f49308ccbeb2ae6a0b809e"
     },
     "EXPERIMENTAL.md": {
-      "bytes": 12978,
-      "sha256": "7a5309958fd1d8e2c7853ecab6af8a0d03f9d06f70886c6015fdc683111d13a2"
+      "bytes": 18265,
+      "sha256": "3064d9989910fa43536a6491f1f9848a563ecd6d19f4d25675a3db47cf7b6ec6"
     },
     "LICENSE": {
       "bytes": 1066,
       "sha256": "5bb16b4d7e40b22e7b36ef9ce1693fcea91693525b1797e9c0ba56e08e1ce9ad"
     },
     "MIGRATION.md": {
-      "bytes": 18281,
-      "sha256": "37e978eba6fa9073380953cc875f630d6035bbf4c97dfc0c88c8aa74928929cd"
+      "bytes": 20612,
+      "sha256": "9afb3c19eef05905bba53578c6f43ab7a6379a99aeae00844b1f7a5d000726c3"
     },
     "PREVIEW_SOURCE_MANIFEST.json": {
       "bytes": 2278,
       "sha256": "be1ea4d567c977023ebbd88e3595d54a77911995f919071dca9fdf22d3a3e75e"
     },
     "PUBLICATION.json": {
-      "bytes": 1030,
-      "sha256": "522b52ae6b73b19ea1c3f07ec258c9922e8c5dbc95e078f37dd313cf881a94e9"
+      "bytes": 1239,
+      "sha256": "52927942343e67c29f41b9fa89773cc8dba4e40234c0a25b2acb3194c9cec18d"
     },
     "README.md": {
-      "bytes": 17884,
-      "sha256": "daea5f76b148bc7db4104afaa71858346dfaae6a9acefacd924c1317da04eadf"
+      "bytes": 20215,
+      "sha256": "8e389d5981f8e342da7f20ab0f45543215598328fa1a533549a8dfb1ae5b37ff"
     },
     "RELEASE_CHECKLIST.md": {
-      "bytes": 11216,
-      "sha256": "d9e662bac767f056589853667325f6cf9d8f1721af93df11e76d83e7d97877e0"
+      "bytes": 13547,
+      "sha256": "74f83da1fae6668a653d699c28ea5c16e570f4c6e7833e2fbe77b6707b01155e"
     },
     "config.yaml.example": {
       "bytes": 4530,
       "sha256": "8ad4a502e0ec50a159a7339a1d91a26c608c5b38f4517bf26a371c3c3d1ce18b"
     },
     "eufy_sdk_s1/CHANGELOG.md": {
-      "bytes": 11747,
-      "sha256": "30b2d75ce5cf909b86f33eb7270258c160695bbc8913646dc8699f3406340ac2"
+      "bytes": 14078,
+      "sha256": "7db3b9c4ee12b6ce08342a9cb3f1a414c52bc44afd42c493cb7be3c721a8607b"
     },
     "eufy_sdk_s1/DOCS.md": {
-      "bytes": 15676,
-      "sha256": "e1f3df52ef74cea89b357574fd8555549dc4b6fcac1d8f4e9c0ab1ca1a855e72"
+      "bytes": 18007,
+      "sha256": "958d956c777f08cbb0ceeb5c7ee1620df95c0353cf428164ca02f794fd20b676"
     },
     "eufy_sdk_s1/config.yaml": {
       "bytes": 1688,
-      "sha256": "a5237146424b07b5eacdd0bd7e3ec621e14ad6404ffbfa71c11af3797080239c"
+      "sha256": "2c0a31473115309ed1a2de287edc29555104d491a5056bf033c34463bc9df746"
     },
     "licenses/eufy-sdk-LICENSE": {
       "bytes": 11339,
