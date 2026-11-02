@@ -1,15 +1,6 @@
-# Experimental.11 sources and notices
+Experimental.12 local build, 2026-11-02. Unpublished.
 
-This runtime pairs SDK 0.2.1-s1.experimental.11 at `ff258691b99617f7c4ae246060d5f0243cc022f0` and bridge 0.3.1-s1.experimental.11 at `92f7ec9627d7e49fdb9742cd50a0518dd35626fd`. The paired add-on version is 0.4.1-s1.experimental.11. Current component records are in `/app/` and `/app/node_modules/@mega-yfue/eufy-sdk/`; `sdk/BUILD_PROVENANCE.json` and `bridge/BUILD_PROVENANCE.json` beside this file mirror those current component provenance records.
+- eufy-sdk: b57f5b87dfef981bc4c346f84e41960235bfb113
+- ha-eufy-sdk-bridge: bf67e64018ba81336af411beb36f97bb10bc903d
 
-`SOURCE_COMPONENTS.json` binds these current source commits to SDK archive `genomez-eufy-sdk-0.2.1-s1.experimental.11.tgz`, SHA-256 `a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973`, and the current overlay recipe. The exact recipe is installed at `/recipe/experimental11/Dockerfile` from `packaging/experimental11-overlay.Dockerfile`; `/recipe/experimental11/SOURCE_INPUTS.json` identifies its source inputs, archive and pinned base. Preserve the exact source archives, compiler inputs, runtime recipe and checksum index when distributing the image. The full SDK corresponding-source archive hash is not yet recorded; the SDK package archive hash above does not claim to identify that separate full-source delivery. Public experimental.11 source delivery and image qualification are not asserted here.
-
-## Historical records and unchanged third-party notices
-
-The exact previous entry point, SOURCE_COMPONENTS.json and SDK/bridge provenance records are retained under `experimental7/` and explicitly identified there as historical. Records under `experimental6/` are historical. The other documents, package metadata and source inventories under `sdk/` and `bridge/` retain experimental.7 history; their current BUILD_PROVENANCE.json files are the exception described above. Those historical package versions do not describe the current runtime. The inherited `npm/INVENTORY.json`, including older SDK/bridge version entries, is a historical dependency inventory. Use the current component package records in `/app/` and the installed SDK directory for current versions.
-
-The immutable experimental.4 base and its complete corresponding-source chain remain required. Preserve the experimental.4 SDK/bridge/context assets and the experimental.2 OS/Node/native/Go/build delivery set. Inherited recipes under `/recipe` remain historical; the current overlay recipe is `/recipe/experimental11/Dockerfile`. Inherited Debian notices remain in /usr/share/doc and /usr/share/common-licenses, and Node notices in /usr/local/LICENSE. Native, Go, npm and Docker entrypoint notices remain beside this file.
-
-node-datachannel 0.33.4 uses the pinned MPL-covered sources and submodules with the documented system OpenSSL linkage change; its original npm platform binary is excluded. go2rtc uses pinned source and vendored module inputs. FFmpeg corresponding sources include the exact Debian packages and patches. Preserve all original licenses and allow modification and reverse engineering for debugging covered modifications under their existing terms.
-
-The relay is off by default and command-session keepalive is independently 29000 ms. Offline source qualification does not establish Supervisor installation, stock-Core media or physical-device acceptance. Nothing in this record asserts publication or installation.
+Licenses and modification notices are retained alongside the runtime.

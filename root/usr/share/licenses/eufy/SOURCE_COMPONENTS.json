@@ -1,83 +1,24 @@
 {
-  "native": {
-    "version": "0.33.4",
-    "path": "/app/node_modules/@node-datachannel/linux-x64-gnu/node_datachannel.node",
-    "sha256": "5bc996846154c9ee190e513d44582b2f3559cb79ee43b6d4c35183058e006406",
-    "sourceArchiveSha256": "de440462db866bae260ba077d159f3f52fc2239ef40b468630422ecebad11ce7",
-    "patch": "OPENSSL_USE_STATIC_LIBS FALSE",
-    "linkage": "system libssl.so.3 and libcrypto.so.3"
-  },
-  "go2rtc": {
-    "commit": "fa580c516efa95770be2137855c3c3cf19b8092b",
-    "go": "1.24.1",
-    "cgo": false,
-    "vendorArchiveSha256": "52b4683e2b9120ceffa562d6f761f36f7e13d7c3d1c139cdb7452425c3ca1e0e"
-  },
-  "go2rtcSha256": "3715b0340d9f4990bac5b6bf0664e15633b0cc3b610c5496683f1fb7ce595c66",
-  "debianSourceGroups": 215,
-  "debianSourceArchives": 688,
-  "runtimePackageManagersIncluded": false,
-  "schemaVersion": 1,
-  "runtimeVersion": "0.4.1-s1.experimental.11",
-  "sdkArtifactFilename": "genomez-eufy-sdk-0.2.1-s1.experimental.11.tgz",
-  "sdkArtifactSha256": "a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973",
-  "sdkArtifactIntegrity": "sha512-w4LBjm9BfihKNEy9/Bf/Z1cfTmkCmdFWEkbH5xwWhnCWblTC9GFXxWFcmOnbIQo4b0qZCo/+VfS+YB8bhXprsg==",
+  "version": "0.4.1-s1.experimental.12",
   "sourceCommits": {
-    "eufy-sdk": "ff258691b99617f7c4ae246060d5f0243cc022f0",
-    "ha-eufy-sdk-bridge": "92f7ec9627d7e49fdb9742cd50a0518dd35626fd",
-    "ha-eufy-sdk": "bcaa58e38d66b48786c33dcd5f0aba82a2890785"
+    "eufy-sdk": "b57f5b87dfef981bc4c346f84e41960235bfb113",
+    "ha-eufy-sdk-bridge": "bf67e64018ba81336af411beb36f97bb10bc903d"
   },
-  "sourceProvenance": {
-    "sdk": {
-      "schemaVersion": 1,
-      "version": "0.2.1-s1.experimental.11",
-      "status": "prepared-locally-unpublished",
-      "published": false,
-      "publicBaseCommit": "02312bfe2eee3107ce19252c7b8730a9d5ac4c67",
-      "exactInputCommit": "6d36e0adc9a02f2e72ea705779d323efc545e690",
-      "relayDefault": false,
-      "keepaliveMs": 29000,
-      "lightCorrectionDefault": false,
-      "registryManifestDigest": null,
-      "runtimeSourceRelease": null,
-      "installationAcceptance": false
+  "sdkArtifact": {
+    "bytes": 1879497,
+    "sha256": "d717f4fb7514d732db76c711ff430ed592d0be7f0b0e6323dce288cda3c56b0e",
+    "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.12.tgz",
+    "integrity": "sha512-L0KkdZZIVJzg/XO5rp01fEaG1gXSKfDCMEWOAfCnLH3IT7+HgE5aTUggq/JFM00hBXHJlWGfzmyP8GFdpS3m5g=="
+  },
+  "sourceManifests": {
+    "eufy-sdk": {
+      "bytes": 90713,
+      "sha256": "ca4ce8c8357013c91ded6368097c6cf1c6edc8a581d75ce97b8e46e11b8e4422"
     },
-    "bridge": {
-      "schemaVersion": 1,
-      "version": "0.3.1-s1.experimental.11",
-      "status": "prepared-locally-unpublished",
-      "published": false,
-      "publicBaseCommit": "2e230cc8a978bc29b14dd64837146553289140b4",
-      "exactInputCommit": "3e028a4a8de8595ac8aacd8c54297a9c6e47e360",
-      "relayDefault": false,
-      "keepaliveMs": 29000,
-      "lightCorrectionDefault": false,
-      "registryManifestDigest": null,
-      "runtimeSourceRelease": null,
-      "installationAcceptance": false,
-      "sdkSourceCommit": "ff258691b99617f7c4ae246060d5f0243cc022f0",
-      "sdkArtifactSha256": "a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973",
-      "sdkArtifactIntegrity": "sha512-w4LBjm9BfihKNEy9/Bf/Z1cfTmkCmdFWEkbH5xwWhnCWblTC9GFXxWFcmOnbIQo4b0qZCo/+VfS+YB8bhXprsg=="
+    "ha-eufy-sdk-bridge": {
+      "bytes": 16347,
+      "sha256": "6906d17d6414bc2592a80ad3e2b19b86dc39e8cf2d4edd3ad073a00579bb2713"
     }
   },
-  "sourceBaseCommits": {
-    "sdk": "02312bfe2eee3107ce19252c7b8730a9d5ac4c67",
-    "bridge": "2e230cc8a978bc29b14dd64837146553289140b4"
-  },
-  "runtimeBase": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
-  "buildRecipe": "packaging/experimental11-overlay.Dockerfile",
-  "installedBuildRecipe": "/recipe/experimental11/Dockerfile",
-  "buildRecipeSha256": "5993de90ad2c50da9ad4941628179df8828c8be5d1540745754f75e1cd4bd01a",
-  "installedSourceInputs": "/recipe/experimental11/SOURCE_INPUTS.json",
-  "sdkSourceManifestSha256": "8f79c684e388529938746e1baf9b63b99214cf8e93107597dde77823df08cc2c",
-  "bridgeSourceManifestSha256": "3977367cd463ad5c1fb60382d1c0f695f20636b42263abc905b21466471bff0a",
-  "sdkSourceArchiveSha256": null,
-  "qualification": "Experimental.11 source and archive binding only; image qualification, publication and installation acceptance are not asserted.",
-  "historicalRecords": {
-    "experimental7/": "Exact inherited experimental.7 entry point and provenance records.",
-    "experimental6/": "Retained experimental.6 records.",
-    "sdk/ and bridge/": "Documents, package metadata and source inventories are historical experimental.7 records; BUILD_PROVENANCE.json mirrors the current experimental.11 provenance.",
-    "npm/INVENTORY.json": "Inherited dependency inventory; historical SDK/bridge version entries do not identify the current runtime.",
-    "/recipe/": "Inherited recipe chain; the current overlay recipe is /recipe/experimental11/Dockerfile."
-  }
+  "historicalLicenseDirectoriesRetained": true
 }

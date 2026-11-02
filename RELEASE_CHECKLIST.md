@@ -1,8 +1,12 @@
-# S1 experimental.11 — Update checklist
+Modified for genomez experimental.12, 2026-11-02
+
+Current local candidate: experimental.12 (2026-11-02). Unpublished; no installation or device acceptance. Earlier release references below are historical.
+
+# S1 experimental.12 — Update checklist
 
 Home Assistant add-on containing the paired bridge and SDK runtime. Update the add-on and integration together.
 
-Pair add-on `0.4.1-s1.experimental.11`, integration/bridge `0.3.1-s1.experimental.11` and SDK `0.2.1-s1.experimental.11`.
+Pair add-on `0.4.1-s1.experimental.12`, integration/bridge `0.3.1-s1.experimental.12` and SDK `0.2.1-s1.experimental.12`.
 
 Check paired versions and checksums. Update both components, restart Home Assistant after integration replacement and check logs.
 

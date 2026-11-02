@@ -1,8 +1,12 @@
-# S1 experimental.11 — Experimental support and limitations
+Modified for genomez experimental.12, 2026-11-02
+
+Current local candidate: experimental.12 (2026-11-02). Unpublished; no installation or device acceptance. Earlier release references below are historical.
+
+# S1 experimental.12 — Experimental support and limitations
 
 Home Assistant add-on containing the paired bridge and SDK runtime. Update the add-on and integration together.
 
-Pair add-on `0.4.1-s1.experimental.11`, integration/bridge `0.3.1-s1.experimental.11` and SDK `0.2.1-s1.experimental.11`.
+Pair add-on `0.4.1-s1.experimental.12`, integration/bridge `0.3.1-s1.experimental.12` and SDK `0.2.1-s1.experimental.12`.
 
 Use matching release versions and retain your existing configuration unless deliberately changing an option.
 

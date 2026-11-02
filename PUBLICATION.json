@@ -1,77 +1,25 @@
 {
   "schemaVersion": 1,
-  "version": "0.4.1-s1.experimental.11",
-  "status": "published-runtime-and-source-delivery",
-  "published": true,
-  "publicBaseCommit": "95f97578519e56c84fc0b455153f7f9c5c4a1013",
-  "exactInputCommit": "6455660e3681639115a095f0c58892d1191abe03",
+  "version": "0.4.1-s1.experimental.12",
+  "status": "local-build-unpublished",
+  "published": false,
+  "exactInputCommit": "5d39287a931234aa73696152948ba0a325694492",
   "relayDefault": false,
   "keepaliveMs": 29000,
   "lightCorrectionDefault": false,
-  "registryManifestDigest": "sha256:28cc3774423aae12a7a328c0d39c66c317f8c5232466073c356076d1bbd50471",
-  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.11",
+  "registryManifestDigest": null,
+  "runtimeSourceRelease": null,
   "installationAcceptance": false,
-  "sourceCommits": {
-    "eufy-sdk": "364aa0ec4381a7283b30a83e5f19d3ec7b99496a",
-    "ha-eufy-sdk-bridge": "5f3198cfd5735c6fb68c6850af611df2494a84a5",
-    "ha-eufy-sdk": "97d99ea394f92de820458852d7ceb47c13d91560"
-  },
-  "integrationReleaseCommit": "bcaa58e38d66b48786c33dcd5f0aba82a2890785",
-  "integrationZip": null,
-  "runtimeImageId": null,
-  "buildRecipe": "packaging/experimental11-overlay.Dockerfile",
+  "buildRecipe": "packaging/experimental12-overlay.Dockerfile",
   "pinnedBase": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
-  "workflowStatus": "Historical image workflow retained; current image delivery pins pending validation",
-  "publicationVerifiedAt": "2026-11-02T15:05:52.770890+00:00",
-  "sourcePreparationCommit": "d0a8ccc198088b77a08cfa2be60ea461a9b0fb59",
-  "sourcePreparationCommits": {
-    "eufy-sdk": "ff258691b99617f7c4ae246060d5f0243cc022f0",
-    "ha-eufy-sdk-bridge": "92f7ec9627d7e49fdb9742cd50a0518dd35626fd",
-    "ha-eufy-sdk": "bcaa58e38d66b48786c33dcd5f0aba82a2890785"
+  "sourceCommits": {
+    "eufy-sdk": "b57f5b87dfef981bc4c346f84e41960235bfb113",
+    "ha-eufy-sdk-bridge": "bf67e64018ba81336af411beb36f97bb10bc903d"
   },
-  "hacsAvailabilityVerified": false,
-  "releasePreparationRecordHistorical": true,
-  "integrationRelease": "https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.11",
-  "workflowCommit": "ed4882c4ec385b348bf2a5f5e6c81305bfc3bb23",
-  "runtimeAssets": {
-    "README.md": {
-      "bytes": 5889,
-      "sha256": "e6530475a850ccd7eeed76395b6e89139cd02f1c58bbb716fb7ab2a3feb9c6b0"
-    },
-    "REBUILD.md": {
-      "bytes": 19517,
-      "sha256": "f9e79a29fa513a9ce7080d1bef00aeeeb8c84f576f23cce5128d04f4b93ae103"
-    },
-    "SHA256SUMS": {
-      "bytes": 681,
-      "sha256": "2cd1afa563ff93ae293e14d69cef81747f6545761db38ad2e9190c40d667bb34"
-    },
-    "eufy-sdk-0.2.1-s1.experimental.11-source.tar.gz": {
-      "bytes": 1619648,
-      "sha256": "d49311318a9522d7cdc6ebb0bddaeaa12bd7d8df383688b414ed294c2b03d465"
-    },
-    "experimental-bridge-image.tar": {
-      "bytes": 743215104,
-      "sha256": "6c524572469a500b68bc2bfed49b9d80b02afed6bed7bd035e7f55c0228b06f4"
-    },
-    "final-context.tar": {
-      "bytes": 12113920,
-      "sha256": "3b8ae1d0f2ed766ccaff2c4a5e05fd8890d5b8bc0eea615c5f552ee324dac908"
-    },
-    "genomez-eufy-sdk-0.2.1-s1.experimental.11.tgz": {
-      "bytes": 1875710,
-      "sha256": "a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973"
-    },
-    "genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.11.tgz": {
-      "bytes": 137321,
-      "sha256": "ed42805367792ecb434989016fa30325ba7bc43f6933d80cee00ee267b8a5e1b"
-    }
-  },
-  "sdkCorrespondingSource": {
-    "filename": "eufy-sdk-0.2.1-s1.experimental.11-source.tar.gz",
-    "bytes": 1619648,
-    "sha256": "d49311318a9522d7cdc6ebb0bddaeaa12bd7d8df383688b414ed294c2b03d465",
-    "sourceCommit": "ff258691b99617f7c4ae246060d5f0243cc022f0",
-    "members": 561
+  "sdkArtifact": {
+    "bytes": 1879497,
+    "sha256": "d717f4fb7514d732db76c711ff430ed592d0be7f0b0e6323dce288cda3c56b0e",
+    "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.12.tgz",
+    "integrity": "sha512-L0KkdZZIVJzg/XO5rp01fEaG1gXSKfDCMEWOAfCnLH3IT7+HgE5aTUggq/JFM00hBXHJlWGfzmyP8GFdpS3m5g=="
   }
 }

@@ -1,3 +1,7 @@
+Modified for genomez experimental.12, 2026-11-02
+
+Modified for genomez experimental.11, 2026-10-31
+
 # S1 experimental.11 — Modification notices
 
 The bridge connects the SDK runtime to Home Assistant. Use the paired add-on and integration.
@@ -35,6 +39,8 @@ Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/r
 
 Integration release and ZIP checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.11
 
+Image manifest: `sha256:28cc3774423aae12a7a328c0d39c66c317f8c5232466073c356076d1bbd50471`.
+
 See LICENSE and source headers for applicable license and author notices. Runtime/source archives retain their original notices and corresponding-source links.
 
 ## Modification and attribution notices
@@ -46,8 +52,6 @@ Modified for genomez S1 experimental source preview, 2026-10-17.
 Modified for genomez experimental.9, 2026-10-27.
 
 ## Files modified in experimental.11
-
-Modified for genomez experimental.11, 2026-10-31.
 
 - `BUILD_PROVENANCE.json`
 - `EXPERIMENTAL.md`
@@ -66,6 +70,8 @@ Modified for genomez experimental.11, 2026-10-31.
 - `test/failure-history.test.mjs`
 - `test/helpers/sdk-resolve.mjs`
 - `test/sdk-error-origins.test.mjs`
+
+Full SDK corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/releases/download/s1-runtime-0.4.1.experimental.11/eufy-sdk-0.2.1-s1.experimental.11-source.tar.gz; SHA-256 `d49311318a9522d7cdc6ebb0bddaeaa12bd7d8df383688b414ed294c2b03d465`, 1619648 bytes. The npm package is separate. In-image source records retain their historical build-time values.
 
 ## Historical experimental.9 / experimental.10 documentation
 

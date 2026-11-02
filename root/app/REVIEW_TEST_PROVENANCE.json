@@ -1,21 +1,9 @@
 {
-  "schemaVersion": 1,
-  "version": "0.4.1-s1.experimental.11",
+  "version": "0.4.1-s1.experimental.12",
   "preparedSourceHeads": {
-    "eufy-sdk": "ff258691b99617f7c4ae246060d5f0243cc022f0",
-    "ha-eufy-sdk-bridge": "92f7ec9627d7e49fdb9742cd50a0518dd35626fd",
-    "ha-eufy-sdk": "bcaa58e38d66b48786c33dcd5f0aba82a2890785"
+    "eufy-sdk": "b57f5b87dfef981bc4c346f84e41960235bfb113",
+    "ha-eufy-sdk-bridge": "bf67e64018ba81336af411beb36f97bb10bc903d"
   },
-  "exactInputCommits": {
-    "eufy-sdk": "6d36e0adc9a02f2e72ea705779d323efc545e690",
-    "ha-eufy-sdk-bridge": "3e028a4a8de8595ac8aacd8c54297a9c6e47e360",
-    "ha-eufy-sdk": "01482b7fac0286758f1d7b868eac0e21348789e7"
-  },
-  "published": false,
-  "fullSdkDistIncluded": true,
-  "sdkArtifactSha256": "a466b74e55f5193a4ecc0e6c4066d7ef5075ea5f9f15d1ac91f3db8b2b621973",
-  "relayDefault": false,
-  "keepaliveMs": 29000,
-  "lightCorrectionDefault": false,
-  "installationAcceptance": false
+  "validation": "offline smoke; see external build manifest",
+  "sdkArtifactSha256": "d717f4fb7514d732db76c711ff430ed592d0be7f0b0e6323dce288cda3c56b0e"
 }

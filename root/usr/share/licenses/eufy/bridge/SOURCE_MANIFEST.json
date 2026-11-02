@@ -1,9 +1,8 @@
 {
   "schemaVersion": 1,
-  "acceptedMonorepoCommit": "6deea127459f368edb24d7d3df59dcaf60d5b508",
-  "publicBaseCommit": "bee38ea57ec29b5d40f82314bf76896f582bf90c",
-  "version": "0.3.1-s1.experimental.7",
-  "status": "prepared-locally-unpublished",
+  "version": "0.3.1-s1.experimental.12",
+  "status": "local-build-unpublished",
+  "exactInputCommit": "1b140b62bbacbacfb46c0d2aaf7ed241491dd9c1",
   "files": {
     ".env.example": {
       "bytes": 3067,
@@ -22,32 +21,32 @@
       "sha256": "0a90abd221c4877af6c6bd58de9df03620e81ad9abfe79e3b0395dc17fa7d672"
     },
     "BUILD_PROVENANCE.json": {
-      "bytes": 4808,
-      "sha256": "e2c5014f394e7a2f9fe8f91c2e16b793e4d095efe976d9ebe1220156c157f0e5"
+      "bytes": 659,
+      "sha256": "e35478e5da1829efe321e4d3f014669fcc64012732b7d10c2d1b7c151095417d"
     },
     "CONTRIBUTING.md": {
       "bytes": 974,
       "sha256": "000a5f67f803460da3e1defa805ffd27035670109c2a4d40f9c6bb6aa6b2a322"
     },
     "EXPERIMENTAL.md": {
-      "bytes": 13186,
-      "sha256": "69eb7875322db60702a95775b688d3c163b49a12424f03c1e32d8665d99a4e5a"
+      "bytes": 34422,
+      "sha256": "f5198fc2f644c6db8fc712e0f8ace98eb2174242025f17701eca4028416b7d49"
     },
     "LICENSE": {
       "bytes": 11339,
       "sha256": "b208eae7041fb7818ebd636d0778b49e242543be9a980ac9dcbaf98449660a2b"
     },
     "MODIFICATIONS.md": {
-      "bytes": 14701,
-      "sha256": "38e88f5a92c1dde6cf286a85e93cbce61fa92cf742ef882414c0133c853e5eff"
+      "bytes": 39492,
+      "sha256": "2b65cb1a44b5e14a31b05aadc404ac3686d784360ec574373d1d5f7d45beb3d2"
     },
     "PUBLICATION.json": {
-      "bytes": 3111,
-      "sha256": "4a26cf834cabe2375d8360d5b5a3c39445da3ac4da9447237599d683ffca9cc9"
+      "bytes": 659,
+      "sha256": "e35478e5da1829efe321e4d3f014669fcc64012732b7d10c2d1b7c151095417d"
     },
     "README.md": {
-      "bytes": 3845,
-      "sha256": "593b7394bed936efb05e2a550e527e00891fa73b34b1febf5ccd8e5316acb228"
+      "bytes": 15708,
+      "sha256": "cea048e635ff9867edffe4494b12f511ccf3e5a97fa4c86eacfb0dde72cc7761"
     },
     "bin/pilot-process.mjs": {
       "bytes": 1364,
@@ -60,6 +59,10 @@
     "docs/bounded-state-writes.md": {
       "bytes": 5530,
       "sha256": "0d4a902656aec345ae53a11129e6130c005dd06d05fee7c88915854f92d40dca"
+    },
+    "docs/camera-connectivity.md": {
+      "bytes": 2459,
+      "sha256": "32b02bbb8b2f35a03e0ec2a34e31970ac51c1d851819a8b156652c4cb5346954"
     },
     "docs/webrtc-proof.md": {
       "bytes": 11026,
@@ -74,12 +77,12 @@
       "sha256": "71b6650327b840fcbeb0ecaa1c54e37c613392d79de9f17e12624019f7c797c1"
     },
     "package-lock.json": {
-      "bytes": 26727,
-      "sha256": "8d9b390aa906628bcca668bbfeb1b05894b352188e1c236bb842752c3341a752"
+      "bytes": 26732,
+      "sha256": "8f7cbb19ee87aeb98a1d1ae8baca2cf2c44321ca66d308fa96df595de3a0fd44"
     },
     "package.json": {
-      "bytes": 1371,
-      "sha256": "89fbc19e0e395d13738a57db97001fc570d07613ece7e15f062284065c106d98"
+      "bytes": 1373,
+      "sha256": "6b64f6ca9abdb7e9b7da882ce4a20aae18fe3c2c770176ff484ea3d54b982676"
     },
     "scripts/devices.mjs": {
       "bytes": 1665,
@@ -102,8 +105,8 @@
       "sha256": "fdbc15fe65f21dac8037a7d7092be3d1b1d56c4e0b954a996b9eda751a6daca7"
     },
     "src/boot.mjs": {
-      "bytes": 5511,
-      "sha256": "10cfedd802db1d133003d5e8a24945efe5f22fbfda6252501be9894215018e82"
+      "bytes": 5482,
+      "sha256": "cab228002e5ffee3f7dd06bf4cc46824b1654383dd3cb38feff12f1d8e93c45a"
     },
     "src/bounded-state-writes.mjs": {
       "bytes": 14602,
@@ -113,9 +116,17 @@
       "bytes": 16369,
       "sha256": "88107629ae79791d55a03bc6598c0116214cb669f39c0aa8d78f467e7e76422d"
     },
+    "src/camera-health.mjs": {
+      "bytes": 8927,
+      "sha256": "6932735c1717879366a35bcfca056cc40a849e8227d2ba28cb4710f44dc24e01"
+    },
     "src/client.mjs": {
-      "bytes": 2623,
-      "sha256": "410ca1b74314876a5213b7887133a0ccdebde1821ce96d8117a8b34fe6c5da7f"
+      "bytes": 2642,
+      "sha256": "dcedfe6b27b80bfa45d67629ef2ad968a205485a4d5b425bc6ea20e54987045a"
+    },
+    "src/cloud-work-evidence.mjs": {
+      "bytes": 4869,
+      "sha256": "b4654b49095704714e856bfbc3661083f292d9d8caa2e74d6c85f579625ea0f6"
     },
     "src/command-health.mjs": {
       "bytes": 962,
@@ -130,16 +141,20 @@
       "sha256": "86ed8306dc010601846f1efb5fd35094871c4932f4367cc74cdd7505dc9a1f0e"
     },
     "src/device-events.mjs": {
-      "bytes": 3350,
-      "sha256": "7cf86802c4c033c6d076c4bb9a831f31ab1e250f5890265a1154c52e7393372c"
+      "bytes": 4145,
+      "sha256": "95b5a1917d56edf0e4472538127cd49ee64a21234cf41a2abdeb81dd4657153a"
+    },
+    "src/device-list-evidence.mjs": {
+      "bytes": 7470,
+      "sha256": "034bc1159ddfa6931728c3bad4a5f7f34e451b70cdae499c07394fe0cd2b089f"
     },
     "src/device-view.mjs": {
-      "bytes": 18807,
-      "sha256": "bdcd01eb0c61e0cc39a92a7c845d8f9aafcb106b633f34d4f22c74c6b0aaddac"
+      "bytes": 20224,
+      "sha256": "4809009750d791d168ef366a240c2f71ef99958bf03e0e4ae5efbb713bb196ec"
     },
     "src/diagnostics.mjs": {
-      "bytes": 34551,
-      "sha256": "da992b4a0a50e7e7108c1f31401ff494300b74780b04b33c43c268c54e857089"
+      "bytes": 38714,
+      "sha256": "269b8b6148b6d6ad9f6830cb323a2f54dfbfe5716ee0dfb04cf5713aac1d5e4d"
     },
     "src/event-image-store.mjs": {
       "bytes": 5857,
@@ -154,8 +169,8 @@
       "sha256": "c5a120be5e8ce5797c6e0ff79d080fee672ef0c6b3e7bfdba30c191fea63e03c"
     },
     "src/http-routes.mjs": {
-      "bytes": 22105,
-      "sha256": "af8d61bbff7c30081d094270966ae3ccbcf7fe67623e6745cedfcc2b2dc5f88e"
+      "bytes": 22031,
+      "sha256": "bd6268c98c45407e1692126ec29b1c27340ca71ca6459d4417dff9f72fd1cad6"
     },
     "src/late-contrary-effects.mjs": {
       "bytes": 5011,
@@ -170,8 +185,8 @@
       "sha256": "efb5b0d1f557451ae5f6774274f83b6b5884389e86150b00b77acdae676f4cf7"
     },
     "src/pilot-log.mjs": {
-      "bytes": 5304,
-      "sha256": "ae70a7fe3b723eeed9bbe15314e87e38557626bfeffb68b817b27ca0454c5ab3"
+      "bytes": 5360,
+      "sha256": "4d1a049abee800e87819ef2536d7812bb2ea40e1c66e40927d0deb4317ae94f6"
     },
     "src/power.mjs": {
       "bytes": 462,
@@ -184,6 +199,10 @@
     "src/redact.mjs": {
       "bytes": 449,
       "sha256": "3ba5df1efdffece425e7703d029928c0f9471fd98b9f93ec1147bb2376348bb4"
+    },
+    "src/request-evidence.mjs": {
+      "bytes": 4738,
+      "sha256": "0025f0cec8367233420a8afc82e3a6f32235da70b95a900ca150db5f5b97b7f8"
     },
     "src/rtc-connection-evidence.mjs": {
       "bytes": 4063,
@@ -210,16 +229,16 @@
       "sha256": "e70b3061e13ca36c378bd28f09c2928d66729d81f0baaa59629c3a32ab691426"
     },
     "src/storage-telemetry.mjs": {
-      "bytes": 11019,
-      "sha256": "ea26229645012043447965260a7523770fcee232cfe8d495ec163af41ebf2586"
+      "bytes": 11115,
+      "sha256": "9eca2129174662d499d220f5d17344a9fdebb36f85a8ceee5539896eb000663d"
     },
     "src/stream-idle.mjs": {
       "bytes": 6128,
       "sha256": "1682e5fd171b5575c3cb2f79bfda90c23a8916761e2e5ea06b196db8cbc469a9"
     },
     "src/t9000-media-diagnostics.mjs": {
-      "bytes": 9462,
-      "sha256": "1a6e3faa5669cf63baa4f3209a182da13310dcffb1c2cb5c9096e046b5152cd4"
+      "bytes": 10248,
+      "sha256": "508c2204caed2acadbd8afacf6c65843652755401942bca43a97a08d9e6bc532"
     },
     "src/transport-evidence.mjs": {
       "bytes": 7747,
@@ -242,12 +261,16 @@
       "sha256": "8986f17cd215b443abfc24d4670b944ac03b0b8bbb5f2656dd6af5b530285157"
     },
     "src/ws-server.mjs": {
-      "bytes": 18151,
-      "sha256": "9ee5a18dd0e5b1be1966cfad586b2c3337fda0387e4748c66e3ce3c92a41151a"
+      "bytes": 19428,
+      "sha256": "d0110d7ce2fa0363d85cf85ba6b971785eb7d32eaab2fa4e0b18ff0c79d0724b"
     },
     "streams.mjs": {
       "bytes": 5520,
       "sha256": "cff8f3336a92fa84937653912720c65dafaa4212442929ba37e5d754468d7806"
+    },
+    "test/alarm-stop.test.mjs": {
+      "bytes": 1545,
+      "sha256": "004644a78aa4f798f564a4d262bc632191f0be1641f95ea416e19df6d9e5e9f8"
     },
     "test/automatic-admission.test.mjs": {
       "bytes": 6191,
@@ -261,13 +284,29 @@
       "bytes": 18926,
       "sha256": "6254ddac95565eaeb276a57dc9f0b1e2431bdc9db4df42add5605344bcbc0c5b"
     },
+    "test/camera-health.test.mjs": {
+      "bytes": 28592,
+      "sha256": "73e30acf0a56370d76b51d18a1f2c12869f1af254e375a0031294723fdbb8a25"
+    },
+    "test/cloud-work-evidence.test.mjs": {
+      "bytes": 8959,
+      "sha256": "11bb85dfff12ac338f4fb57a11ef29058fd43b977a69a5e228c3f53270459d2b"
+    },
     "test/command-health.test.mjs": {
-      "bytes": 10970,
-      "sha256": "55149b03fce479d08eff32aa15bc786b055156fbd6e4cebc548a0badd90e970e"
+      "bytes": 11694,
+      "sha256": "feaa81255cab712e23819031b2b75e4cfcbd0a2028ce57d909ba1475cdabaaba"
     },
     "test/config.test.mjs": {
       "bytes": 3620,
       "sha256": "239564289adb399f4378031a984c0f6cd1a32a56192521c0faa3196e2f12ab61"
+    },
+    "test/device-list-evidence-wiring.test.mjs": {
+      "bytes": 9081,
+      "sha256": "99e4035b6407c4b7d08d0b2e54e8a4570d532e13d15b764f8afa48d6876967d5"
+    },
+    "test/device-list-evidence.test.mjs": {
+      "bytes": 11220,
+      "sha256": "ca816852b3fcc6030731f70d1bef1da3b7ec6414cd5e0d8ab9aef292e697458b"
     },
     "test/doorbell-identity.test.mjs": {
       "bytes": 1136,
@@ -288,6 +327,10 @@
     "test/faces.test.mjs": {
       "bytes": 2255,
       "sha256": "e80e9cf049d3e9676110e499b531d212492b30cbacebfb7f4e59ca1143a42a96"
+    },
+    "test/failure-history.test.mjs": {
+      "bytes": 9574,
+      "sha256": "f530b2374ba95507e615f47d1933c8ab8b6266caff5804f954417eedc72aff2c"
     },
     "test/fixtures/no-socket-guard.mjs": {
       "bytes": 558,
@@ -314,16 +357,16 @@
       "sha256": "b7728942dc5535d4e29075659c91d40dcd5347b06bfdd3ac18d14cd747b0613e"
     },
     "test/helpers/sdk-resolve.mjs": {
-      "bytes": 894,
-      "sha256": "4fa7e12af4764a538c3bb13b0ec62cd47fa85ee532c26d35a4fb1e5634a35ee9"
+      "bytes": 895,
+      "sha256": "5bd0212093da6dd4d09ce6446ab0b2f6375c151f8fc1f54e238af0220e4755dd"
     },
     "test/late-contrary-effects.test.mjs": {
       "bytes": 28401,
       "sha256": "c2bb88f4d04c685fd90d50631be482961ce9d01f49034ebf710cce33e4adff25"
     },
     "test/late-effect-log.test.mjs": {
-      "bytes": 2777,
-      "sha256": "325e4114a96142aee67967c2594c9c38cf07e4d0ce019f0c0c91b03b68ba2332"
+      "bytes": 2801,
+      "sha256": "554a0a23d0f476dee23735ee9483c5ee17e035209d950a8df27e83b25c406e43"
     },
     "test/live-still.test.mjs": {
       "bytes": 6776,
@@ -345,17 +388,21 @@
       "bytes": 4916,
       "sha256": "281ca65974ac01e2d15daf0eacd308801e080b450918b83b983e5136bb9bb29a"
     },
+    "test/request-evidence.test.mjs": {
+      "bytes": 8616,
+      "sha256": "34b66261fca3e717e097e1ccc0fa9104fbb7314abb20ccaba679b5a7bed341f2"
+    },
     "test/rtc-connection-evidence.test.mjs": {
-      "bytes": 8044,
-      "sha256": "a2f873f940c8bd2f5d5dc20bc68f81620982fca7f2d1d13eca8541866a520d94"
+      "bytes": 13195,
+      "sha256": "e9d1c25d96633bde9abf5c420e456d543e012eba79f8a499c590ef1dbbd2e224"
     },
     "test/rtc-keepalive.test.mjs": {
       "bytes": 2677,
       "sha256": "470928fef19f610e994b095de72e7113f60cfd32f211e80f8355eaf2e898ec84"
     },
     "test/sdk-error-origins.test.mjs": {
-      "bytes": 11247,
-      "sha256": "9c304ce3b98466cffe5c2db7fcb1a140654627ebf871a2b42601545a74abd6d9"
+      "bytes": 11251,
+      "sha256": "a1589145223575adad5793ee52ad90036aa18837a0658f7e26fca91e96f81e80"
     },
     "test/snapshot-fallback.test.mjs": {
       "bytes": 6864,
@@ -366,8 +413,8 @@
       "sha256": "d6e7eb2bc7f5adfc52e89c5c5941b4a98e2ccb82d5c92aea352003c969a15bf0"
     },
     "test/storage-telemetry.test.mjs": {
-      "bytes": 18363,
-      "sha256": "4e87f2220fb632ca2283b5a4976405e600c4544a02b7c5c3da8581cbff5c1fe9"
+      "bytes": 18800,
+      "sha256": "33a1f5467ab8ae0875da8e6c38fdd8da93cda78e89156b2ba2b00675be436200"
     },
     "test/stream-backoff.test.mjs": {
       "bytes": 3881,
@@ -380,6 +427,10 @@
     "test/stream-client-options.test.mjs": {
       "bytes": 1337,
       "sha256": "6f0950a64c0176677ee4234e5d43d5b3f3085938a5f852c2f7115dfa61d06ddc"
+    },
+    "test/t9000-media-diagnostics.test.mjs": {
+      "bytes": 5027,
+      "sha256": "d90dafd54d26f9e6d68bf5c6561a83a8a86fe1f211e30e35543087faef80c602"
     },
     "test/watchdog-evidence.test.mjs": {
       "bytes": 10330,
