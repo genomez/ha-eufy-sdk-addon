@@ -1,28 +1,57 @@
 # S1 experimental.13
 
-SDK 0.2.1-s1.experimental.13; bridge/integration 0.3.1-s1.experimental.13; add-on 0.4.1-s1.experimental.13. Linux amd64.
+Pair: add-on **0.4.1-s1.experimental.13**, integration/bridge **0.3.1-s1.experimental.13**, SDK **0.2.1-s1.experimental.13**.
 
-Recorded playback is progressive by default. Extra camera models are an eligibility opt-in, not proof of codec or lens compatibility. Keep the previous add-on/integration pair and backups for rollback; restore both together and restart Home Assistant. Live view and floodlight safety remain opt-in; keep battery preload off. Command keepalive is 29000 ms.
+## New
 
-Publication and final artifact acceptance are pending.
+- Browse and play HomeBase S1 event recordings in Home Assistant **Media → Eufy**. Each camera has Today, Yesterday and dated folders, with thumbnail, time and clip length. Rows without usable playback authority are hidden.
+- Quick-start playback (progressive HLS) is **on by default**: a clip starts showing while it is still being fetched. Short tests started in about **2–3 seconds**; busy requests can take longer.
+- Recorded-event playback has been exercised on **T8425, T8426, T8170, T8171, T8134, T8214 and T8416**. This is seven model families tested in one household, not qualification of every unit, firmware or lens view.
+- New add-on option **Extra playback camera models**: add model numbers (for example T8212) to try playback on cameras outside the tested seven. An untested model may fail with an error.
+- New add-on option **Cameras to skip for recordings**: camera names (as shown in the Eufy app) that get no recording list, thumbnails or playback.
+- Recording times and day folders use **Home Assistant's time zone**.
+- Changing any add-on option requires an **add-on restart**.
+- Advanced controls can adjust future playback policy, model eligibility and background paging using `progressive.json`, `playback-models.json` and `background-paging.json`. A valid model file replaces the startup model list, including option-provided extras. Live pacing control through `recordings.set_pacing` includes background catalog interval and station query count. These controls are distinct from saved add-on options; in-memory pacing resets on restart.
+- Diagnostics add bounded playback-job history, time to playable, conversion/end reasons and connection-establishment evidence.
+
+## Fixed
+
+- Preserve actual frame timing when clips contain pauses or low/variable frame cadence. This addresses shortened/failed floodlight playback and complete low-cadence T8134 clips being rejected. Motion can still look choppy when the camera recorded few frames.
+- Correct the HLS media type handed to Home Assistant's browser player, which previously produced an unsupported-media error.
+- Send whole-number retry delays and accept the effective station query window. This fixes the fractional `retryAfterMs` validation error that appeared as **Recordings unavailable**, including the diagnostic `number:53` failure.
+- Improve playback completion, cancellation, EOF handling and station recovery so trailing media, late fragments and refresh traffic do not incorrectly mark a clip complete or interfere with the next operation.
+- Retain a trustworthy paging checkpoint after invalid replies; improve transient catalog/thumbnail retries and cached-cover refresh handling.
+- Persist renewed account-key state and coordinate refresh retries with session renewal. These are recovery improvements, not a claim that all connection timeouts are solved.
+
+## Changed
+
+- Background catalog refresh defaults to **60 seconds** and asks for **50 rows** per station query. Busy periods can defer it. Overflow paging can recover additional same-day events, stopping at previously known events or a bounded runaway guard.
+- Up to **100 clips on a visible page** can be eligible for thumbnail requests. This does not promise 100 immediate downloads; queuing, caching and station availability still apply.
+- Catalog admission can occur every 60 seconds; redundant post-thumbnail metadata waits were removed while cover spacing remains protected.
+- Home Assistant retries the local bridge connection with at most a **five-second backoff sleep**. Connection attempts retain their own timeout.
+- Optional floodlight-safety phone notices keep retrying while pending, with a **ten-minute final retry interval**, instead of stopping after five failures. Successful service handoff is not proof of phone delivery.
+- Debug/event logging can be changed live through the bridge. Selected diagnostic logging/experiment ceilings were removed while validation, expiry and operation accounting remain.
+
+## Known limitations
+
+- Experimental; tested mainly in one household. Recordings require exactly one HomeBase S1 (T9000).
+- Playback is silent (no audio).
+- The recording list covers recent events; older history may be missing.
+- Live view takes priority; a clip may wait or fail while the HomeBase is busy or reconnecting.
+- Multi-lens cameras: only one view is guaranteed.
+- Models outside the seven tested ones may not play. Add yours under "Extra playback camera models" and report the result.
+- Changing floodlight brightness or spotlight settings from Home Assistant currently fails ("command_unsupported").
+- One outside tester saw connection failures on experimental.12 that later cleared on their own; the cause is unknown.
+
+Tip: pan-tilt floodlight cameras with Auto-Calibration on turn their light on during the calibration sweep; Home Assistant shows this as the light turning ON.
+
+## Upgrade order
+
+**Install integration 0.3.1-s1.experimental.13 or a later explicitly compatible version, and restart Home Assistant, before starting/upgrading to add-on 0.4.1-s1.experimental.13.** Older integration code rejects the new capability that advertises up to 100 eligible thumbnails and query windows other than 20.
+
+Back up the previous integration and add-on first. Verify the ZIP against its supplied `.sha256`, retain the previous paired versions for rollback, and keep only one bridge using the account. Changing add-on options needs an add-on restart; replacing integration code needs a Home Assistant restart. Do not assume existing runtime files or in-memory overrides become public add-on defaults.
 
 ## Historical documentation through experimental.12
-
-# Unreleased (local development)
-
-- Add **Cameras to skip for recordings** (`recordings_skip_cameras`, default `[]`),
-  applied on restart through JSON `RECORDINGS_SKIP_CAMERAS` in the matching bridge.
-  Skipped cameras have no recordings, thumbnails or playback.
-- Matching bridge reports its actual recording zone; integration displays times
-  in Home Assistant's configured zone. Install the integration first.
-- Matching bridge enables 15 fps quick-start playback by default; live policy
-  overrides remain supported and the playable default stays 3000 ms.
-
-- Add optional **Extra playback camera models** (`extra_playback_models`, default
-  empty). Restart applies the list through `RECORDINGS_PLAYBACK_MODELS_EXTRA` to
-  a matching bridge. Invalid extras reject atomically with policy diagnostics;
-  a valid live model file retains full precedence. Untested models may show a
-  playback error; recording identity checks remain in force.
 
 # S1 experimental.12
 

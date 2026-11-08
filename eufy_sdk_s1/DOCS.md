@@ -4,13 +4,9 @@ SDK 0.2.1-s1.experimental.13; bridge/integration 0.3.1-s1.experimental.13; add-o
 
 Recorded playback is progressive by default. Extra camera models are an eligibility opt-in, not proof of codec or lens compatibility. Keep the previous add-on/integration pair and backups for rollback; restore both together and restart Home Assistant. Live view and floodlight safety remain opt-in; keep battery preload off. Command keepalive is 29000 ms.
 
-Publication and final artifact acceptance are pending.
+Restart the add-on after changing any option.
 
-## Historical documentation through experimental.12
-
-# S1 experimental.12
-
-## Cameras to skip for recordings (local development)
+## Cameras to skip for recordings
 
 **Cameras to skip for recordings** (`recordings_skip_cameras`) defaults to `[]`.
 Enter camera names exactly as shown in the Eufy app. Matching is case-insensitive
@@ -31,9 +27,9 @@ integration first: it also accepts the legacy bridge's zone. The matching bridge
 uses Supervisor's `TZ`, retaining its station compatibility fallback if absent or
 invalid. Quick-start playback defaults to 15 fps and a 3000 ms playable threshold;
 `RECORDINGS_PROGRESSIVE_FPS=off` disables it, and live `progressive.json` still
-has precedence. These changes add no limit, timer or cap.
+has precedence.
 
-## Extra playback camera models (local development)
+## Extra playback camera models
 
 Set **Extra playback camera models** (`extra_playback_models`, default `[]`) to
 a list of model strings, for example `T8212`, then restart the add-on. This lets
@@ -52,10 +48,23 @@ Any invalid extra entry rejects the whole extra value, retains the base and
 reports `extra_models` in policy readback. Accepted sources include
 `default+extra` and `env+extra`. A valid live `playback-models.json` still replaces
 everything. An empty option leaves the extra environment variable unset.
-No new limits, timers or caps are introduced.
 
-Local development only: these options require the matching bridge change;
-the published experimental.12 image has not been rebuilt.
+## Known limitations
+
+- Experimental; tested mainly in one household. Recordings require exactly one HomeBase S1 (T9000).
+- Playback is silent (no audio).
+- The recording list covers recent events; older history may be missing.
+- Live view takes priority; a clip may wait or fail while the HomeBase is busy or reconnecting.
+- Multi-lens cameras: only one view is guaranteed.
+- Models outside the seven tested ones may not play. Add yours under "Extra playback camera models" and report the result.
+- Changing floodlight brightness or spotlight settings from Home Assistant currently fails ("command_unsupported").
+- One outside tester saw connection failures on experimental.12 that later cleared on their own; the cause is unknown.
+
+Tip: pan-tilt floodlight cameras with Auto-Calibration on turn their light on during the calibration sweep; Home Assistant shows this as the light turning ON.
+
+## Historical documentation through experimental.12
+
+# S1 experimental.12
 
 Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
 

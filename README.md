@@ -1,10 +1,50 @@
-# S1 experimental.13
+# S1 experimental.13 — Eufy HomeBase S1 for Home Assistant
 
-SDK 0.2.1-s1.experimental.13; bridge/integration 0.3.1-s1.experimental.13; add-on 0.4.1-s1.experimental.13. Linux amd64.
+These forks add experimental **HomeBase S1 (T9000)** support to Home Assistant: an SDK, a bridge packaged as an add-on, and the `eufy_sdk` custom integration. This is unofficial community software. Recording playback has been tested in one household; another tester reported connection failures and later unexplained recovery on an earlier release. Keep a backup and expect regressions.
 
-Recorded playback is progressive by default. Extra camera models are an eligibility opt-in, not proof of codec or lens compatibility. Keep the previous add-on/integration pair and backups for rollback; restore both together and restart Home Assistant. Live view and floodlight safety remain opt-in; keep battery preload off. Command keepalive is 29000 ms.
+## What works on the tested setup
 
-Publication and final artifact acceptance are pending.
+- Opt-in live camera view, device status and supported camera/light controls.
+- Optional floodlight OFF recovery and notices when the requested state cannot be confirmed. It remains off by default and cannot guarantee the physical light state.
+- Event-recording browsing and silent playback in **Media → Eufy**, with camera/day folders and thumbnails. Quick-start playback is on by default and began in about 2–3 seconds in short tests; busy requests can take longer. Times and day folders use Home Assistant's time zone.
+- Recording playback tested with floodlights **T8425/T8426**, SoloCam **T8170/T8171/T8134**, doorbell **T8214**, and indoor camera **T8416**. Other firmware, additional models and every dual-lens view are unqualified.
+
+## Known limitations
+
+- Experimental; tested mainly in one household. Recordings require exactly one HomeBase S1 (T9000).
+- Playback is silent (no audio).
+- The recording list covers recent events; older history may be missing.
+- Live view takes priority; a clip may wait or fail while the HomeBase is busy or reconnecting.
+- Multi-lens cameras: only one view is guaranteed.
+- Models outside the seven tested ones may not play. Add yours under "Extra playback camera models" and report the result.
+- Changing floodlight brightness or spotlight settings from Home Assistant currently fails ("command_unsupported").
+- One outside tester saw connection failures on experimental.12 that later cleared on their own; the cause is unknown.
+
+Tip: pan-tilt floodlight cameras with Auto-Calibration on turn their light on during the calibration sweep; Home Assistant shows this as the light turning ON.
+
+## Install and test experimental.13
+
+The add-on is **amd64 only**.
+
+1. Back up the existing integration and add-on. Keep one bridge using the Eufy account; stop the previous bridge during migration.
+2. Download the [integration ZIP and checksum](https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.13), verify SHA-256, and copy `custom_components/eufy_sdk` into the Home Assistant configuration. **Restart Home Assistant before updating/starting the new add-on.** Integration .13 or a later explicitly compatible version is required first.
+3. In the Add-on Store's repository settings, add `https://github.com/genomez/ha-eufy-sdk-addon#s1-experimental`. Install/update **Eufy SDK S1 experimental** to **0.4.1-s1.experimental.13**. Enter account settings privately in the add-on. Follow [connection/migration instructions](https://github.com/genomez/ha-eufy-sdk-addon/blob/s1-experimental/eufy_sdk_s1/DOCS.md); reconfigure an existing integration rather than making a duplicate. Source and runtime assets are in the [runtime release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.13).
+4. Enable live view with `webrtc_relay` if wanted. **Restart the add-on after changing its options.** Optional: **Extra playback camera models** to try playback on other models, and **Cameras to skip for recordings** to leave cameras out of recordings.
+5. Check ordinary status and a safe control, then try a short known recording in Media → Eufy. Compare duration/content with the Eufy app and note loading time or errors. Leave battery-camera preload off. For rollback, restore the previous paired versions and backups, then restart the affected components.
+
+## Report a result
+
+Open an [issue](https://github.com/genomez/ha-eufy-sdk-addon/issues) with:
+
+- HomeBase and camera **model numbers**, firmware, Home Assistant version and installation type.
+- Exact add-on and integration versions; fresh install or upgrade.
+- What you tried, expected result, actual result, approximate time/time zone and whether the Eufy app works.
+- For recordings: day/night, approximate clip length, loading time, gaps/wrong duration, and which lens view appeared.
+- Home Assistant's **Download diagnostics** for the Eufy integration, reviewed/redacted before upload; a short relevant error excerpt if available.
+
+Never post passwords, account addresses, tokens, session files, serial numbers, private network details or private footage. Diagnostics aim to avoid credentials, but inspect any attachment before posting.
+
+SDK/bridge are Apache-2.0; integration/add-on are MIT. Preserve bundled notices and source-access records when redistributing. See the release's `README`, `REBUILD` and checksum files.
 
 ## Historical documentation through experimental.12
 
