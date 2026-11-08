@@ -1,3 +1,171 @@
+Modified for genomez experimental.13, 2026-11-07
+
+Release packaging, current recordings/playback runtime and extra-model support.
+Modified paths since published experimental.12:
+
+- `.env.example`
+- `.gitignore`
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `README.md`
+- `SOURCE_MANIFEST.json`
+- `bin/event-playback-probe-control.mjs`
+- `bin/event-table-probe-control.mjs`
+- `bin/event-thumb-probe-control.mjs`
+- `bin/pilot-process.mjs`
+- `docs/bounded-state-writes.md`
+- `docs/event-playback-multi-attempt.md`
+- `docs/progressive-pipe-20261107.md`
+- `docs/recordings-native-timing-validation.md`
+- `docs/recordings-pacing-validation.md`
+- `docs/recordings-pairing-validation.md`
+- `docs/recordings-playback-experiments.md`
+- `docs/recordings-progressive.md`
+- `docs/runtime-logging.md`
+- `docs/ws-protocol.md`
+- `package-lock.json`
+- `package.json`
+- `server.mjs`
+- `src/bounded-state-writes.mjs`
+- `src/client.mjs`
+- `src/config.mjs`
+- `src/device-events.mjs`
+- `src/device-view.mjs`
+- `src/diagnostics.mjs`
+- `src/event-playback-health.mjs`
+- `src/event-playback-probe-pins.mjs`
+- `src/event-playback-probe.mjs`
+- `src/event-table-probe-pins.mjs`
+- `src/event-table-probe.mjs`
+- `src/event-thumb-probe-pins.mjs`
+- `src/event-thumb-probe.mjs`
+- `src/http-routes.mjs`
+- `src/logging-control.mjs`
+- `src/pilot-log.mjs`
+- `src/recordings-adapter.mjs`
+- `src/recordings-background-paging.mjs`
+- `src/recordings-clips.mjs`
+- `src/recordings-download.mjs`
+- `src/recordings-experiments.mjs`
+- `src/recordings-job-evidence.mjs`
+- `src/recordings-pacing.mjs`
+- `src/recordings-playback-models.mjs`
+- `src/recordings-playback-sessions.mjs`
+- `src/recordings-policy.mjs`
+- `src/recordings-progressive-settings.mjs`
+- `src/recordings-progressive.mjs`
+- `src/recordings-store.mjs`
+- `src/recordings-timing.mjs`
+- `src/recordings-wire.mjs`
+- `src/recordings.mjs`
+- `src/rtc-connection-evidence.mjs`
+- `src/service.mjs`
+- `src/storage-probe.mjs`
+- `src/ws-server.mjs`
+- `test/bounded-state-writes.test.mjs`
+- `test/clock-margin.test.mjs`
+- `test/config.test.mjs`
+- `test/device-liveness.test.mjs`
+- `test/event-playback-capture.test.mjs`
+- `test/event-playback-multi-attempt.test.mjs`
+- `test/event-playback-probe.test.mjs`
+- `test/event-playback-safety.test.mjs`
+- `test/event-table-probe-control.test.mjs`
+- `test/event-table-probe.test.mjs`
+- `test/event-thumb-probe-control.test.mjs`
+- `test/event-thumb-probe.test.mjs`
+- `test/fixtures/sdk-tripwire.mjs`
+- `test/helpers/recordings-fixtures.mjs`
+- `test/helpers/recordings-variable-cadence.mjs`
+- `test/helpers/recordings-wire.mjs`
+- `test/helpers/sdk-resolve.mjs`
+- `test/ice-establishment-evidence.test.mjs`
+- `test/late-contrary-effects.test.mjs`
+- `test/media-topology.test.mjs`
+- `test/pilot-log-timestamps.test.mjs`
+- `test/pilot-process-timestamps.test.mjs`
+- `test/progressive-settings.test.mjs`
+- `test/recordings-api.test.mjs`
+- `test/recordings-availability.test.mjs`
+- `test/recordings-background-paging.test.mjs`
+- `test/recordings-background.test.mjs`
+- `test/recordings-catalog-attempt.test.mjs`
+- `test/recordings-clips.test.mjs`
+- `test/recordings-download.test.mjs`
+- `test/recordings-experiments.test.mjs`
+- `test/recordings-live-catalog.test.mjs`
+- `test/recordings-native-media.test.mjs`
+- `test/recordings-pacing.test.mjs`
+- `test/recordings-paging.test.mjs`
+- `test/recordings-pairing.test.mjs`
+- `test/recordings-playback-models.test.mjs`
+- `test/recordings-playback-sessions.test.mjs`
+- `test/recordings-policy.test.mjs`
+- `test/recordings-privacy.test.mjs`
+- `test/recordings-progressive-media.test.mjs`
+- `test/recordings-progressive-pipe-media.test.mjs`
+- `test/recordings-progressive.test.mjs`
+- `test/recordings-store.test.mjs`
+- `test/recordings-timing.test.mjs`
+- `test/recordings-wire.test.mjs`
+- `test/rtc-connection-evidence.test.mjs`
+- `test/rtc-keepalive.test.mjs`
+- `test/runtime-logging.test.mjs`
+- `test/stream-mime.test.mjs`
+- `test/wiring.test.mjs`
+- `tools/check-native-recording-media.mjs`
+- `tools/check-progressive-media.mjs`
+- `tools/check-progressive-pipe-media.mjs`
+
+## Previous notices
+
+# S1 experimental.12
+
+Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
+
+- Push-store save failures are caught and reported through push-connection diagnostics (#539).
+- Session and FCM files use an owner-only temporary file and atomic rename where the filesystem permits (#540). On restricted directories or single-file mounts, the existing in-place fallback is non-atomic and retains existing file permissions.
+- Stored snapshots recover after a successful re-login, including when an older in-flight download fails afterwards (#545).
+- Optional HomeBase S1 storage telemetry also supports firmware 4.4.1.4; it remains off by default.
+- After an acknowledged light command, Home Assistant holds the requested display value for up to 45 seconds. A matching boolean report releases it early. The acknowledgement does not confirm the physical light state.
+- A registry identity conflict invalidates the affected child-camera status to unknown.
+- HomeBase firmware metadata updates from newly received inventory without a Home Assistant restart. A new Firmware version sensor exposes the received version.
+- Dated experimental.11 and experimental.12 modification notices are retained, including the restored integration notice.
+
+Defaults are unchanged. Live view and optional floodlight safety remain off by default. Keep battery-camera preload off. Verify the integration ZIP checksum and restart Home Assistant after replacing the integration. Changing live-view opt-in requires an add-on restart. Command keepalive remains 29000 ms.
+
+Known live-view stalls, unexplained floodlight ON events and brightness/spotlight formatting issues remain unresolved. This is an experimental fork.
+
+Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.12
+
+Integration ZIP and checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.12
+
+Publication availability is pending. The accepted image is delivered without rebuilding. Earlier release records below are historical.
+
+Modified for genomez experimental.11, 2026-10-31
+
+Modified for genomez experimental.12, 2026-11-02
+
+## Files modified in experimental.12
+
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `README.md`
+- `SOURCE_MANIFEST.json`
+- `package-lock.json`
+- `package.json`
+- `src/device-events.mjs`
+- `src/storage-telemetry.mjs`
+- `test/camera-health.test.mjs`
+- `test/helpers/sdk-resolve.mjs`
+- `test/storage-telemetry.test.mjs`
+
+## Historical modification notices
+
 Modified for genomez experimental.12, 2026-11-02
 
 Modified for genomez experimental.11, 2026-10-31
@@ -321,7 +489,6 @@ This replaces the earlier review.7 candidate with review.9 input `681efd9` (impl
 
 Automatic floodlight correction is OFF-only and cannot re-send ON. A shared command-health gate pauses automatic writes for ten minutes after two fast correlated refusals, while explicit commands remain eligible. Includes review.14 upstream beta.73/beta.80 adaptations, RTC renewal cooldowns and passive diagnostics. Source input: `6deea127459f368edb24d7d3df59dcaf60d5b508`.
 
-
 ## Historical input documentation and modification notices
 
 # Source modification index
@@ -507,3 +674,90 @@ Attempt rows add `lastByteAtMs` (latest chunk stamp, null before bytes), `maxGap
 (bounded count of gaps at least the threshold, including one trailing gap at finish).
 Gaps are measured at the bridge output; a reader that stops reading can also create one.
 Only diagnostics and focused tests change; stream lifecycle and existing outcomes are unchanged.
+
+## Save-first playback review fixes, 2026-11-06
+
+Conversion uses a clip-duration watchdog with a two-minute floor, SIGTERM and
+five-second SIGKILL escalation, retaining files and the worker until process
+close. Validated catalog duration supplies constant-rate video timing because
+the SDK byte callback has no qualified media clock. Pre-dispatch marker storage
+failures report storage without implying uncertain station cleanup. Test re-read
+minutes are capped at 1440 and both computed deadlines must be finite. Public
+playback capability and playable-row shapes are unchanged; disabled is documented
+in the WebSocket protocol. Qualification is offline and synthetic only.
+
+## Playback 3p4 local fix (2026-11-06)
+
+Use the capture receipt mediaDurationMs for conversion retiming and published clip duration; invalid or missing captured durations fail instead of using the catalog duration. Preserve explicit frame retiming. Retry unsafe_observation through the 3-second admission policy because the SDK live-stop drain now clears on its own. The admission budget is 150 seconds as of 3p6. Other permanent observation uncertainty remains bounded by the retry deadline. The dependency pin and provenance identify the matching local 3p4 package.
+
+Offline synthetic validation only; installation acceptance remains false.
+
+### Offline playback safety update, 2026-11-06
+
+- Pin the local 3p5 SDK distribution and installed runtime separately.
+- Include bounded count-only playback-observer poison evidence, observer age, and station status counts in clip diagnostics.
+- Report a proven terminal no-stream refusal as not_found while the SDK retains reconnect protection; retain cleanup_uncertain for uncertain starts and media.
+- Enable recording playback for T8425, T8426 and T8170 by default; explicit model overrides remain authoritative.
+- Validated locally with synthetic fixtures; no installation or device acceptance is claimed.
+
+### Playback 3p6 admission and refusal, 2026-11-06
+
+- Wait up to 150 seconds for transient admission gates, retrying every three seconds across session renewal and observation. Permanent gates still refuse immediately. Each SDK attempt retains its fresh capture/cleanup deadline; job and WebSocket handling impose no shorter admission deadline.
+- Pin the rebuilt local 3p6 SDK distribution and installed runtime separately. Confirmed no-stream refusals, including state 2/code 18, report not_found while reconnect protection remains applied; uncertain refusals retain cleanup_uncertain.
+- Validated locally with synthetic fixtures; no installation or device acceptance is claimed.
+
+- Playback 3p6r, 2026-11-06: pin the local c7913bf SDK distribution and runtime with the refusal-invalidation latch fix; offline packaging only.
+
+### Playback 3p7 diagnostics and tracing, 2026-11-06
+
+- Pass through bounded retained-video completeness counts and the failed-check enum.
+- Emit one structured queue and terminal stdout record per new clip job, including UTC timestamp, process-local job/connection ordinals, state/reason, duration bucket and allowlisted client/locality. Deduplicated viewers and transient admission retries do not create new trace pairs. No addresses or media selectors enter the log. Client names are self-reported, not authentication.
+- Retain queue and terminal timestamps in lastJob. WebSocket connections can optionally identify as ha-integration with X-Eufy-Client; absent or unrecognized names remain unknown. Older clients remain compatible.
+- Rebuild and pin the paired local 3p7 SDK package; no runtime installation or device acceptance is claimed.
+- The launcher forwards clip traces through a strict fixed-schema validator and a 512-character line bound, preserving UTC timestamps independently of optional generic log timestamps.
+
+### Playback 3p7r capture diagnostics, 2026-11-06
+
+- Pass through the bounded discarded-tail count and truncated completeness reason. Preserve the last attempted capture evidence separately as lastCaptureJob when later queued cancellations or immediate refusals update lastJob with their own ordinal, state, reason and timestamps.
+- Pin the rebuilt local 3p7r SDK tarball and installed runtime independently. Local synthetic validation only; latch, reconnect and refusal policy are unchanged.
+
+- Playback 3p7r2, 2026-11-06: pin the local a545c5b SDK tarball and runtime with unsaturated EOF truncation checks and bounded receipt counts; offline packaging only.
+
+- Playback 3p7r3, 2026-11-06: pin the local 4638c5d SDK tarball and runtime accepting fully covered EOF playback despite arrival pauses; offline packaging only.
+
+- Playback 3q, 2026-11-06: pin the local 8836af7 SDK tarball and runtime for EOF media publication before session retirement with the sixty-second diagnostic observation window; offline packaging only.
+
+- Playback 3q2, 2026-11-06: pin the local 3788cf8 SDK tarball and runtime probing fresh RTC sessions before the keepalive interval; offline packaging only.
+
+- Playback 3r, 2026-11-06: pin the local 4459fe5 SDK tarball and runtime; offline packaging only.
+
+- Playback 3s, 2026-11-07: pin the local d78f0fc SDK tarball and runtime; offline packaging only.
+
+- Playback 3s r2, 2026-11-07: pin the local d93a53e SDK tarball and runtime; offline packaging only.
+
+- Playback 3s r3, 2026-11-07: pin the local 453e758 SDK tarball and runtime; offline packaging only.
+
+- playback 3t, 2026-11-07: project bounded ICE establishment evidence and grant timeouts; pin the local 27dda82 SDK tarball and all probe runtime hashes. Offline packaging only.
+
+### Playback 3u bounded job diagnostics, 2026-11-07
+
+- Add a detached ring of the latest 20 terminal clip jobs, after capture cleanup settles, with sanitized display metadata, fixed capture/transport/timeline evidence and progressive first-playable/final-delivery metrics. Preserve lastJob and lastCaptureJob.
+- Preserve viewer release, expiry and eviction causes through asynchronous encoder shutdown. Record process exit/signal, spawn, input, timeout, validation, capture and normal-completion end reasons separately; viewer abandonment does not increment conversion failures.
+- Add saturating per-session lifecycle counters, fixed per-job failure buckets and the latest twenty job time-to-playable count/min/median/max.
+- Add RECORDINGS_PROGRESSIVE_PLAYABLE_MS (decimal integer 1000-6000, default/fallback 6000), reported consistently in diagnostics and the HA-facing progressivePlayableMs capability. The companion HA validator accepts playable inventories of at least 1000 ms; the bridge enforces the configured threshold.
+- Add real installed SDK router/session/peer projection coverage using signaling/native fakes, exact connection deadline, active relay recovery, populated transitions and candidate grant_timeout. The candidate test uses the runtime's candidate-creation seam, without changing SDK code or pins.
+- Local offline qualification only; SDK tarball and all three historical probe pin files are unchanged. No installation, device or client acceptance is claimed.
+
+### Playback 3u review corrections, 2026-11-07
+
+- Latch ffmpeg nonzero/signal exit and process-error evidence before close. Preserve whichever arrives first between process failure and viewer retirement, while retaining the close cleanup barrier. Fail-first regressions exercise exit/error/signal ordering against release, expiry and eviction and verify terminal job history and failure counts.
+- Keep public playback reasons within the existing clip enum. Viewer retirement maps to none; process failure maps to convert_failed. Opens during viewer-retirement cleanup return busy without allocating a dead-generation lease; retry after settlement starts a fresh generation. Regressions cover public reasons across every diagnostic end reason and public reason, plus release/expiry reopening.
+- Reject camera history labels containing IPv4/IPv6 literals, MAC forms, long hex values or serial-shaped tokens; retain ordinary display labels and short camera models. Add fail-first label/history regressions.
+- Correct companion HA documentation: its playable inventory floor is 1000 ms, and the bridge owns the configured early-delivery threshold.
+- Local offline qualification only; SDK source, dependency pins and all three protected probe pin files remain unchanged.
+
+### Default station catalog window, 2026-11-07
+
+- Change the built-in catalogQueryCount from 20 to 50, including reset and restart defaults. Capability, catalog and diagnostics continue to project the effective count and matching station-wide history disclosure through the shared window contract.
+- Require Home Assistant integration revision 9c77c22 or later; cd068ae rejects station windows other than 20. The SDK and its packed artifact are unchanged.
+- Add default/reset query and read-back coverage at 50; keep historical paging fixtures explicit about their 20-row test window. No timer, expiry, cap or other limit is added. Local offline validation only; no installation or device acceptance is claimed.

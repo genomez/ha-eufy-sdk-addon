@@ -12,6 +12,7 @@ import { WEBRTC_ERRORS } from "./webrtc-relay.mjs";
 import { createBoundedStateWrites, boundedStateWritesCapability } from "./bounded-state-writes.mjs";
 import { createLightConfirmations, lateContraryEffectsCapability } from "./late-contrary-effects.mjs";
 import { createRequestEvidence } from "./request-evidence.mjs";
+import { failure as recordingsFailure } from "./recordings-policy.mjs";
 
 // Commands that require an authenticated eufy session — gated in one place before dispatch. (auth.* and
 // solix.* run before this gate, so a client can drive 2FA/captcha and Solix while eufy is still pending.)
@@ -31,7 +32,7 @@ const AUTHED_COMMANDS = new Set([
 ]);
 
 export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } = {}) {
-  const { cfg, eufy, SCHEMA_VERSION, DEBUG, dbg } = ctx;
+  const { cfg, eufy, SCHEMA_VERSION, dbg } = ctx;
   const { flags, clients } = ctx.state;
   const requests = createRequestEvidence(requestClocks);
   const bounded = createBoundedStateWrites({
@@ -57,7 +58,16 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
   let effectsCache = null;
 
   const wss = new WebSocketServer({ server: httpServer, path: "/ws" });
-  wss.on("connection", (ws) => {
+  let connectionOrdinal = 0;
+  const requestSources = new WeakMap();
+  wss.on("connection", (ws, request) => {
+    const address = request?.socket?.remoteAddress ?? "";
+    const source = Object.freeze({
+      connection: (connectionOrdinal = (connectionOrdinal % Number.MAX_SAFE_INTEGER) + 1),
+      locality: address === "::1" || /^(?:::ffff:)?127\./.test(address) ? "local" : "remote",
+      client: request?.headers?.["x-eufy-client"] === "ha-integration" ? "ha-integration" : "unknown",
+    });
+    requestSources.set(ws, source);
     clients.add(ws);
     // On connect, tell the client the schema AND the current auth state, so a frontend knows immediately
     // whether it must drive a 2FA/captcha step before anything else works.
@@ -66,6 +76,7 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
       schemaVersion: SCHEMA_VERSION,
       auth: ctx.authStatus(),
       webrtcRelay: Boolean(ctx.webrtcRelay),
+      ...(ctx.recordings ? { recordings: ctx.recordings.capability() } : {}),
       ...(typeof eufy.setPropertyWithReceipt === "function"
         ? { boundedStateWrites: boundedStateWritesCapability }
         : {}),
@@ -77,6 +88,7 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
       bounded.ownerLost(ws);
       confirmations.ownerLost(ws);
       ctx.webrtcRelay?.ownerLost(ws);
+      ctx.recordings?.ownerLost(ws);
       clients.delete(ws);
     });
     ws.on("message", (raw) => handleMessage(ws, raw).catch((e) => pilotLog("ws_server_1")));
@@ -119,6 +131,83 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
     if (!msg || typeof msg !== "object" || Array.isArray(msg)) return send(ws, { ok: false, error: "bad json" });
     const { id, cmd } = msg;
     observeMethod(cmd);
+    if (typeof cmd === "string" && cmd.startsWith("recordings.") && cmd !== "recordings.test_playback_models") {
+      const safeId =
+        Number.isSafeInteger(id) || (typeof id === "string" && /^[A-Za-z0-9_-]{1,128}$/.test(id)) ? id : null;
+      try {
+        if (allowCommand && !allowCommand(msg)) throw recordingsFailure("invalid");
+        if (!ctx.recordings) throw recordingsFailure("unsupported");
+        let recordings;
+        switch (cmd) {
+          case "recordings.set_pacing":
+            recordings = ctx.recordings.setPacing(msg);
+            break;
+          case "recordings.test_reread":
+            recordings = ctx.recordings.testReread(msg);
+            break;
+          case "recordings.diagnostics":
+            recordings = ctx.recordings.diagnostics(msg);
+            break;
+          case "recordings.cameras":
+            recordings = ctx.recordings.cameras(msg);
+            break;
+          case "recordings.catalog":
+            recordings = ctx.recordings.catalog(ws, msg);
+            break;
+          case "recordings.clip_prepare":
+            recordings = ctx.recordings.clipPrepare(msg, requestSources.get(ws));
+            break;
+          case "recordings.playback_open":
+            recordings = ctx.recordings.playbackOpen(ws, msg, requestSources.get(ws));
+            break;
+          case "recordings.playback_status":
+            recordings = ctx.recordings.playbackStatus(ws, msg);
+            break;
+          case "recordings.playback_renew":
+            recordings = ctx.recordings.playbackStatus(ws, msg, true);
+            break;
+          case "recordings.playback_release":
+            recordings = ctx.recordings.playbackRelease(ws, msg);
+            break;
+          case "recordings.clip_status":
+            recordings = ctx.recordings.clipStatus(msg);
+            break;
+          case "recordings.clip_cancel":
+            recordings = await ctx.recordings.clipCancel(msg);
+            break;
+          case "recordings.cover":
+            recordings = await ctx.recordings.cover(ws, msg);
+            break;
+          default:
+            throw recordingsFailure("invalid");
+        }
+        return send(ws, { id: safeId, ok: true, recordings, ...(recordings.clip ? { clip: recordings.clip } : {}) });
+      } catch (error) {
+        const code = [
+          "recordings_disabled",
+          "recordings_unsupported",
+          "recordings_invalid",
+          "recordings_not_found",
+          "recordings_scope_invalid",
+          "recordings_store_unavailable",
+        ].includes(error?.code)
+          ? error.code
+          : "recordings_store_unavailable";
+        return send(ws, { id: safeId, ok: false, code, error: "Recordings unavailable" });
+      }
+    }
+    if (
+      [
+        "device.set",
+        "device.action",
+        "device.reboot",
+        "device.confirmLight",
+        "stream.start",
+        "webrtc.open",
+        "event.refresh",
+      ].includes(cmd)
+    )
+      ctx.recordings?.preempt();
     if (cmd === "device.confirmLight") {
       const safeId =
         Number.isSafeInteger(id) || (typeof id === "string" && id.length > 0 && id.length <= 128) ? id : undefined;
@@ -174,7 +263,13 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
           });
           pilotLog(code);
         }
-        return send(ws, { id: boundedId, ok: false, error: "Bounded command failed", code });
+        return send(ws, {
+          id: boundedId,
+          ok: false,
+          error: "Bounded command failed",
+          code,
+          ...(cmd === "device.set" && error?.sendAttempted === false ? { sendAttempted: false } : {}),
+        });
       }
     }
     const isWebRtc = typeof cmd === "string" && cmd.startsWith("webrtc.");
@@ -188,9 +283,15 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
           throw { code: "webrtc_closed" };
         let result;
         switch (cmd) {
-          case "webrtc.open":
-            result = await relay.open(ws, msg);
+          case "webrtc.open": {
+            const release = await ctx.recordings?.liveStart();
+            try {
+              result = await relay.open(ws, msg);
+            } finally {
+              release?.();
+            }
             break;
+          }
           case "webrtc.candidate":
             result = relay.candidate(ws, msg);
             break;
@@ -207,13 +308,7 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
       }
     }
     if (allowCommand && !allowCommand(msg)) return send(ws, { id, ok: false, error: "command denied" });
-    if (DEBUG) {
-      const bits = [`cmd=${cmd}`];
-      if (msg.sn != null) bits.push(`sn=${msg.sn}`);
-      if (msg.name != null) bits.push(`name=${msg.name}`);
-      if (msg.value !== undefined) bits.push(`value=${JSON.stringify(msg.value)}`);
-      dbg("ws recv", bits.join(" ")); // NB: 2FA code / captcha (msg.code/msg.captcha) never logged
-    }
+    if (ctx.logging?.effective("debug") ?? ctx.DEBUG) dbg("ws recv");
     const reply = (extra) => send(ws, { id, ok: true, ...extra });
     const fail = (error, code) =>
       send(ws, {
@@ -380,8 +475,35 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
         }
         case "config.get":
           // Current effective cloud poll interval (ms). 0 means polling is disabled.
-          return reply({ pollMs: eufy.pollIntervalMs });
+          return reply({
+            pollMs: eufy.pollIntervalMs,
+            ...(ctx.logging && { logging: ctx.logging.snapshot() }),
+            ...(ctx.recordings && {
+              recordings: {
+                playbackModelPolicy: ctx.recordings.playbackModelPolicy(),
+                skipCameraPolicy: ctx.recordings.skipCameraPolicy(),
+                catalogSettings: ctx.recordings.catalogSettings(),
+              },
+            }),
+          });
         case "config.set": {
+          const loggingFields = ["debug", "event_log", "expires_ms"];
+          const hasLogging = loggingFields.some((key) => Object.hasOwn(msg, key));
+          if (hasLogging) {
+            if (!ctx.logging || Object.keys(msg).some((key) => !["id", "cmd", ...loggingFields].includes(key))) {
+              ctx.logging?.reject();
+              return fail("invalid logging request");
+            }
+            try {
+              return reply({
+                logging: ctx.logging.set(
+                  Object.fromEntries(Object.entries(msg).filter(([key]) => loggingFields.includes(key))),
+                ),
+              });
+            } catch {
+              return fail("invalid logging request");
+            }
+          }
           // Change the cloud poll interval live. Expect a non-negative integer (ms); 0 disables.
           const ms = Number(msg.pollMs);
           if (!Number.isFinite(ms) || ms < 0) return fail("pollMs must be a non-negative number (ms)");
@@ -389,6 +511,7 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
           return reply({ pollMs: eufy.pollIntervalMs });
         }
         case "stream.start":
+          (await ctx.recordings?.liveStart())?.();
           // Returns URLs; does NOT open the camera — the media connection does that.
           return reply({
             path: `/stream/${msg.sn}`,
@@ -420,6 +543,7 @@ export function createWsServer(ctx, httpServer, { allowCommand, requestClocks } 
   }
 
   return {
+    wss,
     send,
     broadcast,
     handleMessage,

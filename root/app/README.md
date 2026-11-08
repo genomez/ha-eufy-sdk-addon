@@ -1,3 +1,42 @@
+# S1 experimental.13
+
+SDK 0.2.1-s1.experimental.13; bridge/integration 0.3.1-s1.experimental.13; add-on 0.4.1-s1.experimental.13. Linux amd64.
+
+Recorded playback is progressive by default. Extra camera models are an eligibility opt-in, not proof of codec or lens compatibility. Keep the previous add-on/integration pair and backups for rollback; restore both together and restart Home Assistant. Live view and floodlight safety remain opt-in; keep battery preload off. Command keepalive is 29000 ms.
+
+Publication and final artifact acceptance are pending.
+
+## Historical documentation through experimental.12
+
+# S1 experimental.12
+
+Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
+
+- Push-store save failures are caught and reported through push-connection diagnostics (#539).
+- Session and FCM files use an owner-only temporary file and atomic rename where the filesystem permits (#540). On restricted directories or single-file mounts, the existing in-place fallback is non-atomic and retains existing file permissions.
+- Stored snapshots recover after a successful re-login, including when an older in-flight download fails afterwards (#545).
+- Optional HomeBase S1 storage telemetry also supports firmware 4.4.1.4; it remains off by default.
+- After an acknowledged light command, Home Assistant holds the requested display value for up to 45 seconds. A matching boolean report releases it early. The acknowledgement does not confirm the physical light state.
+- A registry identity conflict invalidates the affected child-camera status to unknown.
+- HomeBase firmware metadata updates from newly received inventory without a Home Assistant restart. A new Firmware version sensor exposes the received version.
+- Dated experimental.11 and experimental.12 modification notices are retained, including the restored integration notice.
+
+Defaults are unchanged. Live view and optional floodlight safety remain off by default. Keep battery-camera preload off. Verify the integration ZIP checksum and restart Home Assistant after replacing the integration. Changing live-view opt-in requires an add-on restart. Command keepalive remains 29000 ms.
+
+Known live-view stalls, unexplained floodlight ON events and brightness/spotlight formatting issues remain unresolved. This is an experimental fork.
+
+Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.12
+
+Integration ZIP and checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.12
+
+Publication availability is pending. The accepted image is delivered without rebuilding. Earlier release records below are historical.
+
+Modified for genomez experimental.11, 2026-10-31
+
+Modified for genomez experimental.12, 2026-11-02
+
+## Historical documentation before experimental.12 publication
+
 Current local candidate: experimental.12 (2026-11-02). Unpublished; no installation or device acceptance. Earlier release references below are historical.
 
 # S1 experimental.12 — Overview
@@ -144,7 +183,6 @@ Please open source issues in this fork, using a redacted description or syntheti
 
 This replaces the earlier review.7 candidate with review.9 input `681efd9` (implementation `d4335b9`, on review.8 `f6a59d9`). Runtime source is unchanged. Includes bounded pending acceptance for eligible correlated floodlight late replies with authoritative correction, supported S1 camera sirens, standard doorbell ring events and faster demand-only live-view admission, alongside the battery stream fix and native relay. The add-on relay option defaults to false; command keepalive remains 29000 independently. Package versions are SDK `0.2.1-s1.experimental.6` and bridge `0.3.1-s1.experimental.6`. Earlier candidate status statements above are historical. Original licenses and attribution remain. This is local packaging; publication and final device/soak qualification are pending.
 
-
 ## Historical input documentation and modification notices
 
 > Modified for genomez S1 experimental source preview, 2026-10-14.
@@ -171,3 +209,125 @@ Please open source issues in this fork, using a redacted description or syntheti
 ## Experimental.6 package refresh, 2026-10-17
 
 This replaces the earlier review.7 candidate with review.9 input `681efd9` (implementation `d4335b9`, on review.8 `f6a59d9`). Runtime source is unchanged. Includes bounded pending acceptance for eligible correlated floodlight late replies with authoritative correction, supported S1 camera sirens, standard doorbell ring events and faster demand-only live-view admission, alongside the battery stream fix and native relay. The add-on relay option defaults to false; command keepalive remains 29000 independently. Package versions are SDK `0.2.1-s1.experimental.6` and bridge `0.3.1-s1.experimental.6`. Earlier candidate status statements above are historical. Original licenses and attribution remain. This is local packaging; publication and final device/soak qualification are pending.
+
+Recordings playback allows camera models T8425, T8426, T8170, T8171, T8214, T8416
+and T8134 by default. `RECORDINGS_PLAYBACK_MODELS` sets the startup fallback as a
+comma-separated list; an explicitly empty value disables playback for every model.
+`RECORDINGS_PLAYBACK_MODELS_EXTRA` adds a comma-separated list to that environment
+base or the built-in default. Extras use the same normalization and model validation
+as the live file. Any invalid extra entry rejects the entire extra value, retains
+the base list, and reports `rejection: "extra_models"`; entries never partially apply.
+For live changes without an add-on restart, atomically replace
+`<RECORDINGS_ROOT>/playback-models.json` (normally `/data/recordings/playback-models.json`):
+
+```json
+{ "version": 1, "models": ["T8425", "T8426", "T8170", "T8171", "T8214", "T8416", "T8134"] }
+```
+
+The file replaces the entire list. Strings are trimmed, uppercased and deduplicated;
+each must match `^T\d{4}[A-Z0-9]*$`. An empty array disables all models. Missing files
+use the environment or built-in default. Malformed JSON, unknown versions, bad
+entries, unknown fields, linked, changing or unreadable files are rejected as a
+whole and use that same fallback; no partial list or previous valid file is retained.
+Precedence is valid live file, then (startup environment or built-in default) plus
+accepted extras. A valid live file replaces everything, including extras.
+The live file has no timer, expiry or new limits.
+
+Catalog flags and playback admission re-read the file on the next request, even
+without a catalog refresh. Removing a model after browsing blocks a new playback
+job; existing jobs are not cancelled. Playback still requires a stored valid selector.
+Disallowed models remain browsable, report `playable: false`, and clip preparation
+returns `not_found`. Home Assistant uses these flags and needs no integration change.
+`config.get` returns `recordings.playbackModelPolicy`; the same policy appears in
+recordings capability, `recordings.diagnostics`, and `/diagnostics.recordings`.
+It includes `models`, `source` (`file`, `env`, `default`, `env+extra`, or `default+extra`),
+`rejection` (null when accepted/absent), and a policy `revision`. File rejection remains visible when the fallback is used.
+
+Environment changes still require an add-on restart. The live controls
+`playback-models.json`, [`progressive.json`](docs/recordings-progressive.md#per-clip-runtime-policy)
+and [`background-paging.json`](docs/ws-protocol.md) take effect on their next read.
+
+Clip cleanup uncertainty triggers a bounded in-memory station reconnect. Existing
+`playback-safety.json` files are ignored and left untouched. Clip diagnostics expose
+finite capture, cessation, release and reconnect outcomes, ingress media counts,
+rejection counts by reason, and reconnect duration, with cumulative counters.
+
+### Live catalog interval and row count
+
+Use the existing authorized WS command, with milliseconds for the interval:
+
+```json
+{ "id": 1, "cmd": "recordings.set_pacing", "backgroundCatalogInterval": 60000, "catalogQueryCount": 50 }
+```
+
+Either setting can be changed alone; `{"id":2,"cmd":"recordings.set_pacing","reset":true}`
+restores all pacing defaults, including 60000 ms and 50 rows. Settings are held in
+process memory and reset on restart, matching existing cover pacing. No control
+file, expiry or new timer is added. An interval change immediately cancels and
+rearms the existing background timer from the change time. Intervals must be finite
+numbers >=1000 ms, with no upper policy cap. Long waits reuse the same timer
+in Node-representable chunks; this does not shorten the configured interval. Existing station/latest-read admission
+gates remain unchanged, so polling faster does not bypass them.
+
+`catalogQueryCount` is an integer 1..87381, derived from the SDK's existing 256 KiB
+`EVENT_TABLE_BYTE_CAP` (`src/transport/rtc/event-table-candidate.ts`): even an array
+of n empty objects needs 3n+1 bytes. This packet-derived ceiling is not a station
+capacity claim; actual rows and envelope consume more of that same byte budget.
+Counts of 50 and 100 can be tested without restarting. Short successful replies
+merge valid rows. A larger count returning fewer rows, malformed data or an error
+falls back on the next query to the last full successful count (initially 20).
+Admission deferrals do not establish station rejection. No automatic retry or
+immediate re-query is added. An in-flight query keeps its original requested count.
+
+`config.get.recordings.catalogSettings`, recordings capability and
+`recordings.diagnostics.catalogSettings` (also `/diagnostics.recordings`) expose
+`backgroundCatalogInterval: {value, source}` and
+`catalogQueryCount: {value, source, configuredValue, lastGoodCount}`. Source is
+`default`, `live`, or (count only) `fallback`. `lastQuery` is null or
+`{requestedCount, returnedCount, status, reason}`; failed reads have null returned
+count. Values contain no station identifiers. `stationWindow` and the catalog
+disclosure reflect the effective count for the next query. The retired
+`recordings.test_playback_models` command returns the normal unknown-command error;
+use `<RECORDINGS_ROOT>/playback-models.json`, e.g.
+`{"version":1,"models":["T8425","T8171"]}`, for live playback eligibility.
+
+## Local recordings wire-contract fixes, 2026-11-07
+
+Install the updated Home Assistant integration first, then this bridge. This
+bridge advertises `coverBudget: 100`, which HA revision `cd068ae` rejects even at
+the default query count. The SDK artifact is unchanged and does not need repacking.
+
+`stationWindow` and `disclosure` in capability, catalog and diagnostics describe
+the effective `catalogQueryCount` (including fallback), validated in 1..87381.
+The built-in default is `50`, with `latest 50 station-wide; history incomplete`.
+This bridge requires integration revision `9c77c22` or later; `cd068ae` rejects
+station windows other than 20. Reset restores the 50-row default. The HA catalog
+page size and maximum returned rows remain 100. Diagnostic `lastPageCount` is
+current-window evidence: changing the effective count clears it until a matching
+page completes; historical requested/returned counts remain in `catalogSettings`.
+No scheduling or capture limits change.
+
+Monotonic milliseconds sent to HA are rounded upward to nonnegative integers,
+including refresh/cover retries and diagnostic timing statistics. HA retains its
+strict integer validators. New HA accepts old bridges at window 20, including
+legacy capability/diagnostics without the new disclosure/window metadata.
+
+### Recording time and camera exclusions
+
+Station timestamps use the valid host `TZ` supplied by Home Assistant Supervisor,
+with the existing station compatibility default when absent or invalid. The bridge
+reports the IANA zone used in its capability and each event. Install the matching
+integration first; it displays absolute timestamps in Home Assistant's configured
+time zone and accepts legacy bridge zones.
+
+`RECORDINGS_SKIP_CAMERAS` accepts a JSON array of camera names. Matching ignores
+case and surrounding spaces; commas remain part of a name. Empty or omitted means
+skip nothing. Invalid JSON, a non-array, or any non-string/blank entry rejects the
+entire value and skips nothing. Capability/config and diagnostics expose only
+`skipCameraPolicy` count, source and fixed rejection `skip_cameras`, never option
+names. Restart after changes. Excluded cameras cannot list recordings, request
+thumbnails or play recordings, including retained cache entries.
+
+Quick-start progressive playback defaults to 15 fps with a 3000 ms playable
+threshold. `RECORDINGS_PROGRESSIVE_FPS=off` disables it; live `progressive.json`
+continues to override startup settings.

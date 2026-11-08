@@ -1,9 +1,16 @@
 {
-  "version": "0.4.1-s1.experimental.12",
-  "preparedSourceHeads": {
-    "eufy-sdk": "b57f5b87dfef981bc4c346f84e41960235bfb113",
-    "ha-eufy-sdk-bridge": "bf67e64018ba81336af411beb36f97bb10bc903d"
+  "version": "0.4.1-s1.experimental.13",
+  "sourceCommits": {
+    "eufy-sdk": "612661e51387f114d01103131bf872d031b2c546",
+    "ha-eufy-sdk-bridge": "df2d27baac2f514a1b2670d83399a0cdc045c128",
+    "ha-eufy-sdk": "299ad5d3a561a688784eb1c39096c34aa212498d"
   },
-  "validation": "offline smoke; see external build manifest",
-  "sdkArtifactSha256": "d717f4fb7514d732db76c711ff430ed592d0be7f0b0e6323dce288cda3c56b0e"
+  "sdkArtifact": {
+    "bytes": 2037097,
+    "sha256": "67a7a0dfbce3387909b621e0aa21d47e1a71828307bb2074c4f5e41eaa60e438",
+    "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.13.tgz",
+    "integrity": "sha512-9jMXIMEFdfERh0+P6hh6faDsXCbrfgNwNhcv1F2FyJyyHHBJ9iq+74Lkb64y+LII7zD4bNkhJjEHHTCZPijgew==",
+    "runtimeSha256": "794e42f0b1508f504a57fb3b32da1f6f2f00690e68c360a3548ca38cf36b93ff"
+  },
+  "acceptance": "pending"
 }

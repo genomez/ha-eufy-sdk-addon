@@ -9,6 +9,7 @@ import { createMediaDiagnostics } from "./t9000-media-diagnostics.mjs";
 // camera, disconnecting is what stops it, so there's no "is it streaming" flag to drift. Returns the
 // request handler; server.mjs wraps it in http.createServer.
 import fs from "node:fs";
+import { serveClip } from "./recordings-clips.mjs";
 import path from "node:path";
 import { streamClientFor, dropStreamClient } from "../streams.mjs";
 import { createLiveStillTap } from "./live-still.mjs";
@@ -63,9 +64,7 @@ export function createHttpHandler(ctx) {
       observation?.observed(data, sn);
       const consumers = (data?.consumers ?? data?.[sn]?.consumers ?? []).filter(Boolean);
       if (!consumers.length) {
-        ctx.eventLog?.(
-          `/stream ${sn} - go2rtc lists no consumer yet (normal on a cold start)`,
-        );
+        ctx.eventLog?.(`/stream ${sn} - go2rtc lists no consumer yet (normal on a cold start)`);
         return;
       }
       for (const c of consumers) {
@@ -106,6 +105,115 @@ export function createHttpHandler(ctx) {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const [, kind, sn] = url.pathname.split("/");
 
+    if (kind === "recordings") {
+      const assetMatch = /^\/recordings\/v1\/playback\/(p_[A-Za-z0-9_-]{22})\/([a-f0-9-]{36})\/([0-9]{1,4})\.ts$/.exec(
+        url.pathname,
+      );
+      if (assetMatch && !url.search) {
+        if (!["GET", "HEAD"].includes(req.method)) return json(res, 405, { error: "Recordings unavailable" });
+        if ((ctx.recordingsSegmentActive ?? 0) >= 4) return json(res, 429, { error: "Recordings unavailable" });
+        let asset, stream;
+        ctx.recordingsSegmentActive = (ctx.recordingsSegmentActive ?? 0) + 1;
+        let released = false;
+        const release = () => {
+          if (released) return;
+          released = true;
+          stream?.destroy();
+          asset?.release();
+          ctx.recordingsSegmentActive--;
+        };
+        res.once("finish", release);
+        res.once("close", release);
+        try {
+          asset = ctx.recordings?.playbackAsset(assetMatch[1], assetMatch[2], Number(assetMatch[3]));
+          if (!asset) {
+            release();
+            return json(res, 410, { error: "Recordings unavailable" });
+          }
+          if (req.aborted || res.destroyed) {
+            release();
+            return;
+          }
+          res.writeHead(200, {
+            "Content-Type": "video/mp2t",
+            "Content-Length": asset.bytes,
+            "Cache-Control": "private, no-store",
+            "X-Content-Type-Options": "nosniff",
+          });
+          if (req.method === "HEAD") {
+            release();
+            return res.end();
+          }
+          stream = fs.createReadStream(asset.path);
+          stream.once("error", () => {
+            release();
+            res.destroy();
+          });
+          stream.pipe(res);
+          return;
+        } catch {
+          release();
+          if (res.headersSent) return res.destroy();
+          return json(res, 410, { error: "Recordings unavailable" });
+        }
+      }
+      // The service's host policy wrapper runs before this route. No station calls, even offline.
+      const clipMatch = /^\/recordings\/v1\/clips\/(c_[A-Za-z0-9_-]{22})\/(e_[A-Za-z0-9_-]{22})\.mp4$/.exec(
+        url.pathname,
+      );
+      const match =
+        clipMatch ?? /^\/recordings\/v1\/covers\/(c_[A-Za-z0-9_-]{22})\/(e_[A-Za-z0-9_-]{22})$/.exec(url.pathname);
+      if (!match || url.search) return json(res, 404, { error: "Recordings unavailable" });
+      if (req.method !== "GET") {
+        res.setHeader("Allow", "GET");
+        return json(res, 405, { error: "Recordings unavailable" });
+      }
+      if ((ctx.recordingsHttpActive ?? 0) >= 4) {
+        res.setHeader("Retry-After", "1");
+        return json(res, 429, { error: "Recordings unavailable" });
+      }
+      ctx.recordingsHttpActive = (ctx.recordingsHttpActive ?? 0) + 1;
+      let released = false;
+      const release = () => {
+        if (!released) {
+          released = true;
+          ctx.recordingsHttpActive--;
+        }
+      };
+      res.once?.("finish", release);
+      res.once?.("close", release);
+      try {
+        if (clipMatch) {
+          const clip = ctx.recordings?.cachedClip(match[1], match[2]);
+          if (!clip) {
+            release();
+            return json(res, 404, { error: "Recordings unavailable" });
+          }
+          return serveClip(req, res, clip);
+        }
+        const cover = await ctx.recordings?.cachedCover(match[1], match[2]);
+        if (!cover) {
+          release();
+          return json(res, 404, { error: "Recordings unavailable" });
+        }
+        res.writeHead(200, {
+          "Content-Type": "image/jpeg",
+          "Content-Length": cover.bytes,
+          "Cache-Control": "private, no-store",
+          "X-Content-Type-Options": "nosniff",
+          "X-Eufy-Image-Sha256": cover.sha256,
+          ...(typeof cover.startedAtUtc === "string" &&
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(cover.startedAtUtc)
+            ? { "X-Eufy-Event-Time": cover.startedAtUtc }
+            : {}),
+        });
+        return res.end(cover.jpeg);
+      } catch {
+        release();
+        return json(res, 404, { error: "Recordings unavailable" });
+      }
+    }
+
     if (url.pathname === "/diagnostics")
       return json(
         res,
@@ -113,12 +221,21 @@ export function createHttpHandler(ctx) {
         mediaDiagnostics
           ? {
               ...(ctx.diagnostics?.() ?? { schemaVersion: 1, available: false }),
+              recordings: ctx.recordings?.diagnostics() ?? null,
               t9000Media: {
                 ...mediaDiagnostics.snapshot(),
-                topologySnapshot: ctx.topologySnapshotDiagnostics?.() ?? { hits: 0, misses: 0, refreshes: 0, rejections: 0 },
+                topologySnapshot: ctx.topologySnapshotDiagnostics?.() ?? {
+                  hits: 0,
+                  misses: 0,
+                  refreshes: 0,
+                  rejections: 0,
+                },
               },
             }
-          : (ctx.diagnostics?.() ?? { schemaVersion: 1, available: false }),
+          : {
+              ...(ctx.diagnostics?.() ?? { schemaVersion: 1, available: false }),
+              recordings: ctx.recordings?.diagnostics() ?? null,
+            },
       );
 
     if (url.pathname === "/healthz") {
@@ -400,12 +517,21 @@ export function createHttpHandler(ctx) {
         cleanup();
         return;
       }
+      let releaseClipLive;
       try {
+        releaseClipLive = await ctx.recordings?.liveStart();
+        if (closed || flags.stopping || req.aborted || res.destroyed) {
+          releaseClipLive?.();
+          stopAcquisition();
+          return;
+        }
+        res.once("close", () => releaseClipLive?.());
+        res.once("finish", () => releaseClipLive?.());
         feedLease = await ctx.webrtcRelay?.acquireFeed(sn);
         if (stopAcquisition()) return;
         // T9000 media shares the main client's RTC transport; a second client is unnecessary and can
         // contend with the existing station session. Other cameras retain their dedicated P2P client.
-        const topology = feedLease ?? await ctx.resolveMediaTopology?.(sn);
+        const topology = feedLease ?? (await ctx.resolveMediaTopology?.(sn));
         if (!topology) throw webrtcError("webrtc_unsupported");
         onT9000 = topology.onT9000;
         if (stopAcquisition()) return;
@@ -474,7 +600,7 @@ export function createHttpHandler(ctx) {
         registered = true;
         rtspLastActive.set(sn, Date.now());
         res.writeHead(200, {
-          "content-type": onT9000 ? "video/H265" : "video/H264",
+          "content-type": "application/octet-stream",
           "cache-control": "no-cache",
         });
         feed.pipe(res);
@@ -482,13 +608,18 @@ export function createHttpHandler(ctx) {
       } catch (e) {
         if (stopAcquisition()) return;
         const admissionError = WEBRTC_ERRORS.has(e?.code);
+        releaseClipLive?.();
         mediaAttempt?.fail(e, "acquire");
         const superseded =
           e?.name === "StreamClientSupersededError" ||
           (usedStreamClient && acquiredStreamClient && dropClient(sn, acquiredStreamClient) === false);
         if (!superseded && !admissionError) ctx.noteStreamFailure?.(sn);
-        if (!res.headersSent) json(res, superseded || admissionError ? 503 : 502,
-          admissionError ? { error: "WebRTC operation failed", code: e.code } : { error: publicError(e) });
+        if (!res.headersSent)
+          json(
+            res,
+            superseded || admissionError ? 503 : 502,
+            admissionError ? { error: "WebRTC operation failed", code: e.code } : { error: publicError(e) },
+          );
         cleanup();
         return;
       } finally {

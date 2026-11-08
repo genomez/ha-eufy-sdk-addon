@@ -1,3 +1,135 @@
+Modified for genomez experimental.13, 2026-11-07
+
+Release packaging, current recordings/playback runtime and extra-model support.
+Modified paths since published experimental.12:
+
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `ICE_DIAGNOSTICS.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `README.md`
+- `SOURCE_MANIFEST.json`
+- `docs/recordings-sdk.md`
+- `docs/recordings-validation.md`
+- `package-lock.json`
+- `package.json`
+- `scripts/replay-playback-capture.mjs`
+- `src/client/__tests__/device-registry.spec.ts`
+- `src/client/__tests__/poll.spec.ts`
+- `src/client/__tests__/rtc-effect-confirmation.spec.ts`
+- `src/client/__tests__/rtc-last-seen.spec.ts`
+- `src/client/__tests__/rtc-state.spec.ts`
+- `src/client/__tests__/state-refresh-renewal.spec.ts`
+- `src/client/device-registry.ts`
+- `src/client/eufy-mega.ts`
+- `src/client/index.ts`
+- `src/client/state-refresh-diagnostics.ts`
+- `src/client/types.ts`
+- `src/transport/http/__tests__/key-persistence-file-faults.spec.ts`
+- `src/transport/http/__tests__/key-persistence-qualification.spec.ts`
+- `src/transport/http/mega-client.ts`
+- `src/transport/rtc/__tests__/command-keepalive.spec.ts`
+- `src/transport/rtc/__tests__/event-download-experiment.spec.ts`
+- `src/transport/rtc/__tests__/event-playback-candidate.spec.ts`
+- `src/transport/rtc/__tests__/event-playback-router.spec.ts`
+- `src/transport/rtc/__tests__/event-table-candidate.spec.ts`
+- `src/transport/rtc/__tests__/event-thumb-candidate.spec.ts`
+- `src/transport/rtc/__tests__/framing-diagnostics.spec.ts`
+- `src/transport/rtc/__tests__/ice-safety.spec.ts`
+- `src/transport/rtc/__tests__/information-refresh.spec.ts`
+- `src/transport/rtc/__tests__/peer.spec.ts`
+- `src/transport/rtc/__tests__/playback-expiry.spec.ts`
+- `src/transport/rtc/__tests__/playback-qualification.spec.ts`
+- `src/transport/rtc/__tests__/playback-quarantine.spec.ts`
+- `src/transport/rtc/__tests__/playback-replay.spec.ts`
+- `src/transport/rtc/__tests__/playback-station-flags.spec.ts`
+- `src/transport/rtc/__tests__/playback-telemetry.spec.ts`
+- `src/transport/rtc/__tests__/playback-transfer-speed.spec.ts`
+- `src/transport/rtc/__tests__/ptcs-compression.spec.ts`
+- `src/transport/rtc/__tests__/ptcs-reassembler.spec.ts`
+- `src/transport/rtc/__tests__/recording-clip.spec.ts`
+- `src/transport/rtc/__tests__/recordings-arbitration.spec.ts`
+- `src/transport/rtc/__tests__/recordings-fixture.ts`
+- `src/transport/rtc/__tests__/recordings-query-count.spec.ts`
+- `src/transport/rtc/__tests__/recordings.spec.ts`
+- `src/transport/rtc/__tests__/session.spec.ts`
+- `src/transport/rtc/command-router.ts`
+- `src/transport/rtc/connection-diagnostics.ts`
+- `src/transport/rtc/event-download-experiment.ts`
+- `src/transport/rtc/event-playback-candidate.ts`
+- `src/transport/rtc/event-table-candidate.ts`
+- `src/transport/rtc/event-thumb-candidate.ts`
+- `src/transport/rtc/event-time.ts`
+- `src/transport/rtc/framer.ts`
+- `src/transport/rtc/ice-diagnostics.ts`
+- `src/transport/rtc/index.ts`
+- `src/transport/rtc/peer.ts`
+- `src/transport/rtc/playback-ingress.ts`
+- `src/transport/rtc/playback-telemetry.ts`
+- `src/transport/rtc/ptcs-framer.ts`
+- `src/transport/rtc/recordings.ts`
+- `src/transport/rtc/renewal-diagnostics.ts`
+- `src/transport/rtc/retired-information-read.ts`
+- `src/transport/rtc/session.ts`
+
+## Previous notices
+
+# S1 experimental.12
+
+Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
+
+- Push-store save failures are caught and reported through push-connection diagnostics (#539).
+- Session and FCM files use an owner-only temporary file and atomic rename where the filesystem permits (#540). On restricted directories or single-file mounts, the existing in-place fallback is non-atomic and retains existing file permissions.
+- Stored snapshots recover after a successful re-login, including when an older in-flight download fails afterwards (#545).
+- Optional HomeBase S1 storage telemetry also supports firmware 4.4.1.4; it remains off by default.
+- After an acknowledged light command, Home Assistant holds the requested display value for up to 45 seconds. A matching boolean report releases it early. The acknowledgement does not confirm the physical light state.
+- A registry identity conflict invalidates the affected child-camera status to unknown.
+- HomeBase firmware metadata updates from newly received inventory without a Home Assistant restart. A new Firmware version sensor exposes the received version.
+- Dated experimental.11 and experimental.12 modification notices are retained, including the restored integration notice.
+
+Defaults are unchanged. Live view and optional floodlight safety remain off by default. Keep battery-camera preload off. Verify the integration ZIP checksum and restart Home Assistant after replacing the integration. Changing live-view opt-in requires an add-on restart. Command keepalive remains 29000 ms.
+
+Known live-view stalls, unexplained floodlight ON events and brightness/spotlight formatting issues remain unresolved. This is an experimental fork.
+
+Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.12
+
+Integration ZIP and checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.12
+
+Publication availability is pending. The accepted image is delivered without rebuilding. Earlier release records below are historical.
+
+Modified for genomez experimental.11, 2026-10-31
+
+Modified for genomez experimental.12, 2026-11-02
+
+## Files modified in experimental.12
+
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `README.md`
+- `SOURCE_MANIFEST.json`
+- `package-lock.json`
+- `package.json`
+- `src/client/__tests__/camera-health-ingress.spec.ts`
+- `src/client/__tests__/connect.spec.ts`
+- `src/client/__tests__/firmware-refresh.spec.ts`
+- `src/client/__tests__/stored-snapshot-lifecycle.spec.ts`
+- `src/client/camera-health-ingress.ts`
+- `src/client/camera-health.ts`
+- `src/client/eufy-mega.ts`
+- `src/client/types.ts`
+- `src/core/__tests__/store-concurrent.spec.ts`
+- `src/core/__tests__/store.spec.ts`
+- `src/core/store.ts`
+- `src/model/device.ts`
+- `src/transport/__tests__/stored-image-retry.spec.ts`
+- `src/transport/push/store.ts`
+- `src/transport/stored-image-cache.ts`
+
+## Historical modification notices
+
 Modified for genomez experimental.12, 2026-11-02
 
 Modified for genomez experimental.11, 2026-10-31
@@ -611,7 +743,6 @@ This replaces the earlier review.7 candidate with review.9 input `681efd9` (impl
 
 Automatic floodlight correction is OFF-only and cannot re-send ON. A shared command-health gate pauses automatic writes for ten minutes after two fast correlated refusals, while explicit commands remain eligible. Includes review.14 upstream beta.73/beta.80 adaptations, RTC renewal cooldowns and passive diagnostics. Source input: `6deea127459f368edb24d7d3df59dcaf60d5b508`.
 
-
 ## Historical input documentation and modification notices
 
 # Source modification index
@@ -1065,3 +1196,62 @@ retained signed station rejection evidence. Local synthetic verification only.
 ## Experimental.6 package refresh, 2026-10-17
 
 This replaces the earlier review.7 candidate with review.9 input `681efd9` (implementation `d4335b9`, on review.8 `f6a59d9`). Runtime source is unchanged. Includes bounded pending acceptance for eligible correlated floodlight late replies with authoritative correction, supported S1 camera sirens, standard doorbell ring events and faster demand-only live-view admission, alongside the battery stream fix and native relay. The add-on relay option defaults to false; command keepalive remains 29000 independently. Package versions are SDK `0.2.1-s1.experimental.6` and bridge `0.3.1-s1.experimental.6`. Earlier candidate status statements above are historical. Original licenses and attribution remain. This is local packaging; publication and final device/soak qualification are pending.
+
+## Save-first playback review fixes, 2026-11-06
+
+Streaming clip ingress uses duration-sized native byte/message budgets while
+retaining bounded concurrent reassembly and the short diagnostic probe limits.
+Video frames continue to be delivered immediately to the caller's sink. Marker
+persistence failure before dispatch reports storage_failed without a retained
+in-memory safety latch or a live-view block. Dispatched or late-media cleanup
+uncertainty still fails closed. Synthetic regression coverage includes clips
+larger than 4 MiB, duration budgets and direct live attachment after storage
+failure. No device or cloud qualification was performed.
+
+## Playback 3p4 local fix (2026-11-06)
+
+EOF captures require a keyframe start, at least two retained video frames, a retained span of at least max(1000 ms, 40% of catalog duration), and no internal gap over 1000 ms. EOF bypasses the catalog-end and density requirements; duration completion retains both. Full-clip receipts report mediaDurationMs as the monotonic retained span plus its mean frame interval, rounded to milliseconds. Observation permits well-formed LIVE-link channel-101 media with selector 1 for 10 seconds after a live stop on the same unambiguous session. Admission waits through this drain. Unexpected channels, PLAYBACK-link traffic, unknown data and LIVE frames outside this window retain their existing safety behavior.
+
+Offline synthetic validation only; installation acceptance remains false.
+
+### Offline playback safety update, 2026-11-06
+
+- Distinguish well-formed current-session LIVE media from PLAYBACK traffic in passive admission observation, independently of live target attribution. Remove the admission drain timer; retain consumer ambiguity handling.
+- Return bounded count-only observer poison classes and station status classes. Segment-matched terminal absence before acknowledgement or media identifies a no-stream refusal after stop dispatch and quiet observation; cleanup remains unconfirmed and retains reconnect protection.
+- Require EOF retained density of at least five frame intervals per second and comparable request-segment agreement, in addition to retained span and maximum-gap checks.
+- Validated locally with synthetic fixtures; no installation or device acceptance is claimed.
+
+### Offline playback cleanup simplification, 2026-11-06
+
+- Retain reconnect protection for no-stream refusals, including when a stop status follows the refusal. Refusal evidence remains separate from release confirmation.
+- Quarantined PLAYBACK-link fragments trigger the late latch without reassembly or retained payload. Compressed and out-of-order fragments follow the same recovery path.
+- Synthetic regressions verify refusal session replacement, isolation from delayed acknowledgements, and recovery after finished clips.
+
+### Playback 3p6 no-video refusal, 2026-11-06
+
+- Treat state 2/code 18 before acknowledgement or ingress as a no-stream refusal only when its numeric segmen exactly matches the start request. Missing, non-comparable and mismatched segments remain uncertain.
+- Require continuous ownership, a sent stop and quiet cessation before confirming refusal. Retain the latch and reconnect protection; acknowledgement or media invalidates clean refusal evidence.
+- Validated locally with synthetic fixtures; no installation or device acceptance is claimed.
+
+### Offline playback refusal latch retention, 2026-11-06
+
+- Refusal evidence that later becomes invalid (for example, media after a refusal) never permits release confirmation; the late latch and reconnect protection remain. Applies to both 0/7 and 2/18 refusals.
+
+### Playback 3p7 EOF coverage, 2026-11-06
+
+- Correlated EOF accepts bursty retained video gaps up to 3000 ms; existing random-access, span and density floors remain. Non-EOF completeness and all refusal, latch and reconnect checks remain unchanged.
+- Receipts include retained video span, maximum gap, frame count and the first failed completeness check. Framed media has no validated media timestamp.
+- Duration-bound capture allows three times the requested duration plus 15 seconds, with the existing cleanup reserve and timer ceiling. Synthetic night bursts and truncated EOF regressions run locally only.
+
+### Playback 3p7r discarded-tail completeness, 2026-11-06
+
+- Count post-cutoff video frames in a receipt bounded at 65535. Correlated EOF fails as truncated when discarded frames exceed the larger of 15 frames or 10 percent of retained video frames, after existing completeness checks.
+- Small tail overruns remain admissible. Non-EOF completeness, the expected-duration plus 750 ms trigger, latch, reconnect and refusal behavior are unchanged. Synthetic regressions cover slow-prefix truncation, night bursts and threshold boundaries; no runtime acceptance is claimed.
+
+### Offline playback truncation count, 2026-11-06
+
+- The truncation check uses an unsaturated internal count of discarded post-cutoff video frames; only the diagnostic receipt value is bounded.
+
+### Offline playback EOF pause tolerance, 2026-11-06
+
+- A correlated EOF capture whose untruncated arrival coverage reaches within 1000 ms of the expected duration is complete regardless of arrival pauses; the five-interval density floor still applies. Partial EOF coverage keeps the 3000 ms pause limit, and the truncation check runs before the pause check.

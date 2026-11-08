@@ -69,6 +69,7 @@ export function createDeviceView(ctx) {
     topology.invalidate();
     ctx.clearStorageTelemetry?.();
     ctx.clearCameraHealth?.();
+    ctx.recordings?.preempt();
   }
 
   function checkAccount() {
@@ -162,6 +163,7 @@ export function createDeviceView(ctx) {
     const m = dev.describe();
     const isCamera = m.capabilities.includes("camera") || m.capabilities.includes("video");
     const storageTelemetry = ctx.storageTelemetryFor?.(record, dev);
+    const lastSeenMs = lastSeen(m.sn);
     let health;
     let connectivity;
     try {
@@ -190,6 +192,7 @@ export function createDeviceView(ctx) {
       ...(storageTelemetry ? { storageTelemetry } : {}),
       ...(health ? { commandHealth: health } : {}),
       ...(connectivity ? { cameraHealth: connectivity } : {}),
+      ...(lastSeenMs === undefined ? {} : { lastSeenMs }),
       capabilities: m.capabilities,
       state: propertyState(dev), // stored SDK values retained for existing consumers
       ...decodedReadings(dev, m),
@@ -200,6 +203,17 @@ export function createDeviceView(ctx) {
       power: isCamera ? (onBatteryPower(m.model, m.capabilities) ? "battery" : "wired") : undefined,
       canReboot: m.codec === "station", // HomeBase-only; drives a Reboot button in HA
     };
+  }
+
+  /** Cached device-report time only; never infer reachability or command admission from its age. */
+  function lastSeen(sn) {
+    try {
+      const value = eufy.deviceState?.(sn)?.lastSeenMs;
+      return Number.isSafeInteger(value) && value >= 0 ? value : undefined;
+    } catch {
+      // Optional cached liveness cannot break ordinary state or expose exception payloads.
+      return undefined;
+    }
   }
 
   /** SDK Info is resolved roster metadata, not a wire read or an action. */
@@ -473,6 +487,16 @@ export function createDeviceView(ctx) {
         }),
       );
       observation.descriptionsSettled();
+      await ctx.recordings?.syncInventory(
+        devices.map((record, index) => ({
+          sn: record.sn,
+          stationSn: record.stationSn ?? record.sn,
+          model: record.model,
+          name: summaries[index].name,
+          isCamera: !!summaries[index].stream,
+          channel: record.raw?.device_channel,
+        })),
+      );
       topology.publish(
         summaries.map((summary, index) => ({
           ...summary,

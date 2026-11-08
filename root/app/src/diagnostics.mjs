@@ -431,6 +431,7 @@ function renewalEvidence(raw) {
     "command_channel_closed",
     "peer_failed",
     "peer_closed",
+    "grant_timeout",
   ].includes(raw.candidateCloseOrigin)
     ? raw.candidateCloseOrigin
     : null;
@@ -528,7 +529,11 @@ function observation(raw, kind) {
   for (const key of numeric) result[key] = number(raw[key]);
   if (kind === "schedule") result.reset = raw.reset === true;
   else {
-    result.outcome = ["success", "failed"].includes(raw.outcome) ? raw.outcome : null;
+    result.outcome = ["success", "failed", ...(kind === "client" ? ["superseded_by_renewal"] : [])].includes(
+      raw.outcome,
+    )
+      ? raw.outcome
+      : null;
     result.failure = refreshKinds.has(raw.failure) ? raw.failure : null;
     if (kind === "sweep")
       result.trigger = ["startup", "scheduled", "cloud_poll"].includes(raw.trigger) ? raw.trigger : null;
@@ -927,6 +932,7 @@ export function createDiagnostics(ctx, now = Date.now) {
           "attempts",
           "successes",
           "failures",
+          "renewalRetries",
           "lastAttemptMs",
           "lastSuccessMs",
           "lastFailureMs",
@@ -1004,6 +1010,21 @@ export function createDiagnostics(ctx, now = Date.now) {
       }
       const snapshot = {
         schemaVersion: 1,
+        logging: ctx.logging?.snapshot() ?? null,
+        inertSwitches: {
+          prewarm: {
+            supported: false,
+            requested: ctx.cfg?.prewarm === true,
+            effective: false,
+            reason: "empty_sdk_event_set",
+          },
+          debug_p2p: {
+            supported: false,
+            requested: ctx.DEBUG_P2P === true,
+            effective: false,
+            reason: "no_logger_sink",
+          },
+        },
         requests: (() => {
           try {
             return requestEvidence(ctx.getRequestEvidence?.());
@@ -1088,6 +1109,28 @@ export function createDiagnostics(ctx, now = Date.now) {
         rtcObservations: rtcObservationSnapshot,
         rtcRenewals,
         rtcKeepalive,
+        rtcPlaybackSafety: (() => {
+          try {
+            const value = ctx.eufy.rtc?.getPlaybackSafetyDiagnostics?.();
+            if (!value) return null;
+            return {
+              ...Object.fromEntries(
+                [
+                  "failureTaints",
+                  "failureDrops",
+                  "normalReestablishments",
+                  "ordinaryReads",
+                  "reestablishedAgeMs",
+                  "latchPersistenceFailures",
+                ].map((key) => [key, number(value[key])]),
+              ),
+              unresolved: value.unresolved === true,
+              active: value.active === true,
+            };
+          } catch {
+            return null;
+          }
+        })(),
         eventRouting: eventRouting(ctx.eufy.getEventRoutingDiagnostics?.()),
         detectionProjection: {
           total: detections.total,

@@ -2,18 +2,19 @@
 // Construct the one EufyMega SDK client the bridge logs in with. Kept tiny and dependency-light so the
 // heavier modules depend on the instance via `ctx.eufy`, not on how it was built. Event wiring that
 // needs other modules (error → session recovery, push liveness) lives in server.mjs, after ctx is whole.
-import { EufyMega, FileSessionStore, FileFcmStore, ConsoleLogger } from "@mega-yfue/eufy-sdk";
+import { EufyMega, FileSessionStore, FileFcmStore } from "@mega-yfue/eufy-sdk";
+import { playbackSessionIcePolicy } from "./recordings-experiments.mjs";
+import { recordingTimeZone } from "./config.mjs";
+import { registerRecordingsPolicy } from "./recordings-adapter.mjs";
 
-/**
- * Build the SDK client from config. `logger` is attached only under BRIDGE_DEBUG_P2P (raw transport logs).
- *
- * The logger is constructed WITHOUT a level so `ConsoleLogger`'s own `"debug"` default applies. The
- * transport lines this flag exists for are emitted at `debug`, and `LEVEL_RANK` puts `debug` below
- * `info`, so passing `"info"` here silenced exactly what the flag is meant to turn on: with it set you
- * got `p2pConnect` and nothing else, never the `[p2p] <sn> <<< …` frames.
- */
-export function createEufy({ cfg, DEBUG_P2P }, options = {}) {
-  return new EufyMega({
+/** Build the SDK client. DEBUG_P2P has no effect: no logger sink is installed by the bridge. */
+export function createEufy({ cfg }, options = {}) {
+  const recordings = {
+    enabled: cfg.recordings?.enabled !== false && options.rtc?.recordings?.enabled !== false,
+    stationBinding: "",
+    allowedCameras: new Set(),
+  };
+  const client = new EufyMega({
     email: cfg.email,
     password: cfg.password,
     countryCode: cfg.country,
@@ -32,14 +33,17 @@ export function createEufy({ cfg, DEBUG_P2P }, options = {}) {
       commandTimeoutMs: 14000,
       stateRefreshMs: cfg.rtcStateRefreshMs,
       sessionRefreshMs: cfg.rtcSessionRefreshMs,
+      recordingTimeZone: cfg.recordingTimeZone ?? recordingTimeZone(process.env.TZ),
       commandKeepaliveMs: cfg.rtcCommandKeepaliveMs,
+      ...options.rtc,
+      recordings,
+      icePolicyAtSessionCreation: playbackSessionIcePolicy(cfg.recordings?.root),
     },
     pollMs: cfg.pollMs, // undefined → SDK default; changeable live via config.set
-    // Event pre-warm is OFF by default (`[]` = no event opens P2P speculatively) so a battery camera's
-    // radio isn't held open ~28s per doorbell/person/pet/package event. BRIDGE_PREWARM=1 → undefined,
-    // which lets the SDK use its default high-intent pre-warm events.
+    // Both [] and undefined select no events in this SDK. BRIDGE_PREWARM currently has no effect.
     prewarmEvents: cfg.prewarm ? undefined : [],
     logger: undefined,
-    ...options,
+    ...Object.fromEntries(Object.entries(options).filter(([key]) => key !== "rtc")),
   });
+  return registerRecordingsPolicy(client, recordings);
 }

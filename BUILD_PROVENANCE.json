@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "0.4.1-s1.experimental.13",
+  "status": "prepared-unpublished",
+  "sourceCommit": "7691d0f40699551a8ef7043f24fe726be979736a",
+  "versions": {
+    "sdk": "0.2.1-s1.experimental.13",
+    "bridge": "0.3.1-s1.experimental.13",
+    "integration": "0.3.1-s1.experimental.13",
+    "addon": "0.4.1-s1.experimental.13"
+  },
+  "progressiveDefault": true,
+  "keepaliveMs": 29000,
+  "runtimeSourceRelease": "https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.13"
+}

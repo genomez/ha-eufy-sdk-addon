@@ -1,24 +1,17 @@
 {
-  "version": "0.4.1-s1.experimental.12",
+  "version": "0.4.1-s1.experimental.13",
+  "base": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
   "sourceCommits": {
-    "eufy-sdk": "b57f5b87dfef981bc4c346f84e41960235bfb113",
-    "ha-eufy-sdk-bridge": "bf67e64018ba81336af411beb36f97bb10bc903d"
+    "eufy-sdk": "612661e51387f114d01103131bf872d031b2c546",
+    "ha-eufy-sdk-bridge": "df2d27baac2f514a1b2670d83399a0cdc045c128",
+    "ha-eufy-sdk": "299ad5d3a561a688784eb1c39096c34aa212498d"
   },
   "sdkArtifact": {
-    "bytes": 1879497,
-    "sha256": "d717f4fb7514d732db76c711ff430ed592d0be7f0b0e6323dce288cda3c56b0e",
-    "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.12.tgz",
-    "integrity": "sha512-L0KkdZZIVJzg/XO5rp01fEaG1gXSKfDCMEWOAfCnLH3IT7+HgE5aTUggq/JFM00hBXHJlWGfzmyP8GFdpS3m5g=="
+    "bytes": 2037097,
+    "sha256": "67a7a0dfbce3387909b621e0aa21d47e1a71828307bb2074c4f5e41eaa60e438",
+    "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.13.tgz",
+    "integrity": "sha512-9jMXIMEFdfERh0+P6hh6faDsXCbrfgNwNhcv1F2FyJyyHHBJ9iq+74Lkb64y+LII7zD4bNkhJjEHHTCZPijgew==",
+    "runtimeSha256": "794e42f0b1508f504a57fb3b32da1f6f2f00690e68c360a3548ca38cf36b93ff"
   },
-  "sourceManifests": {
-    "eufy-sdk": {
-      "bytes": 90713,
-      "sha256": "ca4ce8c8357013c91ded6368097c6cf1c6edc8a581d75ce97b8e46e11b8e4422"
-    },
-    "ha-eufy-sdk-bridge": {
-      "bytes": 16347,
-      "sha256": "6906d17d6414bc2592a80ad3e2b19b86dc39e8cf2d4edd3ad073a00579bb2713"
-    }
-  },
-  "historicalLicenseDirectoriesRetained": true
+  "inheritedSources": "SOURCE_ACCESS.md; experimental7/SOURCE_ACCESS.md and retained .2/.4 delivery"
 }

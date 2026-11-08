@@ -1,7 +1,10 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
-import { pilotLog } from "../src/pilot-log.mjs";
-// Native libraries can write to file descriptors. Reconstruct only finite one-field events.
+import { pilotLog, pilotRecordEvent, pilotClipRecord, setPilotLogTimestamps } from "../src/pilot-log.mjs";
+// Native libraries can write to file descriptors. Reconstruct only finite allowlisted events; a
+// child's LOG_TIMESTAMPS `ts` is validated, then re-stamped here rather than forwarded.
+// Clip lifecycle records retain their validated fixed schema and original UTC timestamp.
+setPilotLogTimestamps(/^(1|true|yes|on)$/i.test(String(process.env.LOG_TIMESTAMPS ?? "")));
 const child = spawn(process.execPath, [path.join(process.env.BRIDGE_APP_DIR ?? "/app", "server.mjs")], {
   stdio: ["ignore", "pipe", "ignore"],
 });
@@ -12,15 +15,17 @@ child.stdout.on("data", (chunk) => {
   for (const char of chunk) {
     if (char === "\n") {
       if (!discarding) {
-        try {
-          const entry = JSON.parse(pending);
-          if (entry && Object.keys(entry).length === 1 && typeof entry.event === "string") pilotLog(entry.event);
-        } catch {}
+        const event = pilotRecordEvent(pending);
+        if (event !== undefined) pilotLog(event);
+        else {
+          const clip = pilotClipRecord(pending);
+          if (clip) process.stdout.write(JSON.stringify(clip) + "\n");
+        }
       }
       pending = "";
       discarding = false;
     } else if (!discarding) {
-      if (pending.length >= 256) {
+      if (pending.length >= 512) {
         pending = "";
         discarding = true;
       } else pending += char;

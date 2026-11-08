@@ -1,0 +1,93 @@
+/** Fixed, bounded playback diagnostics vocabulary shared by the two encoders. */
+export const endReasons = Object.freeze([
+  "normal_completion",
+  "viewer_released",
+  "viewer_expired",
+  "session_evicted",
+  "ffmpeg_exit",
+  "ffmpeg_signal",
+  "ffmpeg_spawn_error",
+  "ffmpeg_input_error",
+  "encoder_timeout",
+  "conversion_validation_failed",
+  "capture_failure",
+  "cancelled",
+  "refused",
+]);
+export const isViewerEnd = (reason) => ["viewer_released", "viewer_expired", "session_evicted"].includes(reason);
+export function playableThreshold(value) {
+  return Number.isInteger(value) && value >= 1000 && value <= 6000 ? value : 3000;
+}
+export function processFailure({ code, signal, spawned = false, input = false, timeout = false } = {}) {
+  return {
+    endReason: timeout
+      ? "encoder_timeout"
+      : spawned
+        ? "ffmpeg_spawn_error"
+        : signal
+          ? "ffmpeg_signal"
+          : Number.isInteger(code) && code !== 0
+            ? "ffmpeg_exit"
+            : input
+              ? "ffmpeg_input_error"
+              : "conversion_validation_failed",
+    exitCode: Number.isInteger(code) ? code : null,
+    signal: ["SIGTERM", "SIGKILL", "SIGABRT", "SIGSEGV", "SIGPIPE", "SIGINT"].includes(signal)
+      ? signal
+      : signal
+        ? "other"
+        : null,
+  };
+}
+export function conversionFailure(detail = {}) {
+  return Object.assign(new Error("convert_failed"), { reason: "convert_failed", ...processFailure(), ...detail });
+}
+
+/** Display labels only; reject transport identities and location-shaped strings. */
+export function cameraLabel(value) {
+  if (typeof value !== "string" || value.length > 256) return null;
+  // Judge the label as it would be displayed: controls removed, underscores read as separators.
+  const shown = value.replace(/[\x00-\x1f\x7f-\x9f]/g, "");
+  const spaced = shown.replace(/_/g, " ");
+  if (
+    /[\\/]|https?:|\bT[0-9A-Z]{7,}\b|[A-Za-z0-9_+=.-]{24,}|\b[cep]_[A-Za-z0-9_-]+\b/i.test(shown) ||
+    /\b(?:\d{1,3}\.){3}\d{1,3}\b|(?:[0-9a-f]{0,4}:){2,}[0-9a-f:.]*|\b(?:[0-9a-f]{2}[:-]){5}[0-9a-f]{2}\b|\b[0-9a-f]{4}(?:\.[0-9a-f]{4}){2}\b|\b[0-9a-f]{12,}\b|\b(?=[a-z0-9]{12,}\b)(?=[a-z0-9]*\d)[a-z0-9]+\b/i.test(
+      spaced,
+    )
+  )
+    return null;
+  return shown.trim().slice(0, 80) || null;
+}
+
+/** Remove transport identities and credentials before emitting bounded decoder diagnostics. */
+export function conversionStderr(value) {
+  return value
+    .replace(/[a-z][a-z0-9+.-]*:\/\/[^\s]+/gi, "[redacted]")
+    .replace(/\b(?:[a-z_]*token|authorization|password|secret|api[_-]?key)\b[^\r\n]*/gi, "[redacted]")
+    .replace(/\bbearer\s+\S+/gi, "[redacted]")
+    .replace(/\bT[0-9A-Z]{7,}\b/gi, "[redacted]")
+    .replace(/\b(?:\d{1,3}\.){3}\d{1,3}(?::\d+)?\b/g, "[redacted]")
+    .replace(/(?<![a-z0-9])(?:[0-9a-f]{0,4}:){2,}[0-9a-f:.%]*/gi, "[redacted]")
+    .replace(/[A-Za-z0-9_+\/=.-]{24,}/g, "[redacted]")
+    .replace(/[\x00-\x1f\x7f-\x9f]+/g, " ")
+    .replace(/[^\x20-\x7e]/g, "?")
+    .slice(-2048);
+}
+
+/** Retain the existing 2 KiB decoder tail, discarding a truncated first line before sanitizing. */
+export function createConversionStderr() {
+  let stderr = Buffer.alloc(0),
+    truncated = false;
+  return {
+    write(data) {
+      const chunk = Buffer.from(data);
+      truncated ||= stderr.length + chunk.length > 2048;
+      stderr = Buffer.concat([stderr, chunk.subarray(-2048)]).subarray(-2048);
+    },
+    read() {
+      const tail = stderr.toString("utf8"),
+        firstNewline = tail.indexOf("\n");
+      return conversionStderr(truncated ? (firstNewline < 0 ? "" : tail.slice(firstNewline + 1)) : tail);
+    },
+  };
+}
