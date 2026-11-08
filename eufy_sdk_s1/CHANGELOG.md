@@ -1,3 +1,11 @@
+# Unreleased (local development)
+
+- Add optional **Extra playback camera models** (`extra_playback_models`, default
+  empty). Restart applies the list through `RECORDINGS_PLAYBACK_MODELS_EXTRA` to
+  a matching bridge. Invalid extras reject atomically with policy diagnostics;
+  a valid live model file retains full precedence. Untested models may show a
+  playback error; recording identity checks remain in force.
+
 # S1 experimental.12
 
 Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.

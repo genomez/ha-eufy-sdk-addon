@@ -1,5 +1,29 @@
 # S1 experimental.12
 
+## Extra playback camera models (local development)
+
+Set **Extra playback camera models** (`extra_playback_models`, default `[]`) to
+a list of model strings, for example `T8212`, then restart the add-on. This lets
+outside testers enable recording playback for their own cameras. Untested
+models may fail to play and show an error; they never play the wrong video.
+
+```yaml
+extra_playback_models:
+  - T8212
+```
+
+Non-empty lists become comma-separated `RECORDINGS_PLAYBACK_MODELS_EXTRA`.
+The matching bridge trims, uppercases and deduplicates them, requiring
+`^T\d{4}[A-Z0-9]*$`. Extras extend the environment base or built-in defaults.
+Any invalid extra entry rejects the whole extra value, retains the base and
+reports `extra_models` in policy readback. Accepted sources include
+`default+extra` and `env+extra`. A valid live `playback-models.json` still replaces
+everything. An empty option leaves the extra environment variable unset.
+No new limits, timers or caps are introduced.
+
+Local development only: these options require the matching bridge change;
+the published experimental.12 image has not been rebuilt.
+
 Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.
 
 - Push-store save failures are caught and reported through push-connection diagnostics (#539).

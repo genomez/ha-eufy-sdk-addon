@@ -1,0 +1,7 @@
+configuration:
+  extra_playback_models:
+    name: Extra playback camera models
+    description: >-
+      Enter camera model numbers like T8212 to enable recording playback for your
+      cameras. Untested models may fail to play and show an error; they never play
+      the wrong video. Restart the add-on after changing this option.
