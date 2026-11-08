@@ -1,5 +1,13 @@
 # Unreleased (local development)
 
+- Add **Cameras to skip for recordings** (`recordings_skip_cameras`, default `[]`),
+  applied on restart through JSON `RECORDINGS_SKIP_CAMERAS` in the matching bridge.
+  Skipped cameras have no recordings, thumbnails or playback.
+- Matching bridge reports its actual recording zone; integration displays times
+  in Home Assistant's configured zone. Install the integration first.
+- Matching bridge enables 15 fps quick-start playback by default; live policy
+  overrides remain supported and the playable default stays 3000 ms.
+
 - Add optional **Extra playback camera models** (`extra_playback_models`, default
   empty). Restart applies the list through `RECORDINGS_PLAYBACK_MODELS_EXTRA` to
   a matching bridge. Invalid extras reject atomically with policy diagnostics;

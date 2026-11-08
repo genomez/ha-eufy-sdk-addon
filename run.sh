@@ -31,6 +31,10 @@ unset RECORDINGS_PLAYBACK_MODELS_EXTRA
 # Preserve rejection for empty items or embedded separators instead of changing list boundaries.
 extra_playback_models="$(jq -r '(.extra_playback_models // []) | if any(.[]; . == "" or contains(",")) then "invalid_extra_models" else join(",") end' "$OPTS")"
 [ -n "$extra_playback_models" ] && export RECORDINGS_PLAYBACK_MODELS_EXTRA="$extra_playback_models"
+# JSON preserves camera names containing commas; the bridge validates atomically.
+unset RECORDINGS_SKIP_CAMERAS
+recordings_skip_cameras="$(jq -c '.recordings_skip_cameras // []' "$OPTS")"
+[ "$recordings_skip_cameras" != "[]" ] && export RECORDINGS_SKIP_CAMERAS="$recordings_skip_cameras"
 export STREAM_IDLE_MS="$(jq -r '.stream_idle_ms // 300000' "$OPTS")"
 export RTSP_IDLE_OFF_MS="$(jq -r '.rtsp_idle_off_ms // 300000' "$OPTS")"
 # Optional: battery stream budget. Unset keeps the SDK default, so only pass it when the user sets one.

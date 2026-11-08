@@ -1,5 +1,28 @@
 # S1 experimental.12
 
+## Cameras to skip for recordings (local development)
+
+**Cameras to skip for recordings** (`recordings_skip_cameras`) defaults to `[]`.
+Enter camera names exactly as shown in the Eufy app. Matching is case-insensitive
+and ignores surrounding spaces. Skipped cameras get no recording list,
+thumbnails or playback, including retained recordings. Restart the add-on after
+changing this option. A non-empty list is exported as the JSON array
+`RECORDINGS_SKIP_CAMERAS`; commas remain part of camera names. Empty or omitted
+leaves the environment variable unset. The matching bridge rejects the entire
+value on invalid JSON, non-array input or any non-string/blank entry, skips
+nothing and reports only count/source/fixed rejection in policy readback.
+
+```yaml
+recordings_skip_cameras: []
+```
+
+Recording display uses Home Assistant's configured time zone. Install the matching
+integration first: it also accepts the legacy bridge's zone. The matching bridge
+uses Supervisor's `TZ`, retaining its station compatibility fallback if absent or
+invalid. Quick-start playback defaults to 15 fps and a 3000 ms playable threshold;
+`RECORDINGS_PROGRESSIVE_FPS=off` disables it, and live `progressive.json` still
+has precedence. These changes add no limit, timer or cap.
+
 ## Extra playback camera models (local development)
 
 The optional **Extra playback camera models** setting (`extra_playback_models`)

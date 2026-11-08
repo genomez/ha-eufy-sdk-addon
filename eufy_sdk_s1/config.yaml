@@ -34,6 +34,7 @@ options:
   s1_storage_telemetry: false
   webrtc_relay: false
   extra_playback_models: []
+  recordings_skip_cameras: []
   stream_idle_ms: 300000
   rtsp_idle_off_ms: 0
   prewarm: false
@@ -56,6 +57,7 @@ schema:
   s1_storage_telemetry: bool
   webrtc_relay: bool
   extra_playback_models: [str]
+  recordings_skip_cameras: [str]
   stream_idle_ms: int(0,)
   rtsp_idle_off_ms: int(0,)
   stream_battery_budget_ms: int(1,)?

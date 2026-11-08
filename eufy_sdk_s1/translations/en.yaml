@@ -5,3 +5,9 @@ configuration:
       Enter camera model numbers like T8212 to enable recording playback for your
       cameras. Untested models may fail to play and show an error; they never play
       the wrong video. Restart the add-on after changing this option.
+  recordings_skip_cameras:
+    name: Cameras to skip for recordings
+    description: >-
+      Enter camera names exactly as shown in the Eufy app. Matching ignores case
+      and surrounding spaces. Skipped cameras get no recording list, thumbnails
+      or playback. Restart the add-on after changing this option.

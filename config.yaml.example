@@ -36,6 +36,7 @@ options:
   s1_storage_telemetry: false
   webrtc_relay: false
   extra_playback_models: []
+  recordings_skip_cameras: []
   stream_idle_ms: 300000
   # Disable unsolicited native RTSP setting writes initially; deliberate controls remain available.
   rtsp_idle_off_ms: 0
@@ -64,6 +65,7 @@ schema:
   s1_storage_telemetry: bool
   webrtc_relay: bool
   extra_playback_models: [str]
+  recordings_skip_cameras: [str]
   # Auto-off a camera's live P2P feed after this long with no detection (ms); 0 disables. Saves battery.
   stream_idle_ms: int(0,)
   # Turn a BATTERY camera's native rtspStream OFF after this long idle (ms); 0 disables. Wired untouched.
