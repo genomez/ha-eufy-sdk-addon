@@ -29,7 +29,7 @@ options:
   email: ""
   password: ""
   country: GB
-  # Optional tuning â€” these mirror the bridge's own defaults, so leaving them is a no-op.
+  # Optional tuning — these mirror the bridge's own defaults, so leaving them is a no-op.
   poll_ms: 600000
   rtc_state_refresh_ms: 0
   # Optional S1 storage: hourly admission on an existing idle session, no retries.
@@ -75,7 +75,7 @@ schema:
   # (e.g. 180000) to keep a watched stream up. Mains cameras ignore it.
   stream_battery_budget_ms: "int(1,)?"
   # Speculatively open a camera's P2P on a high-intent event (doorbell/person/pet/package) so live
-  # view starts instantly. Off by default â€” it holds a battery camera's radio ~28s per event.
+  # view starts instantly. Off by default — it holds a battery camera's radio ~28s per event.
   prewarm: bool
   # Log one line per push/semantic event (what it is, clients reached, image fetches). On by default.
   event_log: bool
@@ -91,8 +91,8 @@ schema:
   solix_password: "password?"
   # Two-letter Solix account country (e.g. GB, DE); empty falls back to the eufy country above.
   solix_country: "str?"
-  # Scene backstop poll cadence (ms) â€” the slow authed read filling battery temp + a SOC cross-check.
+  # Scene backstop poll cadence (ms) — the slow authed read filling battery temp + a SOC cross-check.
   solix_scene_poll_ms: "int(5000,)?"
-  # Login self-heal backoff: base delay then cap (ms). Anker throttles frequent logins â€” keep generous.
+  # Login self-heal backoff: base delay then cap (ms). Anker throttles frequent logins — keep generous.
   solix_retry_base_ms: "int(10000,)?"
   solix_retry_max_ms: "int(10000,)?"

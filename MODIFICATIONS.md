@@ -1,9 +1,8 @@
 Modified for genomez experimental.14, 2026-11-09
 
-Paired .14 runtime, source and license documentation.
+Paired experimental.14 runtime documentation and source/license notices.
 
-DRAFT for owner review. Version and documentation changes only relative to the soaked inputs.
-
+Update the add-on and integration together, then restart Home Assistant after the add-on is running, so removed controls are cleaned up.
 
 Modified paths relative to the pinned input:
 
@@ -119,6 +118,7 @@ Modified paths relative to the pinned input:
 - `root/usr/share/licenses/eufy/sdk/SOURCE_MANIFEST.json`
 - `root/usr/share/licenses/eufy/sdk/package-lock.json`
 - `root/usr/share/licenses/eufy/sdk/package.json`
+
 
 ## Previous notices
 
@@ -315,7 +315,7 @@ Runtime and corresponding source: https://github.com/genomez/ha-eufy-sdk-addon/r
 
 Integration ZIP and checksum: https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.12
 
-Publication availability is pending. The accepted image is delivered without rebuilding. Earlier release records below are historical.
+The accepted image is delivered without rebuilding. Earlier release records below are historical.
 
 Modified for genomez experimental.11, 2026-10-31
 
@@ -485,7 +485,7 @@ The official integration ZIP remains frozen at 6bb1365de39615d9e094b44b766511845
 
 # Experimental.8 local preparation
 
-Version `0.4.1-s1.experimental.8` is prepared locally and unpublished. Pair add-on `0.4.1-s1.experimental.8`, integration/bridge `0.3.1-s1.experimental.8` and SDK `0.2.1-s1.experimental.8`.
+Version `0.4.1-s1.experimental. Pair add-on `0.4.1-s1.experimental.8`, integration/bridge `0.3.1-s1.experimental.8` and SDK `0.2.1-s1.experimental.8`.
 
 RTC late-viewer keyframe gating; bounded refresh backoff and recovery; isolated slow replies; camera connectivity and hub reply evidence; T8171 detection; opt-in floodlight safety with bounded confirmation and problem notices; observation-only media stall evidence.
 

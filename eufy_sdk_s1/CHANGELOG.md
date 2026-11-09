@@ -1,18 +1,24 @@
-# Experimental.14 â€” DRAFT for owner review
+# S1 experimental.14
 
-Pair add-on 0.4.1-s1.experimental.14, integration/bridge 0.3.1-s1.experimental.14, and SDK 0.2.1-s1.experimental.14. Linux amd64.
+Pair: add-on **0.4.1-s1.experimental.14**, integration/bridge **0.3.1-s1.experimental.14**, SDK **0.2.1-s1.experimental.14**.
 
-This paired release carries the accepted SDK, bridge and integration changes described below.
+## Fixed
+- S350 (T8416) cameras no longer show a spotlight switch they don't have.
+- A push connection that silently stops delivering events is now detected and reconnected.
+- Camera settings are no longer overwritten by older values when a startup or refresh overlaps a change.
+- Snapshot refreshes are no longer lost when they overlap; queued refreshes stop after a sign-in failure.
 
-Install the matching integration and restart Home Assistant before updating/starting the add-on. Run only one bridge on the account. Quick-start recording playback remains on by default; Home Assistant supplies the recording time zone. Command keepalive remains 29000 ms. Restart the add-on after changing playback-model or camera-skip options.
+## Changed
+- Floodlight brightness/spotlight controls that HomeBase S1 can't drive are hidden.
+- Number settings use per-model ranges.
+- Media → Eufy shows "Playback not yet supported for this camera", "No playable recordings yet" or "No recordings yet" instead of an empty camera folder.
+- More playback diagnostics.
 
-Experimental; accepted after an overnight test-build soak in one household. Software ordering fixes do not establish device sampling chronology or eliminate late RTC/cloud state. The earlier progressive-playback stop remains unexplained. Playback is silent, recent-history coverage is bounded, and multi-lens cameras guarantee only one view. Live view takes priority. Extra-model eligibility does not prove playback compatibility. Keep battery preload off and retain the previous paired versions and backups for rollback.
+## Upgrade
+Update the add-on and integration together, then restart Home Assistant after the add-on is running, so removed controls are cleaned up.
 
-Prepared locally. Publication is pending separate approval.
-
-## Previous documentation
-
-Changes: Correct T8416 spotlight capability, detect push silence, and preserve parameter revisions across overlapping device construction and convergence. Hide unsupported T9000 brightness/spotlight controls; retain numeric domains and recording-duration rules; expose playback eligibility and bounded progressive-playback diagnostics. Hide unsupported controls and show inert playback-status entries. Coalesce snapshot invalidations, retain follow-up refreshes, and cancel queued refreshes on authentication failure.
+## Known limits
+Playback is silent; multi-lens cameras show one view; a late update from a camera can still briefly show an old state.
 
 # S1 experimental.13
 
