@@ -1,14 +1,14 @@
 # Experimental.14 current source
 
 - eufy-sdk: https://github.com/genomez/eufy-sdk/commit/cea3a072299d7e812227056b14437ef81f1a7b15
-- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/4c07ff71966ec842961eec3e9828d255239d9913
+- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/b9854a015d1969ae62e0e90212b2f445c4fa72d4
 
 ## Historical dependency-source access
 
 # Experimental.13 sources and notices
 
 - eufy-sdk: https://github.com/genomez/eufy-sdk/commit/612661e51387f114d01103131bf872d031b2c546
-- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/df2d27baac2f514a1b2670d83399a0cdc045c128
+- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/b9854a015d1969ae62e0e90212b2f445c4fa72d4
 
 Current SDK/bridge notices are installed beside runtime and under /usr/share/licenses/eufy. Retained third-party source delivery below applies to the unchanged pinned base.
 

@@ -193,7 +193,7 @@
     },
     "packaging/source-records/bridge/SOURCE_MANIFEST.json": {
       "bytes": 29739,
-      "sha256": "30e47581f438d6dfcc2bede0e5f72206364f2c0d1199c7a07abe04e59d02e579"
+      "sha256": "51d6fcbabec30945870b930d32938bba9abd1503a79cc3df96978c8915e11673"
     },
     "packaging/source-records/bridge/package-lock.json": {
       "bytes": 26816,
@@ -281,7 +281,7 @@
     },
     "root/app/SOURCE_MANIFEST.json": {
       "bytes": 29739,
-      "sha256": "30e47581f438d6dfcc2bede0e5f72206364f2c0d1199c7a07abe04e59d02e579"
+      "sha256": "51d6fcbabec30945870b930d32938bba9abd1503a79cc3df96978c8915e11673"
     },
     "root/app/TEST_BUILD.json": {
       "bytes": 1075,
@@ -1929,7 +1929,7 @@
     },
     "root/usr/share/licenses/eufy/SOURCE_ACCESS.md": {
       "bytes": 3454,
-      "sha256": "e52b2993a4171231ec0c5f3b81de7c75339b4339a5e62fe593ad22dd235b473f"
+      "sha256": "df1dcaafb3ef40fa4b7beed6d6f453ec6437d5d1ee088d5e8c45265317b42339"
     },
     "root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json": {
       "bytes": 880,
@@ -1961,7 +1961,7 @@
     },
     "root/usr/share/licenses/eufy/bridge/SOURCE_MANIFEST.json": {
       "bytes": 29739,
-      "sha256": "30e47581f438d6dfcc2bede0e5f72206364f2c0d1199c7a07abe04e59d02e579"
+      "sha256": "51d6fcbabec30945870b930d32938bba9abd1503a79cc3df96978c8915e11673"
     },
     "root/usr/share/licenses/eufy/bridge/package-lock.json": {
       "bytes": 26816,
