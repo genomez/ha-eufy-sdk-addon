@@ -1,6 +1,6 @@
 # Experimental SDK release candidate
 
-Version `0.2.1-s1.experimental.6` is prepared locally and has not been published. This independently maintained S1/T9000 source is not an official upstream release. The package remains private, npm publication is disabled, and release qualification is pending.
+Version `0.2.1-s1.experimental.6` is described in this historical notice. This independently maintained S1/T9000 source is not an official upstream release. The package remains private, npm publication is disabled, and release qualification is pending.
 
 The implementation preserves the prior signaling safety fix and adds one bounded renewal retry when a verified replacement times out while an original-session lease is held. Eligibility requires the original session to remain connected and untainted, stable identity, a fresh complete information read after failure, lease release, and a thirty-second cooldown. The existing two-attempt budget and cancellation rules remain in force. ACK-only evidence cannot authorize retry.
 
@@ -20,13 +20,13 @@ Version `0.2.1-s1.experimental.4` adds an `origin` label to SDK error events. Ex
 
 ## Experimental.5 preparation, 2026-10-16
 
-Version `0.2.1-s1.experimental.5` is prepared locally and has not been published. Floodlight write confirmation; complete realtime teardown and empty-refresh backoff; withhold battery charge source on known mains cameras; treat -100 Wi-Fi as no reading; opt-in command-session keepalive; redact echoed tokens from RTC sign refusals.
+Version `0.2.1-s1.experimental.5` is described in this historical notice. Floodlight write confirmation; complete realtime teardown and empty-refresh backoff; withhold battery charge source on known mains cameras; treat -100 Wi-Fi as no reading; opt-in command-session keepalive; redact echoed tokens from RTC sign refusals.
 
 The keepalive is opt-in in source; the paired experimental.5 Linux amd64 runtime enables it every 29 seconds. An earlier implementation test on one S1 ran about 9.5 hours with 1,138/1,138 echoes and no keepalive drops. This is limited prior hardware evidence, not verification of the final experimental.5 image. One night does not establish that keepalive prevents outages. Live view is outside this release qualification.
 
 ## Experimental.6 preparation, 2026-10-16
 
-Version `0.2.1-s1.experimental.6` is prepared locally and has not been published. Packaging-only version update; SDK implementation and tests are unchanged from experimental.5, including token redaction and opt-in command-session keepalive.
+Version `0.2.1-s1.experimental.6` is described in this historical notice. Packaging-only version update; SDK implementation and tests are unchanged from experimental.5, including token redaction and opt-in command-session keepalive.
 
 The live-view changes are confined to the paired bridge; no SDK implementation or test files changed for this candidate. Existing licenses and attribution are preserved.
 
