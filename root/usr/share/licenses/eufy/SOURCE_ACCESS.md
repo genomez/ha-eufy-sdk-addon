@@ -1,3 +1,10 @@
+# Experimental.14 current source
+
+- eufy-sdk: https://github.com/genomez/eufy-sdk/commit/6d676ecab9b5ef57ffd4edc37347141fa84d31c9
+- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/bbc2d890f3ba4670c6f66a60cd22cbe8ad3120b5
+
+## Historical dependency-source access
+
 # Experimental.13 sources and notices
 
 - eufy-sdk: https://github.com/genomez/eufy-sdk/commit/612661e51387f114d01103131bf872d031b2c546

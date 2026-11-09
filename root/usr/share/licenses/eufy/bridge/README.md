@@ -1,3 +1,17 @@
+# Experimental.14 â€” DRAFT for owner review
+
+Pair add-on 0.4.1-s1.experimental.14, integration/bridge 0.3.1-s1.experimental.14, and SDK 0.2.1-s1.experimental.14. Linux amd64.
+
+Hide unsupported T9000 brightness/spotlight controls; retain numeric domains and recording-duration rules; expose playback eligibility and bounded progressive-playback diagnostics.
+
+Install the matching integration and restart Home Assistant before updating/starting the add-on. Run only one bridge on the account. Quick-start recording playback remains on by default; Home Assistant supplies the recording time zone. Command keepalive remains 29000 ms. Restart the add-on after changing playback-model or camera-skip options.
+
+Experimental; accepted after an overnight test-build soak in one household. Software ordering fixes do not establish device sampling chronology or eliminate late RTC/cloud state. The earlier progressive-playback stop remains unexplained. Playback is silent, recent-history coverage is bounded, and multi-lens cameras guarantee only one view. Live view takes priority. Extra-model eligibility does not prove playback compatibility. Keep battery preload off and retain the previous paired versions and backups for rollback.
+
+Prepared locally. Publication is pending separate approval.
+
+## Previous documentation
+
 # S1 experimental.13
 
 SDK 0.2.1-s1.experimental.13; bridge/integration 0.3.1-s1.experimental.13; add-on 0.4.1-s1.experimental.13. Linux amd64.

@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "experimentalTestOnly": true,
+  "baseConfigDigest": "sha256:98915362363771ca8c2a248d2a90bbc30c0ffae147dd4b3a5d4f22ca0e16504e",
+  "baseRootfsDiffIds": [
+    "sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+    "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c",
+    "sha256:90c769c728da7a721354bddd1ba2b5008fd705041398ce8c6ef77c6a1d442e8a"
+  ],
+  "expectedHaBaseImageId": "sha256:20efacc75c867c6f50f728d30ea76697e00d752e369cbf82ff84e9b7de80ec10",
+  "commits": {
+    "sdk": "0472898c1781f2ba8da812e80d1ee32cc77661e0",
+    "bridge": "3c8e9e87974c5dbf2e897fe6babf8dbaa8a368e0",
+    "ha": "969cdeedf02de3992d2b4b8eccd54271ba9a9d55"
+  },
+  "sourceCheckoutsCleanAtStartAndEnd": true,
+  "sdkVersion": "0.2.1-s1.experimental.14-test",
+  "bridgeVersion": "0.3.1-s1.experimental.14-test",
+  "integrationVersion": "0.3.1-s1.experimental.14-test",
+  "preservedSourceProbePins": true,
+  "inheritedReleaseProvenanceIsNotThisTestBuild": true
+}

@@ -1,3 +1,21 @@
+Modified for genomez experimental.14, 2026-11-09
+
+Hide unsupported T9000 brightness/spotlight controls; retain numeric domains and recording-duration rules; expose playback eligibility and bounded progressive-playback diagnostics.
+
+DRAFT for owner review. Version and documentation changes only relative to the soaked inputs.
+
+
+Modified paths relative to the pinned input:
+
+- `EXPERIMENTAL.md`
+- `MODIFICATIONS.md`
+- `README.md`
+- `SOURCE_MANIFEST.json`
+- `package-lock.json`
+- `package.json`
+
+## Previous notices
+
 Modified for genomez experimental.13, 2026-11-07
 
 Release packaging, current recordings/playback runtime and extra-model support.
