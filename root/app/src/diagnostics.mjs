@@ -1,3 +1,6 @@
+import { guardSummary } from "./guard-confirmation.mjs";
+import { inventoryError, inventorySummary } from "./inventory-evidence.mjs";
+import { stateEvidenceSummary } from "./state-evidence.mjs";
 /** Modified for genomez S1 experimental source preview, 2026-10-18. */
 import { emptyCachedPropertyEvidence } from "./cached-property-evidence.mjs";
 import { createCameraHealthDiagnostics } from "./camera-health.mjs";
@@ -754,7 +757,7 @@ function thumbnailCounters(raw, sdk = false) {
 /** Cached diagnostics; reading this snapshot never opens a device or cloud connection. */
 export function createDiagnostics(ctx, now = Date.now) {
   let account = ctx.eufy.api?.auth?.userId;
-  let errors, commands, detections, windows, contrary, camera;
+  let errors, commands, detections, detectionDedupe, windows, contrary, camera;
   function reset() {
     camera = createCameraHealthDiagnostics(now);
     contrary = {
@@ -773,6 +776,7 @@ export function createDiagnostics(ctx, now = Date.now) {
     windows = createCommandWindows();
     errors = { count: 0, lastAtMs: null, lastKind: null, lastOrigin: null, byOrigin: {}, recent: [] };
     detections = { total: 0, recent: [] };
+    detectionDedupe = { suppressed: 0, passedEnriched: 0, cacheSize: 0 };
     commands = {
       attempts: 0,
       completed: 0,
@@ -834,6 +838,12 @@ export function createDiagnostics(ctx, now = Date.now) {
         outcome === "completed" ? "confirmationsCompleted" : outcome === "failed" ? "confirmationsFailed" : null;
       if (key) contrary[key] = Math.min(Number.MAX_SAFE_INTEGER, contrary[key] + 1);
     },
+    recordDetectionDedupe(outcome, cacheSize) {
+      scope();
+      if (outcome === "suppressed" || outcome === "passedEnriched")
+        detectionDedupe[outcome] = Math.min(Number.MAX_SAFE_INTEGER, detectionDedupe[outcome] + 1);
+      if (number(cacheSize) !== null) detectionDedupe.cacheSize = Math.min(512, cacheSize);
+    },
     recordDetection(event, input, output) {
       if (!["personDetected", "strangerDetected"].includes(event)) return;
       scope();
@@ -855,10 +865,16 @@ export function createDiagnostics(ctx, now = Date.now) {
       scope();
       errors.count++;
       errors.lastAtMs = now();
-      errors.lastKind = sdkErrorKind(error);
+      const inventory = inventoryError(ownDataValue(context, "inventoryError"));
+      errors.lastKind = inventory ? `inventory_${inventory.kind}` : sdkErrorKind(error);
       errors.lastOrigin = sdkErrorOrigin(context);
       errors.byOrigin[errors.lastOrigin] = (errors.byOrigin[errors.lastOrigin] ?? 0) + 1;
-      errors.recent.push({ atMs: errors.lastAtMs, kind: errors.lastKind, origin: errors.lastOrigin });
+      errors.recent.push({
+        atMs: errors.lastAtMs,
+        kind: errors.lastKind,
+        origin: errors.lastOrigin,
+        ...(inventory ? { inventoryError: inventory } : {}),
+      });
       if (errors.recent.length > SDK_ERROR_HISTORY_LIMIT) errors.recent.shift();
       return "sdk_" + errors.lastKind;
     },
@@ -1012,6 +1028,16 @@ export function createDiagnostics(ctx, now = Date.now) {
       }
       const snapshot = {
         schemaVersion: 1,
+        guardConfirmation: guardSummary(ctx.eufy.getGuardConfirmationDiagnostics?.()),
+        inventoryErrors: inventorySummary(ctx.eufy.getInventoryErrorDiagnostics?.()),
+        stateEvidence: (() => {
+          try {
+            const summary = stateEvidenceSummary(ctx.eufy.getStateEvidenceDiagnostics?.());
+            return summary ? { ...summary, forwardingFailures: ctx.state.stateEvidenceForwardingFailures ?? 0 } : null;
+          } catch {
+            return null;
+          }
+        })(),
         logging: ctx.logging?.snapshot() ?? null,
         inertSwitches: {
           prewarm: {
@@ -1134,6 +1160,14 @@ export function createDiagnostics(ctx, now = Date.now) {
           }
         })(),
         eventRouting: eventRouting(ctx.eufy.getEventRoutingDiagnostics?.()),
+        detectionDedupe: { ...detectionDedupe },
+        lateNameCheck: ctx.lateNameCheck?.diagnostics() ?? {
+          enrolled: 0,
+          rejectedCapacity: 0,
+          samples: 0,
+          reads: 0,
+          refusals: 0,
+        },
         detectionProjection: {
           total: detections.total,
           evicted: detections.total - detections.recent.length,
@@ -1142,7 +1176,10 @@ export function createDiagnostics(ctx, now = Date.now) {
         sdkErrors: {
           ...errors,
           byOrigin: { ...errors.byOrigin },
-          recent: errors.recent.map((row) => ({ ...row })),
+          recent: errors.recent.map((row) => ({
+            ...row,
+            ...(row.inventoryError ? { inventoryError: inventoryError(row.inventoryError) } : {}),
+          })),
         },
         propertyCommands: {
           ...commands,

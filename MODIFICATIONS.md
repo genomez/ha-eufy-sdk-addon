@@ -1,3 +1,15 @@
+# Experimental.15 local release candidate
+
+Pair the updated SDK, bridge and integration with the existing pinned base, wrapper and dependency licenses.
+
+Prepared for owner review on 2026-11-14. No live-device acceptance or publication is claimed.
+
+Pair SDK 0.2.1-s1.experimental.15, bridge/integration 0.3.1-s1.experimental.15 and add-on 0.4.1-s1.experimental.15.
+
+Diagnostic switches remain opt-in; no new add-on option is introduced. Playback remains silent and bounded; multi-lens playback guarantees only one view.
+
+## Prior notices
+
 Modified for genomez experimental.14, 2026-11-09
 
 ## .14 changes
