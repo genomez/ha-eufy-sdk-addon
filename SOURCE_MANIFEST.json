@@ -197,7 +197,7 @@
     },
     "packaging/source-records/bridge/SOURCE_MANIFEST.json": {
       "bytes": 31532,
-      "sha256": "f3b1348b75d533854a6db5d4df3a55e9d7605b2114bcf6b632456a6179256a84"
+      "sha256": "e8fb88b7d642a57f0acdcc76b9ad3f91d932136fe45fe5446cb14ca89ecf9a0e"
     },
     "packaging/source-records/bridge/package-lock.json": {
       "bytes": 26816,
@@ -237,7 +237,7 @@
     },
     "packaging/source-records/sdk/SOURCE_MANIFEST.json": {
       "bytes": 100239,
-      "sha256": "5db98ec52e1d952415cf935ee2e2a5121c0d5019779f6d213a3e40a3696b5d97"
+      "sha256": "e562569653389446e563f98c72db8f79eb21af86887e7f8cf653c11975260e14"
     },
     "packaging/source-records/sdk/package-lock.json": {
       "bytes": 88834,
@@ -285,7 +285,7 @@
     },
     "root/app/SOURCE_MANIFEST.json": {
       "bytes": 31532,
-      "sha256": "f3b1348b75d533854a6db5d4df3a55e9d7605b2114bcf6b632456a6179256a84"
+      "sha256": "e8fb88b7d642a57f0acdcc76b9ad3f91d932136fe45fe5446cb14ca89ecf9a0e"
     },
     "root/app/TEST_BUILD.json": {
       "bytes": 1075,
@@ -345,7 +345,7 @@
     },
     "root/app/node_modules/@mega-yfue/eufy-sdk/SOURCE_MANIFEST.json": {
       "bytes": 100239,
-      "sha256": "5db98ec52e1d952415cf935ee2e2a5121c0d5019779f6d213a3e40a3696b5d97"
+      "sha256": "e562569653389446e563f98c72db8f79eb21af86887e7f8cf653c11975260e14"
     },
     "root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/camera-health-ingress.d.ts": {
       "bytes": 3151,
@@ -2000,8 +2000,8 @@
       "sha256": "a22761c6eb720a59125b91bfeaf9dcb6e8bd1ad0b92e70697f0ed45015aee003"
     },
     "root/usr/share/licenses/eufy/SOURCE_ACCESS.md": {
-      "bytes": 3826,
-      "sha256": "5544d885d2e5430ca34254550afb0bdfe407418c3e14410c256af77752a2e00f"
+      "bytes": 4198,
+      "sha256": "ef8a1ed16772f0bc106b0c69bc53daf248f1a31f16154cd5bc214b7b57085e19"
     },
     "root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json": {
       "bytes": 897,
@@ -2033,7 +2033,7 @@
     },
     "root/usr/share/licenses/eufy/bridge/SOURCE_MANIFEST.json": {
       "bytes": 31532,
-      "sha256": "f3b1348b75d533854a6db5d4df3a55e9d7605b2114bcf6b632456a6179256a84"
+      "sha256": "e8fb88b7d642a57f0acdcc76b9ad3f91d932136fe45fe5446cb14ca89ecf9a0e"
     },
     "root/usr/share/licenses/eufy/bridge/package-lock.json": {
       "bytes": 26816,
@@ -2044,8 +2044,8 @@
       "sha256": "ecd3f256ebdd00b4e82a9e2a744e38ab1d1e119e6acb28cfc87846417bac7407"
     },
     "root/usr/share/licenses/eufy/eufy-sdk-0.2.1-s1.experimental.15-source.tar.gz": {
-      "bytes": 1834763,
-      "sha256": "5e385944af309f1c777d46ab42938bc382e3dd5f0f16d0f389517aea279fa275"
+      "bytes": 1834773,
+      "sha256": "2a013667f8966f8e8421227e9a117bdebe1609d5047f2029778c3237205ab8d9"
     },
     "root/usr/share/licenses/eufy/eufy-sdk-LICENSE": {
       "bytes": 11540,
@@ -2161,7 +2161,7 @@
     },
     "root/usr/share/licenses/eufy/sdk/SOURCE_MANIFEST.json": {
       "bytes": 100239,
-      "sha256": "5db98ec52e1d952415cf935ee2e2a5121c0d5019779f6d213a3e40a3696b5d97"
+      "sha256": "e562569653389446e563f98c72db8f79eb21af86887e7f8cf653c11975260e14"
     },
     "root/usr/share/licenses/eufy/sdk/package-lock.json": {
       "bytes": 88834,
