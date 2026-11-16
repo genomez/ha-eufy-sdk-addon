@@ -44,8 +44,8 @@
       "sha256": "b00927f304bda06685689168eeec1b7007720901d9d87c4da6d6b820d1ba29c3"
     },
     "MODIFICATIONS.md": {
-      "bytes": 29194,
-      "sha256": "79e444748beabcc51ecd35c6257a3457b6f9eb91ed527b1ea06d0486a2b1858a"
+      "bytes": 29203,
+      "sha256": "18a60b0bb833871b6e88fb10634bd8ee7865bd801316170c5775e32cb7ce1e9a"
     },
     "PREVIEW_SOURCE_MANIFEST.json": {
       "bytes": 2351,
@@ -1987,7 +1987,7 @@
       "bytes": 4731,
       "sha256": "dedfc38a4a46d85175442b100c48780c515e220350b58ae21f8dab64f35029e4"
     },
-    "root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml": {
+    "root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml.recorded": {
       "bytes": 1885,
       "sha256": "a5800578ff0806f67c74be19732a236603af5cf83245f3121c1c071440c88184"
     },
@@ -2003,7 +2003,7 @@
       "bytes": 4731,
       "sha256": "e9f1c25e1f21edfdf33268609511395a959d5f476b6aa5aca87546d3cd3b77b8"
     },
-    "root/recipe/experimental14/wrapper/eufy_sdk_s1/config.yaml": {
+    "root/recipe/experimental14/wrapper/eufy_sdk_s1/config.yaml.recorded": {
       "bytes": 1885,
       "sha256": "306b4eefd7dcfe2c041bb8d9cc95d72fee093a0efe101e62f576cdfd5e2afc7b"
     },
@@ -2019,7 +2019,7 @@
       "bytes": 4731,
       "sha256": "84b930f4994b6c33bae6fcedf5bebc062193959a691022e2172f1755e6708085"
     },
-    "root/recipe/experimental15/wrapper/eufy_sdk_s1/config.yaml": {
+    "root/recipe/experimental15/wrapper/eufy_sdk_s1/config.yaml.recorded": {
       "bytes": 1885,
       "sha256": "33a8a51b58d8525f4e9d11cc1f1486b7ebd9cbd23fdbbdbe31035614458e3427"
     },
@@ -2035,7 +2035,7 @@
       "bytes": 4633,
       "sha256": "0624cbd61056f5aacb908a23c1ee20c556449c14ff5be50df94d98c898a7f427"
     },
-    "root/recipe/experimental16/wrapper/eufy_sdk_s1/config.yaml": {
+    "root/recipe/experimental16/wrapper/eufy_sdk_s1/config.yaml.recorded": {
       "bytes": 1810,
       "sha256": "19fe3b1307cb2eb7f2b06687e51e4fb2f94b280cf4cf7f444e781f3e8180c4e4"
     },

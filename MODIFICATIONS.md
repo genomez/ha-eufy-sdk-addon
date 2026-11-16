@@ -175,7 +175,7 @@ Modified paths since published experimental.12:
 - `root/recipe/experimental13/Dockerfile`
 - `root/recipe/experimental13/SOURCE_INPUTS.json`
 - `root/recipe/experimental13/wrapper/config.yaml.example`
-- `root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml`
+- `root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml.recorded`
 - `root/recipe/experimental13/wrapper/run.sh`
 - `root/run.sh`
 - `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`
