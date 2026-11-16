@@ -1,3 +1,13 @@
+# S1 experimental.16 local release candidate
+
+Modified for genomez, 2026-11-15. Project supported settings and installed volume controls; preserve motion-light receipts and expose the on-demand diagnostic query.
+
+Pair SDK 0.2.1-s1.experimental.16, bridge/integration 0.3.1-s1.experimental.16 and add-on 0.4.1-s1.experimental.16.
+
+No publication or live-device acceptance is claimed.
+
+## Historical public documentation through experimental.15
+
 # S1 experimental.15
 
 Stable guard and inventory evidence, occurrence deduplication, and late person identification from matching station crops. Late-name identification is enabled by default; diagnostic output requires explicit opt-in.

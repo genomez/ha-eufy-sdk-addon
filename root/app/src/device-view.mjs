@@ -1,3 +1,4 @@
+import { publicSchedule } from "./t9000-settings.mjs";
 import { inventoryEvidence, inventoryRow } from "./inventory-evidence.mjs";
 import { deviceEvidence, evidenceRuntime, stateEvidence } from "./state-evidence.mjs";
 /** Modified for genomez S1 experimental source preview, 2026-10-18. */
@@ -216,7 +217,12 @@ export function createDeviceView(ctx) {
       streaming: isCamera ? streaming.has(m.sn) : undefined, // live P2P feed active right now?
       // Share the SDK media budget's hardware classification, independent of a level/charging reading.
       power: isCamera ? (onBatteryPower(m.model, m.capabilities) ? "battery" : "wired") : undefined,
-      canReboot: m.codec === "station", // HomeBase-only; drives a Reboot button in HA
+      canReboot:
+        m.codec === "station" &&
+        dev.canReboot !== false &&
+        !String(m.model ?? "")
+          .toUpperCase()
+          .startsWith("T9000"), // HomeBase-only; drives a Reboot button in HA
     };
   }
 
@@ -247,7 +253,15 @@ export function createDeviceView(ctx) {
   /** Live property values as a flat `{ name: value }` map (reading schedules a background refresh). */
   function propertyState(dev) {
     const out = {};
-    for (const [name, pv] of Object.entries(dev.getProperties())) out[name] = pv.value;
+    for (const [name, pv] of Object.entries(dev.getProperties())) {
+      if (["lightScheduleConfig", "motionActivateLight", "unknown_1421", "unknown_1422"].includes(name)) continue;
+      out[name] =
+        name === "lightSchedule"
+          ? JSON.stringify(publicSchedule(pv.value))
+          : name === "motionLightEnabled" && typeof pv.value !== "boolean"
+            ? null
+            : pv.value;
+    }
     return out;
   }
 
@@ -264,6 +278,10 @@ export function createDeviceView(ctx) {
               let value;
               try {
                 value = surface?.[read.accessor];
+                if (cap.accessor === "light" && read.accessor === "lightSchedule") {
+                  const entries = publicSchedule(value);
+                  value = entries === null ? null : JSON.stringify(entries);
+                }
                 if (
                   value != null &&
                   typeof value !== "string" &&
@@ -304,7 +322,16 @@ export function createDeviceView(ctx) {
       details: (manifest.details ?? []).map(({ capability, accessor, reads, actions, undescribedActions }) => ({
         capability,
         accessor,
-        reads,
+        reads: (reads ?? []).map((read) => {
+          const reported = (dev.properties ?? []).find((candidate) => candidate.name === read.property);
+          const setting = (dev.writeOnlySettings ?? []).find(
+            (candidate) =>
+              candidate.name === read.property &&
+              Number.isInteger(candidate.paramType) &&
+              candidate.paramType === reported?.paramType,
+          );
+          return setting ? { ...read, writable: true } : read;
+        }),
         actions,
         undescribedActions,
       })),
@@ -337,8 +364,20 @@ export function createDeviceView(ctx) {
     }
     // A flat event cannot identify one of multiple capability reads for the same property.
     // Invalidate ambiguity instead of choosing a capability by iteration order.
+    if (["lightScheduleConfig", "motionActivateLight", "unknown_1421", "unknown_1422"].includes(property)) value = null;
+    if (property === "lightSchedule") {
+      const entries = publicSchedule(value);
+      value = entries === null ? null : JSON.stringify(entries);
+    }
     const evidence = payload.evidence ? stateEvidence(payload.evidence, evidenceRuntime(eufy)) : null;
-    return { deviceSn: payload.deviceSn, property, value, ...(evidence ? { evidence } : {}) };
+    // An unprojectable event invalidates the snapshot. Omitting value makes HA
+    // refresh all decoded reads, including the sibling motion-light settings.
+    return {
+      deviceSn: payload.deviceSn,
+      property,
+      ...(value !== null ? { value } : {}),
+      ...(evidence ? { evidence } : {}),
+    };
   }
 
   /** Anonymous cache-only snapshot of already retained camera models; never warm or await a cache. */

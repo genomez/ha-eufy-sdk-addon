@@ -1,3 +1,11 @@
+# S1 experimental.16 local release candidate
+
+Modified for genomez, 2026-11-15. T9000 settings routing and composite writes; model-specific recording quality, night vision and clip bounds; installed volumes, retained device state, solar status and an on-demand diagnostic query.
+
+No publication or live-device acceptance is claimed.
+
+## Historical public documentation through experimental.15
+
 # S1 experimental.15
 
 Guard receipt ordering, bounded inventory evidence and recovery confirmation; bounded person roster and crop reads. Event person probing and event diagnostics require explicit opt-in.
