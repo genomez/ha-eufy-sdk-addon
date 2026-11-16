@@ -42,7 +42,7 @@ jobs:
           python3 - <<'PY'
           import json
           r = json.load(open('assets.json'))
-          assert r['draft'] is True and r['prerelease'] is True
+          assert r['draft'] is False and r['prerelease'] is True
           assert r['tag_name'] == 's1-runtime-0.4.1.experimental.16'
           expected = {'eufy-sdk-0.2.1-s1.experimental.16-source.tar.gz': ('e9d390f3f723d52b3da205b76d9fb2e67ee5d8d84daec39048dab15f0937b656', 1902453), 'experimental-bridge-image.tar': ('a0c5607ad268eaad619f7a6850d0e3d1645c6334ecc4baedb6eee0e1eebe04f4', 748812288), 'final-context.tar': ('2d94a59500d27f3ce741667cbc857bdc3f442b753fb4019f6051d05ed50b288a', 17694720), 'genomez-eufy-sdk-0.2.1-s1.experimental.16.tgz': ('de5561af7a1d8e72ff72710d08b94953d33fc3982183818cbd16e3c9cf5f5c6c', 2130436), 'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.16.tgz': ('31d75422700a8d5ceb2c56f4fdc502a5161cdba8d3929b33650b0b3ca8202966', 250449), 'PRIVACY.md': ('d83f82b80f7057aa712b8fa479dac379709db9e8e1653ab40d42f91e9daa4530', 1316), 'README.md': ('33a5b1c0ec62be9bc2458d55f962a6d959d056406f30d1be3eeb727c51d2b61a', 1933), 'REBUILD.md': ('4b00a9e5a996f428330e91a3999edb808c7f4a80f1aa66b48b02b14e5dc561b0', 1538), 'RELEASE_NOTES.md': ('3f74812fffb86bd323d238f007c376024bb77044134a246e6008a417249896ab', 2605), 'ZIP_CONTENTS.json': ('4408142961e657f0bcc066f78eddcbf5e3aa5ad0470949202a5551cfd1f0bba3', 12424), 'SHA256SUMS': ('ce87952faa332ca5a9c95f32e5f27c007d597f8e623366ff61a6e2ed4114551c', 1146)}
           actual = {a['name']: a for a in r['assets']}
