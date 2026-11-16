@@ -1,3 +1,13 @@
+# S1 experimental.16 local release candidate
+
+Modified for genomez, 2026-11-15. Pair the experimental.16 SDK, bridge and integration with the preserved pinned base, wrapper and dependency licenses.
+
+Pair SDK 0.2.1-s1.experimental.16, bridge/integration 0.3.1-s1.experimental.16 and add-on 0.4.1-s1.experimental.16.
+
+No publication or live-device acceptance is claimed.
+
+## Historical public documentation through experimental.15
+
 # Experimental.15 local release candidate
 
 Pair the updated SDK, bridge and integration with the existing pinned base, wrapper and dependency licenses.
