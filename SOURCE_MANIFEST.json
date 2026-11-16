@@ -24,28 +24,28 @@
       "sha256": "2faa29a4e74f91f17e8cdc129ffe91a87b212a5ea837824c4c5de663f73876be"
     },
     "DOCS.md": {
-      "bytes": 20760,
-      "sha256": "856c2f9d26728b1a35fa74ae6121e48558c4c4a81852472c9dcad08f4f80050a"
+      "bytes": 20475,
+      "sha256": "0798b867957f1672e008ff579cd0ef17f68e15a44a620d072479ecc83b3af8d0"
     },
     "Dockerfile": {
       "bytes": 2851,
       "sha256": "51d808a0e3518658a39419b13223e6229000ec75fa9438506dd0c3676843f057"
     },
     "EXPERIMENTAL.md": {
-      "bytes": 20779,
-      "sha256": "99c9fc3ceb1b767255458f27458dc8a1925dcb0ee0bcc13ec910992216b34fa0"
+      "bytes": 20723,
+      "sha256": "15d54d955f4cdbd12678ec26fcb6886b3aaa60819477e73d8561b8726d14e4c5"
     },
     "LICENSE": {
       "bytes": 1087,
       "sha256": "7e6699645c470ea083e2218148fd0877ffd9b521e4efd458f833d66b5159d4e6"
     },
     "MIGRATION.md": {
-      "bytes": 20800,
-      "sha256": "730e73932e7b1f076de3ca163f8959c6b1a48dec8e46a783e97eaa8542a3afc8"
+      "bytes": 20477,
+      "sha256": "b00927f304bda06685689168eeec1b7007720901d9d87c4da6d6b820d1ba29c3"
     },
     "MODIFICATIONS.md": {
-      "bytes": 29250,
-      "sha256": "557b8e084b6843c44f91ab9cd48bee424872da9b9cfaf22ab32d5a18303757d2"
+      "bytes": 29194,
+      "sha256": "79e444748beabcc51ecd35c6257a3457b6f9eb91ed527b1ea06d0486a2b1858a"
     },
     "PREVIEW_SOURCE_MANIFEST.json": {
       "bytes": 2351,
@@ -56,16 +56,16 @@
       "sha256": "988cd2ccd5bd7dffce5196c666d61aef839faaca204f71d95fea2a8c2d1798a8"
     },
     "README.md": {
-      "bytes": 26408,
-      "sha256": "c9ce31e760b85356c10593fb6da535b4a335f39f5a6017a0d7eaacf4181a28a1"
+      "bytes": 26029,
+      "sha256": "9070401094b2c39b21b8211cea5c114261de46caef634cee0b8c48e7db575de6"
     },
     "RELEASE_CHECKLIST.md": {
       "bytes": 13700,
       "sha256": "1c3e1be513ad971905b614fffed498bed5a2d89a977bfc1ed0993afbeac024ba"
     },
     "RELEASE_NOTES.md": {
-      "bytes": 2702,
-      "sha256": "ce3c856f5c8659ffb5adc1e653aea12af9628507d93cec76d746ec6989e7c594"
+      "bytes": 2605,
+      "sha256": "3f74812fffb86bd323d238f007c376024bb77044134a246e6008a417249896ab"
     },
     "config.yaml.example": {
       "bytes": 4633,
@@ -76,8 +76,8 @@
       "sha256": "89eabc43240e079c8c9c6b7f1194491ac1dd67ea352ef655f53de14e2def964a"
     },
     "eufy_sdk_s1/DOCS.md": {
-      "bytes": 22923,
-      "sha256": "c1119ca34689dc4eca92578e28dcb25458f24105e8a3fec607e6e777c609a87e"
+      "bytes": 22614,
+      "sha256": "cdbcc3ef299be3125e97cee3acce8ec5ac0b674a1900f61940e5426865269762"
     },
     "eufy_sdk_s1/config.yaml": {
       "bytes": 1810,
@@ -204,12 +204,12 @@
       "sha256": "ee141bc9018022aa60347e37f8b80483fc8a4e0349f4caa312751ab32dbfcd65"
     },
     "packaging/source-records/bridge/RELEASE_NOTES.md": {
-      "bytes": 2702,
-      "sha256": "ce3c856f5c8659ffb5adc1e653aea12af9628507d93cec76d746ec6989e7c594"
+      "bytes": 2605,
+      "sha256": "3f74812fffb86bd323d238f007c376024bb77044134a246e6008a417249896ab"
     },
     "packaging/source-records/bridge/SOURCE_MANIFEST.json": {
       "bytes": 32421,
-      "sha256": "607025e1dc024dc0324f61ed5d27be21e4a4b104781310fdd8a4c2107b79f3cf"
+      "sha256": "9ea95bb9128d60ae1d5d89c1b9cddd12903b48a18b164d453f0c6b1798a8bdec"
     },
     "packaging/source-records/bridge/package-lock.json": {
       "bytes": 26652,
@@ -296,8 +296,8 @@
       "sha256": "ee141bc9018022aa60347e37f8b80483fc8a4e0349f4caa312751ab32dbfcd65"
     },
     "root/app/RELEASE_NOTES.md": {
-      "bytes": 2702,
-      "sha256": "ce3c856f5c8659ffb5adc1e653aea12af9628507d93cec76d746ec6989e7c594"
+      "bytes": 2605,
+      "sha256": "3f74812fffb86bd323d238f007c376024bb77044134a246e6008a417249896ab"
     },
     "root/app/REVIEW_TEST_PROVENANCE.json": {
       "bytes": 686,
@@ -305,7 +305,7 @@
     },
     "root/app/SOURCE_MANIFEST.json": {
       "bytes": 32421,
-      "sha256": "607025e1dc024dc0324f61ed5d27be21e4a4b104781310fdd8a4c2107b79f3cf"
+      "sha256": "9ea95bb9128d60ae1d5d89c1b9cddd12903b48a18b164d453f0c6b1798a8bdec"
     },
     "root/app/TEST_BUILD.json": {
       "bytes": 1075,
@@ -2057,7 +2057,7 @@
     },
     "root/usr/share/licenses/eufy/SOURCE_ACCESS.md": {
       "bytes": 4158,
-      "sha256": "093b7c8af328ef2ee5eaa35c864db9105a35c1c11c2183e3f3f54abd310743b1"
+      "sha256": "a6d45a5636e2e1ad4c5198ad6fc6d75d397661a1d4d5a6cee9fadda3d8755968"
     },
     "root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json": {
       "bytes": 897,
@@ -2088,12 +2088,12 @@
       "sha256": "ee141bc9018022aa60347e37f8b80483fc8a4e0349f4caa312751ab32dbfcd65"
     },
     "root/usr/share/licenses/eufy/bridge/RELEASE_NOTES.md": {
-      "bytes": 2702,
-      "sha256": "ce3c856f5c8659ffb5adc1e653aea12af9628507d93cec76d746ec6989e7c594"
+      "bytes": 2605,
+      "sha256": "3f74812fffb86bd323d238f007c376024bb77044134a246e6008a417249896ab"
     },
     "root/usr/share/licenses/eufy/bridge/SOURCE_MANIFEST.json": {
       "bytes": 32421,
-      "sha256": "607025e1dc024dc0324f61ed5d27be21e4a4b104781310fdd8a4c2107b79f3cf"
+      "sha256": "9ea95bb9128d60ae1d5d89c1b9cddd12903b48a18b164d453f0c6b1798a8bdec"
     },
     "root/usr/share/licenses/eufy/bridge/package-lock.json": {
       "bytes": 26652,
