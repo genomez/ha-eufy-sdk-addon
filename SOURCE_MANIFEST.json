@@ -13,7 +13,7 @@
     },
     ".github/workflows/publish-s1-image.yml": {
       "bytes": 10531,
-      "sha256": "28e9271b7c8be11c361889c8481f01558e62dd3a40325e0f9fda3ad0fe15778b"
+      "sha256": "a14eb82e5de2348746e2c7cae7ebd247b84f4aa630f7933c2553e2bf89d90786"
     },
     "BUILD_PROVENANCE.json": {
       "bytes": 262,
