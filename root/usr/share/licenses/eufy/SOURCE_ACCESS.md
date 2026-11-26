@@ -1,7 +1,16 @@
+# S1 experimental.17 corresponding source
+
+The SDK and bridge source archives are included beside this notice. The archives contain the source needed to build the distributed components and the Apache 2.0 license and modification notices.
+
+- eufy-sdk 4f2bb9b348d4d61fb1b5fd8c468077a263c7df59, archive eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz, SHA-256 07f0669fb974ba67f89cc9db985c570dab3386fbbe9b0b1166886b738fc326b2.
+- ha-eufy-sdk-bridge 36690067231fe9cd762bdaacb23c7dbb019292f0, archive ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz, SHA-256 2773c95320af7a5174b6d76919bdf9289c320f68042b43ba66eeb64e6ea15ff0.
+
+## Dependency source and earlier release records
+
 # Experimental.15 current source
 
-- eufy-sdk: https://github.com/genomez/eufy-sdk/commit/2b207cc1eb0dd98ea2e21bdc02c9ccbb0d4a09fd (local candidate; not published)
-- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/744e986345cab38aa1e40e692f69ee0f1acdf636 (local candidate; not published)
+- eufy-sdk: https://github.com/genomez/eufy-sdk/commit/2b207cc1eb0dd98ea2e21bdc02c9ccbb0d4a09fd (experimental.16 source)
+- ha-eufy-sdk-bridge: https://github.com/genomez/ha-eufy-sdk-bridge/commit/744e986345cab38aa1e40e692f69ee0f1acdf636 (experimental.16 source)
 
 ## Inherited corresponding source and notices
 

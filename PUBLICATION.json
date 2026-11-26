@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.4.1-s1.experimental.16",
-  "status": "local-release-candidate",
-  "published": false,
-  "exactInputCommit": "4b0fe3f5ddfea351ed0b2cf716d030f6fc372d8f",
-  "registryManifestDigest": null,
-  "installationAcceptance": false
+  "version": "0.4.1-s1.experimental.17",
+  "bridgeCommit": "36690067231fe9cd762bdaacb23c7dbb019292f0",
+  "integrationCommit": "068dd99aa2164993843809379252d523c0051eac",
+  "sdkCommit": "4f2bb9b348d4d61fb1b5fd8c468077a263c7df59",
+  "sdkArchiveSha256": "95305c982803085d7ffc981a65371520f70e77d6f8d473ca03fc2b7561f33550",
+  "sdkArchiveIntegrity": "sha512-UJaspkjzCic3TZmLCGLVoT08Fh1M6EcasnpjttuL/aYcCbmC4daUQjTHQpYYUTRd7CG6nTS863JCr0FAYbYUOQ==",
+  "sdkBundleSha256": "b03d98d2a0d57f2261940c537eefe078442765f207613c872199176a20566266",
+  "base": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517"
 }

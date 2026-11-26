@@ -1,3 +1,9 @@
+# S1 experimental.17
+
+Adds T8416 privacy read-back, renewal retry and failed-connection tracking, and supported spotlight and station battery reporting. Disables the early RTC offer cutoff by default.
+
+## Earlier releases
+
 # S1 experimental.16 local release candidate
 
 Modified for genomez, 2026-11-15. T9000 settings routing and composite writes; model-specific recording quality, night vision and clip bounds; installed volumes, retained device state, solar status and an on-demand diagnostic query.

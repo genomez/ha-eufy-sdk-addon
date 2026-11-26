@@ -1,3 +1,84 @@
+# S1 experimental.17 modifications
+
+Modified by genomez on 2026-11-25. Adds T8416 privacy read-back, renewal retry and failed-connection tracking, and supported spotlight and station battery reporting. Disables the early RTC offer cutoff by default.
+
+Changed paths since experimental.16
+
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `ICE_DIAGNOSTICS.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `RELEASE_NOTES.md`
+- `SOURCE_MANIFEST.json`
+- `package-lock.json`
+- `package.json`
+- `src/client/__tests__/fixtures/privacy-6250-step1.json`
+- `src/client/__tests__/homebase-battery-refresh.spec.ts`
+- `src/client/__tests__/poll.spec.ts`
+- `src/client/__tests__/rtc-state.spec.ts`
+- `src/client/__tests__/s1-passive-readback.spec.ts`
+- `src/client/__tests__/state-evidence.spec.ts`
+- `src/client/__tests__/state-refresh-renewal.spec.ts`
+- `src/client/__tests__/station-privacy.spec.ts`
+- `src/client/__tests__/t9000-write-gate.spec.ts`
+- `src/client/eufy-mega.ts`
+- `src/client/rtc-state.ts`
+- `src/client/state-evidence.ts`
+- `src/client/state-refresh-diagnostics.ts`
+- `src/client/types.ts`
+- `src/core/contracts.ts`
+- `src/model/__tests__/device-family.spec.ts`
+- `src/model/capabilities/__tests__/action-specs.spec.ts`
+- `src/model/capabilities/__tests__/battery.spec.ts`
+- `src/model/capabilities/__tests__/camera.spec.ts`
+- `src/model/capabilities/__tests__/homebase-battery.spec.ts`
+- `src/model/capabilities/__tests__/manifest.spec.ts`
+- `src/model/capabilities/battery.ts`
+- `src/model/capabilities/camera.ts`
+- `src/model/capabilities/index.ts`
+- `src/model/capabilities/light.ts`
+- `src/model/capabilities/members.ts`
+- `src/model/device-family.ts`
+- `src/model/param-dictionary.ts`
+- `src/transport/http/__tests__/key-persistence-qualification.spec.ts`
+- `src/transport/p2p/codec.ts`
+- `src/transport/p2p/command-router.ts`
+- `src/transport/rtc/__tests__/command-keepalive.spec.ts`
+- `src/transport/rtc/__tests__/command-router.spec.ts`
+- `src/transport/rtc/__tests__/connection-diagnostics.spec.ts`
+- `src/transport/rtc/__tests__/control-command.spec.ts`
+- `src/transport/rtc/__tests__/event-person-probe.spec.ts`
+- `src/transport/rtc/__tests__/event-playback-router.spec.ts`
+- `src/transport/rtc/__tests__/event-table-candidate.spec.ts`
+- `src/transport/rtc/__tests__/event-thumb-candidate.spec.ts`
+- `src/transport/rtc/__tests__/framing-diagnostics.spec.ts`
+- `src/transport/rtc/__tests__/information-refresh.spec.ts`
+- `src/transport/rtc/__tests__/portal-packet.spec.ts`
+- `src/transport/rtc/__tests__/recordings-arbitration.spec.ts`
+- `src/transport/rtc/__tests__/retained-session.spec.ts`
+- `src/transport/rtc/__tests__/session-refresh.spec.ts`
+- `src/transport/rtc/__tests__/signaling-cancellation.spec.ts`
+- `src/transport/rtc/camera-info.ts`
+- `src/transport/rtc/command-diagnostics.ts`
+- `src/transport/rtc/command-router.ts`
+- `src/transport/rtc/connection-deadline.ts`
+- `src/transport/rtc/connection-diagnostics.ts`
+- `src/transport/rtc/control-command.ts`
+- `src/transport/rtc/framer.ts`
+- `src/transport/rtc/ice-diagnostics.ts`
+- `src/transport/rtc/index.ts`
+- `src/transport/rtc/peer.ts`
+- `src/transport/rtc/ptcs-framer.ts`
+- `src/transport/rtc/read-diagnostics.ts`
+- `src/transport/rtc/renewal-diagnostics.ts`
+- `src/transport/rtc/session.ts`
+- `src/transport/rtc/signaling-boundary-diagnostics.ts`
+- `src/transport/rtc/signaling.ts`
+- `src/transport/rtc/station-work-scheduler.ts`
+
+## Earlier modifications
+
 # S1 experimental.16 local release candidate
 
 Modified for genomez, 2026-11-15. T9000 settings routing and composite writes; model-specific recording quality, night vision and clip bounds; installed volumes, retained device state, solar status and an on-demand diagnostic query.

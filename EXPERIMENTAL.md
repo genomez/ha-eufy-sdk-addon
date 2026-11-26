@@ -1,3 +1,9 @@
+# S1 experimental.17
+
+Packages the paired SDK and bridge with the corresponding source and retained dependency notices.
+
+## Earlier releases
+
 # S1 experimental.16 local release candidate
 
 Modified for genomez, 2026-11-15. Pair the experimental.16 SDK, bridge and integration with the preserved pinned base, wrapper and dependency licenses.

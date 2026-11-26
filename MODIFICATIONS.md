@@ -1,3 +1,125 @@
+# S1 experimental.17 modifications
+
+Modified by genomez on 2026-11-25. Packages the paired SDK and bridge with the corresponding source and retained dependency notices.
+
+Changed paths since experimental.16
+
+- `BUILD_PROVENANCE.json`
+- `EXPERIMENTAL.md`
+- `MODIFICATIONS.md`
+- `PUBLICATION.json`
+- `RELEASE_NOTES.md`
+- `SOURCE_MANIFEST.json`
+- `config.yaml.example`
+- `eufy_sdk_s1/CHANGELOG.md`
+- `eufy_sdk_s1/DOCS.md`
+- `eufy_sdk_s1/config.yaml`
+- `packaging/experimental17-overlay.Dockerfile`
+- `packaging/source-records/bridge/BUILD_PROVENANCE.json`
+- `packaging/source-records/bridge/EXPERIMENTAL.md`
+- `packaging/source-records/bridge/MODIFICATIONS.md`
+- `packaging/source-records/bridge/PUBLICATION.json`
+- `packaging/source-records/bridge/README.md`
+- `packaging/source-records/bridge/RELEASE_NOTES.md`
+- `packaging/source-records/bridge/SOURCE_MANIFEST.json`
+- `packaging/source-records/bridge/package-lock.json`
+- `packaging/source-records/bridge/package.json`
+- `packaging/source-records/sdk/BUILD_PROVENANCE.json`
+- `packaging/source-records/sdk/EXPERIMENTAL.md`
+- `packaging/source-records/sdk/MODIFICATIONS.md`
+- `packaging/source-records/sdk/PUBLICATION.json`
+- `packaging/source-records/sdk/RELEASE_NOTES.md`
+- `packaging/source-records/sdk/SOURCE_MANIFEST.json`
+- `packaging/source-records/sdk/package-lock.json`
+- `packaging/source-records/sdk/package.json`
+- `root/app/BUILD_PROVENANCE.json`
+- `root/app/EXPERIMENTAL.md`
+- `root/app/MODIFICATIONS.md`
+- `root/app/PUBLICATION.json`
+- `root/app/README.md`
+- `root/app/RELEASE_NOTES.md`
+- `root/app/REVIEW_TEST_PROVENANCE.json`
+- `root/app/SOURCE_MANIFEST.json`
+- `root/app/TEST_BUILD.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/BUILD_PROVENANCE.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/EXPERIMENTAL.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/MODIFICATIONS.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/PUBLICATION.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/RELEASE_NOTES.md`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/SOURCE_MANIFEST.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/eufy-mega.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/rtc-state.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/state-evidence.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/state-refresh-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/types.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/core/contracts.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js.map`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/battery.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/camera.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/light.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/members.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/device-family.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/p2p/codec.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/camera-info.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/command-router.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/connection-deadline.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/connection-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/control-command.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/framer.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/ice-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/index.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/peer.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/read-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/renewal-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/session.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/signaling-boundary-diagnostics.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/signaling.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/transport/rtc/station-work-scheduler.d.ts`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package-lock.json`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/package.json`
+- `root/app/package-lock.json`
+- `root/app/package.json`
+- `root/app/server.mjs`
+- `root/app/src/client.mjs`
+- `root/app/src/config.mjs`
+- `root/app/src/diagnostics.mjs`
+- `root/app/src/http-routes.mjs`
+- `root/app/src/pilot-log.mjs`
+- `root/app/src/recordings-store.mjs`
+- `root/app/src/recordings.mjs`
+- `root/app/src/rtc-connection-evidence.mjs`
+- `root/app/src/state-evidence.mjs`
+- `root/app/src/ws-server.mjs`
+- `root/config.yaml.example`
+- `root/recipe/experimental17/Dockerfile`
+- `root/recipe/experimental17/wrapper/config.yaml.example`
+- `root/recipe/experimental17/wrapper/eufy_sdk_s1/config.yaml`
+- `root/recipe/experimental17/wrapper/run.sh`
+- `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`
+- `root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json`
+- `root/usr/share/licenses/eufy/bridge/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/bridge/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/bridge/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/bridge/PUBLICATION.json`
+- `root/usr/share/licenses/eufy/bridge/README.md`
+- `root/usr/share/licenses/eufy/bridge/RELEASE_NOTES.md`
+- `root/usr/share/licenses/eufy/bridge/SOURCE_MANIFEST.json`
+- `root/usr/share/licenses/eufy/bridge/package-lock.json`
+- `root/usr/share/licenses/eufy/bridge/package.json`
+- `root/usr/share/licenses/eufy/eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz`
+- `root/usr/share/licenses/eufy/ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz`
+- `root/usr/share/licenses/eufy/sdk/BUILD_PROVENANCE.json`
+- `root/usr/share/licenses/eufy/sdk/EXPERIMENTAL.md`
+- `root/usr/share/licenses/eufy/sdk/MODIFICATIONS.md`
+- `root/usr/share/licenses/eufy/sdk/PUBLICATION.json`
+- `root/usr/share/licenses/eufy/sdk/RELEASE_NOTES.md`
+- `root/usr/share/licenses/eufy/sdk/SOURCE_MANIFEST.json`
+- `root/usr/share/licenses/eufy/sdk/package-lock.json`
+- `root/usr/share/licenses/eufy/sdk/package.json`
+
+## Earlier modifications
+
 # S1 experimental.16 local release candidate
 
 Modified for genomez, 2026-11-15. Pair the experimental.16 SDK, bridge and integration with the preserved pinned base, wrapper and dependency licenses.
