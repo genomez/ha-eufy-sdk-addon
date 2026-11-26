@@ -111,7 +111,6 @@ Changed paths since experimental.16
 - `root/usr/share/licenses/eufy/bridge/package.json`
 - `root/usr/share/licenses/eufy/eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz`
 - `root/usr/share/licenses/eufy/ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz`
-- `root/usr/share/licenses/eufy/ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz`
 - `root/usr/share/licenses/eufy/sdk/BUILD_PROVENANCE.json`
 - `root/usr/share/licenses/eufy/sdk/EXPERIMENTAL.md`
 - `root/usr/share/licenses/eufy/sdk/MODIFICATIONS.md`
