@@ -22,9 +22,9 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: genomez/ha-eufy-sdk-addon
       RELEASE_TAG: s1-runtime-0.4.1.experimental.17
-      IMAGE_ID: sha256:aa1303d06a62853c6792a7d8b7aeb87d343c76e453c5f254e137df5fe504087f
+      IMAGE_ID: sha256:59f657f9bba507c6d84abfef882f4d3f427afa52e7a18cb3e27d414b42a647be
       IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.17
-      IMAGE_LAYERS: '["sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592", "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef", "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c", "sha256:b9847a793e9262e1995513dd0178da54d2449d4ce4810bb9de60d9eeaae29e4d", "sha256:5d5ec5d326ebbbb26901550164e2262e9b13ff9a98f69a7790eec6563a916f5e"]'
+      IMAGE_LAYERS: '["sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592", "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef", "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c", "sha256:b9847a793e9262e1995513dd0178da54d2449d4ce4810bb9de60d9eeaae29e4d", "sha256:9dcf9e472a0322c818a138c5d4e852cab013ac0cc7d17c95c98062b8dea16467"]'
       INTEGRATION_RELEASE_TAG: 0.3.1-s1.experimental.17
     steps:
       - name: Verify source delivery and load the accepted image
@@ -33,7 +33,7 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           import json, subprocess
-          sources = {'eufy-sdk': 'd0769144fcd9d33101c275a6ccc183c2e40c2889', 'ha-eufy-sdk-bridge': '8aacb68460004e9102f5e5f6a968e9a29f396a9f', 'ha-eufy-sdk': '98b1626d75a31afd0159f3ab82a7bdf1c35331ca'}
+          sources = {'eufy-sdk': '31680a941f633b53f187c8503fc01118c0488338', 'ha-eufy-sdk-bridge': 'c584f546f121618bd67a978666bd74c6afd315f0', 'ha-eufy-sdk': '460c2f5a67dda119900a0b09b302ce1dbaa7045e'}
           for repo, expected in sources.items():
               actual = json.loads(subprocess.check_output(['gh', 'api', 'repos/genomez/' + repo + '/git/ref/heads/s1-experimental']))['object']['sha']
               assert actual == expected, 'Publication source head changed: ' + repo
@@ -47,21 +47,21 @@ jobs:
           releases = [
               (os.environ['GH_REPO'], os.environ['RELEASE_TAG'], Path('.'), {
                   'PRIVACY.md': (688, '71d718f47c97ef0078766dd61df11d9ee5cb13c13adda5cdf9eceb9a10f46ae0'),
-                  'README.md': (1347, '785f653dd5d47ed8e6aafd9e1292fac9783e560472b1741332e108abd4c5fbe1'),
-                  'REBUILD.md': (1374, '1c19fec7d6f775fe79eee3e59352be1f738016a7190eb507419769c9be6332c3'),
-                  'RELEASE_NOTES.md': (1846, '271e576b5be84019b4e9f1b73277a51774a06e30b3d90a1c12da81fdf40f33bb'),
-                  'SHA256SUMS': (1270, '629dea5b747316c239812ce0563d46304c815609245d99a1589ca612b76c10e5'),
-                  'ZIP_CONTENTS.json': (12734, '133af959cc763584054a7898a0cfaadddb099a47e60ab208a44f108367e68442'),
-                  'eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz': (1948184, 'fa63e1f199829dd66849cc6e7aa2bb48866faa9fd1809042b1d0bbf28388357a'),
-                  'experimental-bridge-image.tar': (751610880, 'ca2f59c78e02b94edea8bbe4695d2f68e1a31c01bd26e6de33e91f3916117218'),
-                  'final-context.tar': (20490240, 'ed2b10d5d1881656e474dedc61a23393dfc9d454ed727afae9c3752e00df623b'),
-                  'genomez-eufy-sdk-0.2.1-s1.experimental.17.tgz': (2177818, 'a13c6153af818519851fa257a9a718002abdf732056362f1fc422125e15edf4e'),
-                  'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.17.tgz': (257554, '5bbedfd39f8d3229c66fe88cbf416d309739abf622d3e832a0be94e3714b8d74'),
-                  'ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz': (596485, '93c07fc1e82f1e325b8c5566faef01ba43216a2689ee32c35da8cafd918fc315'),
+                  'README.md': (1347, 'be76e426882ac34ebc2c804c0bc0dfc570838082dea2474326090f93dc232c61'),
+                  'REBUILD.md': (1454, 'c6b16f5c5e86e82c44fe1f8d8babc033dfff63c1417176f9e72abbbfc40bd4ea'),
+                  'RELEASE_NOTES.md': (2150, '20a12c6c25a46061a695aa810b4f26a1a38568d7730a0b47f9acd2d203b110ef'),
+                  'SHA256SUMS': (1270, '4004a28e4eb69c4679a8ea3ec17a7b853ffb58d6253788216c524602edf47cea'),
+                  'ZIP_CONTENTS.json': (12734, 'c4f54e086a18d3e182d41bc73b9391355e443b18090682491bc392ce9823d3a8'),
+                  'eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz': (1948278, 'c2ee1c44aa64a198bc6d5a9aa79c5d2610ce353a38cc008506bb145b3bf0c240'),
+                  'experimental-bridge-image.tar': (751612928, '79cc558e996c87839e62dbac791b3e097246cf0b15e7f8e651a7f736cde64e1d'),
+                  'final-context.tar': (20490240, 'e4717ce281492b64c9da97cfa25f5602eea5eac412f52bd513defe01d41fc594'),
+                  'genomez-eufy-sdk-0.2.1-s1.experimental.17.tgz': (2177783, '6dbb25b0224079272cf752600d923d9ba77e69592814bdaac93094fed1f15c9e'),
+                  'genomez-ha-eufy-sdk-bridge-0.3.1-s1.experimental.17.tgz': (257621, '210e813821b8a8e163757675bd49ff70a3c2b2f1bd930bbf70520bf88da7b48d'),
+                  'ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz': (596705, '86eaee867580130cb3766d4d087db27e1ef891a911b7ee52cfe5bc304254fb9e'),
               }),
               ('genomez/ha-eufy-sdk', os.environ['INTEGRATION_RELEASE_TAG'], Path('integration'), {
-                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip': (1115085, '440295e5722186d92b0160025db4dcf2695768dfda2a8a0ddd8e0dfbb0047ff9'),
-                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip.sha256': (107, 'eeecd3258a8d64641f1d9e670753f131c01c494455b5f613dc6f482c041cd963'),
+                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip': (1115389, '65d696fa52f498551f4d1916a6a47471d8e8cbed60a66df963fd7890cd94641d'),
+                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip.sha256': (107, '6e15677212e9034441c618ad09a68510cee271c033bca7830f12b530ae4880cf'),
               }),
           ]
           for repo, tag, directory, expected in releases:
