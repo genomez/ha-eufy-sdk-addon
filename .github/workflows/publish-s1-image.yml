@@ -32,11 +32,29 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, subprocess
-          sources = {'eufy-sdk': '31680a941f633b53f187c8503fc01118c0488338', 'ha-eufy-sdk-bridge': 'c584f546f121618bd67a978666bd74c6afd315f0', 'ha-eufy-sdk': '460c2f5a67dda119900a0b09b302ce1dbaa7045e'}
+          import json, os, subprocess
+          sources = {'eufy-sdk': '31680a941f633b53f187c8503fc01118c0488338', 'ha-eufy-sdk-bridge': 'c584f546f121618bd67a978666bd74c6afd315f0', 'ha-eufy-sdk': 'a34245c622fd9a6a505093bf4335b2071212c202'}
           for repo, expected in sources.items():
               actual = json.loads(subprocess.check_output(['gh', 'api', 'repos/genomez/' + repo + '/git/ref/heads/s1-experimental']))['object']['sha']
               assert actual == expected, 'Publication source head changed: ' + repo
+
+          def git_object(repo, path):
+              return json.loads(subprocess.check_output(['gh', 'api', f'repos/{repo}/git/{path}']))['object']
+
+          def verify_release_tag(repo, tag, expected):
+              obj = git_object(repo, f'ref/tags/{tag}')
+              seen = set()
+              while obj['type'] == 'tag':
+                  sha = obj['sha']
+                  if sha in seen:
+                      raise SystemExit(f'Cyclic publication tag: {repo}@{tag}')
+                  seen.add(sha)
+                  obj = git_object(repo, f'tags/{sha}')
+              if obj['type'] != 'commit' or obj['sha'] != expected:
+                  raise SystemExit(f'Publication tag does not resolve to {expected}: {repo}@{tag}')
+
+          verify_release_tag('genomez/ha-eufy-sdk', os.environ['INTEGRATION_RELEASE_TAG'], sources['ha-eufy-sdk'])
+          verify_release_tag(os.environ['GH_REPO'], os.environ['RELEASE_TAG'], os.environ['GITHUB_SHA'])
           PY
           mkdir -p "$RUNNER_TEMP/s1-delivery"
           cd "$RUNNER_TEMP/s1-delivery"
@@ -47,11 +65,11 @@ jobs:
           releases = [
               (os.environ['GH_REPO'], os.environ['RELEASE_TAG'], Path('.'), {
                   'PRIVACY.md': (688, '71d718f47c97ef0078766dd61df11d9ee5cb13c13adda5cdf9eceb9a10f46ae0'),
-                  'README.md': (1347, 'be76e426882ac34ebc2c804c0bc0dfc570838082dea2474326090f93dc232c61'),
+                  'README.md': (1829, 'fa1c470cd53f40592d20eaa039771f493427abc543330a913a30e3bcc93cc709'),
                   'REBUILD.md': (1454, 'c6b16f5c5e86e82c44fe1f8d8babc033dfff63c1417176f9e72abbbfc40bd4ea'),
                   'RELEASE_NOTES.md': (2150, '20a12c6c25a46061a695aa810b4f26a1a38568d7730a0b47f9acd2d203b110ef'),
-                  'SHA256SUMS': (1270, '4004a28e4eb69c4679a8ea3ec17a7b853ffb58d6253788216c524602edf47cea'),
-                  'ZIP_CONTENTS.json': (12734, 'c4f54e086a18d3e182d41bc73b9391355e443b18090682491bc392ce9823d3a8'),
+                  'SHA256SUMS': (1270, 'fd1c8383a178db6ec950dba1b0246c2fda09b3ab1eceb5bbab469ff41599d02f'),
+                  'ZIP_CONTENTS.json': (12734, '483a29e46f7fcb360e476ab2fae9390fa57ac60245dd070df9b25bf2b1f66579'),
                   'eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz': (1948278, 'c2ee1c44aa64a198bc6d5a9aa79c5d2610ce353a38cc008506bb145b3bf0c240'),
                   'experimental-bridge-image.tar': (751612928, '79cc558e996c87839e62dbac791b3e097246cf0b15e7f8e651a7f736cde64e1d'),
                   'final-context.tar': (20490240, 'e4717ce281492b64c9da97cfa25f5602eea5eac412f52bd513defe01d41fc594'),
@@ -60,8 +78,8 @@ jobs:
                   'ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz': (596705, '86eaee867580130cb3766d4d087db27e1ef891a911b7ee52cfe5bc304254fb9e'),
               }),
               ('genomez/ha-eufy-sdk', os.environ['INTEGRATION_RELEASE_TAG'], Path('integration'), {
-                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip': (1115389, '65d696fa52f498551f4d1916a6a47471d8e8cbed60a66df963fd7890cd94641d'),
-                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip.sha256': (107, '6e15677212e9034441c618ad09a68510cee271c033bca7830f12b530ae4880cf'),
+                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip': (1119991, 'e74801c88cceded6820ba616ae9af494cc82d8972165b94df645b39f1e796eb0'),
+                  'eufy-sdk-s1-0.3.1-s1.experimental.17.zip.sha256': (107, '6b65779c772cf9d47f38db279202a5eab79af36d7451768fdc0944b884be73e3'),
               }),
           ]
           for repo, tag, directory, expected in releases:

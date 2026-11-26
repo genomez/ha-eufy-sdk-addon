@@ -2,6 +2,10 @@
 
 Update the add-on and integration together, then restart Home Assistant after the add-on is running.
 
+On T8416 cameras paired with HomeBase S1, a Privacy switch replaces the read-only Privacy binary sensor. Update automations and dashboards that referenced `binary_sensor.<camera>_privacy` to use the new Privacy switch. Check the switch's entity ID in Home Assistant.
+
+[Runtime release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.17) · [Integration release](https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.17)
+
 | Component | Version |
 | --- | --- |
 | Add-on | 0.4.1-s1.experimental.17 |

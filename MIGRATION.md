@@ -1,3 +1,19 @@
+# S1 experimental.17 — Migration and rollback
+
+Pair add-on `0.4.1-s1.experimental.17`, integration `0.3.1-s1.experimental.17`, bridge `0.3.1-s1.experimental.17`, and SDK `0.2.1-s1.experimental.17`.
+
+[Runtime release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.17) · [Integration release](https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.17)
+
+Back up the existing integration and add-on, including configuration. Keep one bridge using the account and stop the previous bridge before starting its replacement. Reconfigure the existing integration entry if the bridge hostname changes. Keep the previous paired versions and backups for rollback. Follow the [configuration guide](eufy_sdk_s1/DOCS.md) and [integration installation guide](https://github.com/genomez/ha-eufy-sdk/blob/0.3.1-s1.experimental.17/INSTALL.md).
+
+## Upgrade
+
+Update the add-on and integration together. Restart Home Assistant after the add-on is running.
+
+On T8416 cameras paired with HomeBase S1, a Privacy switch replaces the read-only Privacy binary sensor. Update automations and dashboards that referenced `binary_sensor.<camera>_privacy` to use the new Privacy switch. Check the switch's entity ID in Home Assistant.
+
+## Earlier releases
+
 # S1 experimental.12
 
 Update the add-on and integration together: add-on `0.4.1-s1.experimental.12`, integration and bridge `0.3.1-s1.experimental.12`, SDK `0.2.1-s1.experimental.12`.

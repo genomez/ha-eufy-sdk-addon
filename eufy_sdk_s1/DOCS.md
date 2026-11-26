@@ -2,6 +2,20 @@
 
 Packages the paired SDK and bridge with the corresponding source and retained dependency notices. See the [release notes](../RELEASE_NOTES.md).
 
+Pair add-on `0.4.1-s1.experimental.17`, integration `0.3.1-s1.experimental.17`, bridge `0.3.1-s1.experimental.17`, and SDK `0.2.1-s1.experimental.17`.
+
+[Runtime release](https://github.com/genomez/ha-eufy-sdk-addon/releases/tag/s1-runtime-0.4.1.experimental.17) · [Integration release](https://github.com/genomez/ha-eufy-sdk/releases/tag/0.3.1-s1.experimental.17)
+
+Use the hostname shown by Supervisor for this add-on and port `3000` for the bridge connection. The internal RTSP port is `8554`. Local installations can leave both optional host ports disabled. Enter account settings in the add-on's private configuration.
+
+Back up the existing integration and add-on, including configuration. Keep one bridge using the account and stop the previous bridge before starting its replacement. Reconfigure the existing integration entry if the bridge hostname changes. Keep the previous paired versions and backups for rollback. Opt into live view with `webrtc_relay: true` and restart the add-on after changing its options.
+
+## Upgrade
+
+Update the add-on and integration together. Restart Home Assistant after the add-on is running.
+
+On T8416 cameras paired with HomeBase S1, a Privacy switch replaces the read-only Privacy binary sensor. Update automations and dashboards that referenced `binary_sensor.<camera>_privacy` to use the new Privacy switch. Check the switch's entity ID in Home Assistant.
+
 ## Earlier releases
 
 # S1 experimental.14

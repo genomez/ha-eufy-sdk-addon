@@ -6,9 +6,13 @@ Changed paths since experimental.16
 
 - `.github/workflows/publish-s1-image.yml`
 - `BUILD_PROVENANCE.json`
+- `DOCS.md`
 - `EXPERIMENTAL.md`
+- `MIGRATION.md`
 - `MODIFICATIONS.md`
 - `PUBLICATION.json`
+- `README.md`
+- `RELEASE_CHECKLIST.md`
 - `RELEASE_NOTES.md`
 - `SOURCE_MANIFEST.json`
 - `config.yaml.example`
