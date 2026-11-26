@@ -4,6 +4,7 @@ Modified by genomez on 2026-11-25. Packages the paired SDK and bridge with the c
 
 Changed paths since experimental.16
 
+- `.github/workflows/publish-s1-image.yml`
 - `BUILD_PROVENANCE.json`
 - `EXPERIMENTAL.md`
 - `MODIFICATIONS.md`
