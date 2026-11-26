@@ -37,7 +37,7 @@
     },
     "BUILD_PROVENANCE.json": {
       "bytes": 125,
-      "sha256": "ab51861f05fd9f7b9e198043d13fe9751ae02d7e2591445a0c72381f4710bb11"
+      "sha256": "fca126319ba7a8f3657a22b0fadfdaf2430d2ba0d510d1402afe19be165e05ca"
     },
     "CONTRIBUTING.md": {
       "bytes": 9910,
@@ -48,8 +48,8 @@
       "sha256": "67a101688bb431ef3796cce986bf18d0911b03f1c88e6f1e3865bb0d8f030483"
     },
     "ICE_DIAGNOSTICS.md": {
-      "bytes": 8921,
-      "sha256": "7bc6dbdd9737cc7c051592cbd0b85defaba7a3d86fa97233cd3b72919a29c749"
+      "bytes": 8958,
+      "sha256": "92e11757ea138350f8bd95d3306ea36d1ee967f4a62150c2bcfa9e73503bad88"
     },
     "LICENSE": {
       "bytes": 11339,
@@ -68,8 +68,8 @@
       "sha256": "cbb5f1f6598c851ea8becc2249a11ca28bbdfaf0f90f434dcd55a9effef8a8b6"
     },
     "RELEASE_NOTES.md": {
-      "bytes": 1846,
-      "sha256": "271e576b5be84019b4e9f1b73277a51774a06e30b3d90a1c12da81fdf40f33bb"
+      "bytes": 2150,
+      "sha256": "20a12c6c25a46061a695aa810b4f26a1a38568d7730a0b47f9acd2d203b110ef"
     },
     "docs/T9000_RTC_SETTINGS.md": {
       "bytes": 20032,
@@ -669,7 +669,7 @@
     },
     "src/client/types.ts": {
       "bytes": 26547,
-      "sha256": "ffcf15b06317fe78b77536439a4f7da3e30fe56df2cb9314df2e213571de3bb7"
+      "sha256": "30d16d959a083a81df8611a10e160d8ecb621366c2e68ddb83a032c561faec3f"
     },
     "src/core/README.md": {
       "bytes": 2114,
@@ -1096,8 +1096,8 @@
       "sha256": "d65cd828de975a669b7a4ac2c7352c4011c35a16c4572f537fbff4a4cdafe836"
     },
     "src/model/capabilities/battery.ts": {
-      "bytes": 34799,
-      "sha256": "bd84f75d30e3369e6736b7dc585e3860cfece21e73c7c43e22bc00a8ce302ea4"
+      "bytes": 34751,
+      "sha256": "83db8289ef54056b7c3be1054623fa757d249bd31a1dad6491b974d974702123"
     },
     "src/model/capabilities/camera.ts": {
       "bytes": 52588,
@@ -1268,8 +1268,8 @@
       "sha256": "f7c5d1331c3216eec38534cace6eb1d7b100182cb4d974e42890b541e1645d65"
     },
     "src/model/param-dictionary.ts": {
-      "bytes": 33284,
-      "sha256": "95a87b3d20940d44d1b03150e87754c34af15cb1ef6b9dd1597f6fc09b49cabc"
+      "bytes": 33268,
+      "sha256": "b949ba8005a98af2bef5f6f1924a2af046a12db7fd7aef7e5d2515a96ae180ae"
     },
     "src/model/param-namespace.ts": {
       "bytes": 3595,
@@ -2369,7 +2369,7 @@
     },
     "src/transport/rtc/command-router.ts": {
       "bytes": 197201,
-      "sha256": "cae9d247c6f1a037676ec380bf3132eb622a7ec0c1dbdf8a07d4304ac374b4cf"
+      "sha256": "138adae29a524362fd756ac4bc6590aa606e87fb2273be566b6e524c0c2f9ed9"
     },
     "src/transport/rtc/command-transport-evidence.ts": {
       "bytes": 4845,
@@ -2489,7 +2489,7 @@
     },
     "src/transport/rtc/session.ts": {
       "bytes": 24471,
-      "sha256": "8bee96887923f38d96bd264e47fac8cc48dddb8d3a7840581050d03f7befcfad"
+      "sha256": "cd86d5f6db7152b07267e4bd563ed08f044db0e0779e62edd710be5b22d62c53"
     },
     "src/transport/rtc/signaling-boundary-diagnostics.ts": {
       "bytes": 10400,
@@ -2596,5 +2596,5 @@
       "sha256": "dde2b5092ba3ff70c627925994bdc370cba7a45b0a7663b81e405d6cd0e746f6"
     }
   },
-  "sdkCommit": "d0769144fcd9d33101c275a6ccc183c2e40c2889"
+  "sdkCommit": "31680a941f633b53f187c8503fc01118c0488338"
 }
