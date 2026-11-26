@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.4.1-s1.experimental.17",
-  "bridgeCommit": "36690067231fe9cd762bdaacb23c7dbb019292f0",
+  "bridgeCommit": "b67edc4008b5379ba9ecfe070a0d3fd805a0715f",
   "integrationCommit": "068dd99aa2164993843809379252d523c0051eac",
   "sdkCommit": "4f2bb9b348d4d61fb1b5fd8c468077a263c7df59",
   "sdkArchiveSha256": "95305c982803085d7ffc981a65371520f70e77d6f8d473ca03fc2b7561f33550",

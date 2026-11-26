@@ -41,6 +41,7 @@ Changed paths since experimental.16
 - `root/app/REVIEW_TEST_PROVENANCE.json`
 - `root/app/SOURCE_MANIFEST.json`
 - `root/app/TEST_BUILD.json`
+- `root/app/bin/start.sh`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/BUILD_PROVENANCE.json`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/EXPERIMENTAL.md`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/MODIFICATIONS.md`
