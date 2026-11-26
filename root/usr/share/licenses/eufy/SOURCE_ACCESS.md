@@ -2,8 +2,8 @@
 
 The SDK and bridge source archives are included beside this notice. The archives contain the source needed to build the distributed components and the Apache 2.0 license and modification notices.
 
-- eufy-sdk 4f2bb9b348d4d61fb1b5fd8c468077a263c7df59, archive eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz, SHA-256 01b1f2632a6bd6f50e97c88a092d89861bd88c406ad20013f506071360b44df7.
-- ha-eufy-sdk-bridge b67edc4008b5379ba9ecfe070a0d3fd805a0715f, archive ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz, SHA-256 2c4128062a6e5e27b5bf7c0044dd449cb82ad4650e314e8fb5b51e7161743b39.
+- eufy-sdk d0769144fcd9d33101c275a6ccc183c2e40c2889, archive eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz, SHA-256 fa63e1f199829dd66849cc6e7aa2bb48866faa9fd1809042b1d0bbf28388357a.
+- ha-eufy-sdk-bridge 8aacb68460004e9102f5e5f6a968e9a29f396a9f, archive ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz, SHA-256 93c07fc1e82f1e325b8c5566faef01ba43216a2689ee32c35da8cafd918fc315.
 
 ## Dependency source and earlier release records
 

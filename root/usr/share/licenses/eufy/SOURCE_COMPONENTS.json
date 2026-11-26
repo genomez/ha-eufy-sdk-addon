@@ -2,28 +2,28 @@
   "version": "0.4.1-s1.experimental.17",
   "base": "ghcr.io/genomez/eufy-sdk-s1-amd64@sha256:3f28d98fefd9ddab0032921586f2b009e931c841e277a4ebd86a76471444f517",
   "sourceCommits": {
-    "eufy-sdk": "4f2bb9b348d4d61fb1b5fd8c468077a263c7df59",
-    "ha-eufy-sdk-bridge": "b67edc4008b5379ba9ecfe070a0d3fd805a0715f",
-    "ha-eufy-sdk": "068dd99aa2164993843809379252d523c0051eac"
+    "eufy-sdk": "d0769144fcd9d33101c275a6ccc183c2e40c2889",
+    "ha-eufy-sdk-bridge": "8aacb68460004e9102f5e5f6a968e9a29f396a9f",
+    "ha-eufy-sdk": "98b1626d75a31afd0159f3ab82a7bdf1c35331ca"
   },
   "sdkArtifact": {
     "schemaVersion": 1,
     "version": "0.2.1-s1.experimental.17",
-    "sdkCommit": "4f2bb9b348d4d61fb1b5fd8c468077a263c7df59",
+    "sdkCommit": "d0769144fcd9d33101c275a6ccc183c2e40c2889",
     "filename": "genomez-eufy-sdk-0.2.1-s1.experimental.17.tgz",
-    "bytes": 2177820,
-    "sha256": "95305c982803085d7ffc981a65371520f70e77d6f8d473ca03fc2b7561f33550",
-    "integrity": "sha512-UJaspkjzCic3TZmLCGLVoT08Fh1M6EcasnpjttuL/aYcCbmC4daUQjTHQpYYUTRd7CG6nTS863JCr0FAYbYUOQ==",
+    "bytes": 2177818,
+    "sha256": "a13c6153af818519851fa257a9a718002abdf732056362f1fc422125e15edf4e",
+    "integrity": "sha512-5jgfZx42q8a9XTQ/bmlMiisNAVJBN1WsnCNBbTLuVmljMA6G3nVdPz2uD+5mrY1M005LEVXnRelcOrTrlWAc1Q==",
     "bundleSha256": "b03d98d2a0d57f2261940c537eefe078442765f207613c872199176a20566266"
   },
   "correspondingSource": {
     "eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz": {
-      "bytes": 1948179,
-      "sha256": "01b1f2632a6bd6f50e97c88a092d89861bd88c406ad20013f506071360b44df7"
+      "bytes": 1948184,
+      "sha256": "fa63e1f199829dd66849cc6e7aa2bb48866faa9fd1809042b1d0bbf28388357a"
     },
-    "ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz": {
-      "bytes": 596499,
-      "sha256": "2c4128062a6e5e27b5bf7c0044dd449cb82ad4650e314e8fb5b51e7161743b39"
+    "ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz": {
+      "bytes": 596485,
+      "sha256": "93c07fc1e82f1e325b8c5566faef01ba43216a2689ee32c35da8cafd918fc315"
     }
   },
   "inheritedSources": {

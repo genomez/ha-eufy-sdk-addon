@@ -37,7 +37,7 @@
     },
     "BUILD_PROVENANCE.json": {
       "bytes": 125,
-      "sha256": "40968c2c9d511bac18efa5518ab79796469b681deb958a35bb9d927a7e6a005e"
+      "sha256": "ab51861f05fd9f7b9e198043d13fe9751ae02d7e2591445a0c72381f4710bb11"
     },
     "CONTRIBUTING.md": {
       "bytes": 9910,
@@ -69,7 +69,7 @@
     },
     "RELEASE_NOTES.md": {
       "bytes": 1846,
-      "sha256": "85746323b0aa8524c1f407a41e8453357f5dac739f9558ffdf1c8d0c6c4d5b94"
+      "sha256": "271e576b5be84019b4e9f1b73277a51774a06e30b3d90a1c12da81fdf40f33bb"
     },
     "docs/T9000_RTC_SETTINGS.md": {
       "bytes": 20032,
@@ -2596,5 +2596,5 @@
       "sha256": "dde2b5092ba3ff70c627925994bdc370cba7a45b0a7663b81e405d6cd0e746f6"
     }
   },
-  "sdkCommit": "4f2bb9b348d4d61fb1b5fd8c468077a263c7df59"
+  "sdkCommit": "d0769144fcd9d33101c275a6ccc183c2e40c2889"
 }

@@ -54,8 +54,8 @@ Changed paths since experimental.16
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/state-refresh-diagnostics.d.ts`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/client/types.d.ts`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/core/contracts.d.ts`
-- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js.map`
+- `root/app/node_modules/@mega-yfue/eufy-sdk/dist/index.js`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/battery.d.ts`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/camera.d.ts`
 - `root/app/node_modules/@mega-yfue/eufy-sdk/dist/model/capabilities/light.d.ts`
@@ -109,6 +109,7 @@ Changed paths since experimental.16
 - `root/usr/share/licenses/eufy/bridge/package-lock.json`
 - `root/usr/share/licenses/eufy/bridge/package.json`
 - `root/usr/share/licenses/eufy/eufy-sdk-0.2.1-s1.experimental.17-source.tar.gz`
+- `root/usr/share/licenses/eufy/ha-eufy-sdk-bridge-0.3.1-s1.experimental.17-source.tar.gz`
 - `root/usr/share/licenses/eufy/ha-eufy-sdk-bridge-0.4.1-s1.experimental.17-source.tar.gz`
 - `root/usr/share/licenses/eufy/sdk/BUILD_PROVENANCE.json`
 - `root/usr/share/licenses/eufy/sdk/EXPERIMENTAL.md`
