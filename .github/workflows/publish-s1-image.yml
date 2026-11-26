@@ -24,6 +24,7 @@ jobs:
       RELEASE_TAG: s1-runtime-0.4.1.experimental.17
       IMAGE_ID: sha256:aa1303d06a62853c6792a7d8b7aeb87d343c76e453c5f254e137df5fe504087f
       IMAGE_TAG: ghcr.io/genomez/eufy-sdk-s1-amd64:0.4.1-s1.experimental.17
+      IMAGE_LAYERS: '["sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592", "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef", "sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c", "sha256:b9847a793e9262e1995513dd0178da54d2449d4ce4810bb9de60d9eeaae29e4d", "sha256:5d5ec5d326ebbbb26901550164e2262e9b13ff9a98f69a7790eec6563a916f5e"]'
       INTEGRATION_RELEASE_TAG: 0.3.1-s1.experimental.17
     steps:
       - name: Verify source delivery and load the accepted image
@@ -88,7 +89,7 @@ jobs:
               raw = t.extractfile(m[0]['Config']).read()
               assert 'sha256:' + hashlib.sha256(raw).hexdigest() == os.environ['IMAGE_ID']
               config = json.loads(raw)
-              assert config['rootfs']['diff_ids'] == ['sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592', 'sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef', 'sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c', 'sha256:b9847a793e9262e1995513dd0178da54d2449d4ce4810bb9de60d9eeaae29e4d', 'sha256:1df5e3b86ae84335a50e22b2989d7757dd17115d4452687d775b53256b7fc8c9']
+              assert config['rootfs']['diff_ids'] == json.loads(os.environ['IMAGE_LAYERS'])
               assert len(m[0]['Layers']) == len(config['rootfs']['diff_ids']) == 5
               for name, diffid in zip(m[0]['Layers'], config['rootfs']['diff_ids'], strict=True):
                   with t.extractfile(name) as stream:
@@ -103,7 +104,7 @@ jobs:
           assert i['Architecture'] == 'amd64' and i['Os'] == 'linux'
           assert i['Config']['Labels']['io.hass.version'] == '0.4.1-s1.experimental.17'
           assert 'BRIDGE_RTC_COMMAND_KEEPALIVE_MS=29000' in i['Config']['Env']
-          assert i['RootFS']['Layers'] == ['sha256:04d250f6eeaf2011583ac6a048be58eb54b859892b396d87a9f6c3e57c64f592', 'sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef', 'sha256:839a6160c64da9f9b45d5402fb7b27d90f543636fd6f2d760adfc7ea0f33221c', 'sha256:b9847a793e9262e1995513dd0178da54d2449d4ce4810bb9de60d9eeaae29e4d', 'sha256:5d5ec5d326ebbbb26901550164e2262e9b13ff9a98f69a7790eec6563a916f5e']
+          assert i['RootFS']['Layers'] == json.loads(os.environ['IMAGE_LAYERS'])
           PY
       - name: Publish without rebuilding or replacing a different image
         shell: bash
