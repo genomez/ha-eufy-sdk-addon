@@ -2,6 +2,8 @@
 
 Modified by genomez on 2026-11-25. Packages the paired SDK and bridge with the corresponding source and retained dependency notices.
 
+The recipe configs for experimental.13 through experimental.17 use the .recorded suffix so the add-on store discovers only the live add-on config.
+
 Changed paths since experimental.16
 
 - `.github/workflows/publish-s1-image.yml`
@@ -100,7 +102,7 @@ Changed paths since experimental.16
 - `root/config.yaml.example`
 - `root/recipe/experimental17/Dockerfile`
 - `root/recipe/experimental17/wrapper/config.yaml.example`
-- `root/recipe/experimental17/wrapper/eufy_sdk_s1/config.yaml`
+- `root/recipe/experimental17/wrapper/eufy_sdk_s1/config.yaml.recorded`
 - `root/recipe/experimental17/wrapper/run.sh`
 - `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`
 - `root/usr/share/licenses/eufy/SOURCE_COMPONENTS.json`
@@ -303,7 +305,7 @@ Modified paths since published experimental.12:
 - `root/recipe/experimental13/Dockerfile`
 - `root/recipe/experimental13/SOURCE_INPUTS.json`
 - `root/recipe/experimental13/wrapper/config.yaml.example`
-- `root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml`
+- `root/recipe/experimental13/wrapper/eufy_sdk_s1/config.yaml.recorded`
 - `root/recipe/experimental13/wrapper/run.sh`
 - `root/run.sh`
 - `root/usr/share/licenses/eufy/SOURCE_ACCESS.md`

@@ -6,6 +6,13 @@ Pair add-on `0.4.1-s1.experimental.17`, integration `0.3.1-s1.experimental.17`, 
 
 Verify that the release tags resolve to the reviewed integration and workflow commits. Compare the attached assets with SHA256SUMS and the workflow pins. After publication, verify anonymous access to the exact image and corresponding source. Track installation and live-device acceptance separately.
 
+
+List the add-on configs in the release commit and require exactly one result, eufy_sdk_s1/config.yaml.
+
+    git ls-tree -r --name-only HEAD | grep -Ei '(^|/)config\.(yaml|yml|json)$'
+
+Recorded recipe configs end in .recorded. The image publication workflow checks the same rule against the exact release commit.
+
 ## Upgrade
 
 Update the add-on and integration together. Restart Home Assistant after the add-on is running.

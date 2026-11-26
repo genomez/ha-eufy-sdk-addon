@@ -32,11 +32,23 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, os, subprocess
+          import json, os, re, subprocess
           sources = {'eufy-sdk': '31680a941f633b53f187c8503fc01118c0488338', 'ha-eufy-sdk-bridge': 'c584f546f121618bd67a978666bd74c6afd315f0', 'ha-eufy-sdk': 'a34245c622fd9a6a505093bf4335b2071212c202'}
           for repo, expected in sources.items():
               actual = json.loads(subprocess.check_output(['gh', 'api', 'repos/genomez/' + repo + '/git/ref/heads/s1-experimental']))['object']['sha']
               assert actual == expected, 'Publication source head changed: ' + repo
+
+          addon_repo = os.environ['GH_REPO']
+          release_sha = os.environ['GITHUB_SHA']
+          commit = json.loads(subprocess.check_output(['gh', 'api', f'repos/{addon_repo}/git/commits/{release_sha}']))
+          tree_sha = commit['tree']['sha']
+          tree = json.loads(subprocess.check_output(['gh', 'api', f'repos/{addon_repo}/git/trees/{tree_sha}?recursive=1']))
+          if tree['truncated']:
+              raise SystemExit('Cannot verify add-on configs in a truncated release tree')
+          configs = [entry['path'] for entry in tree['tree']
+                     if entry['type'] != 'tree' and re.search(r'(^|/)config\.(yaml|yml|json)$', entry['path'], re.I)]
+          if configs != ['eufy_sdk_s1/config.yaml']:
+              raise SystemExit(f'Expected only eufy_sdk_s1/config.yaml in the add-on store scan, found {configs!r}')
 
           def git_object(repo, path):
               return json.loads(subprocess.check_output(['gh', 'api', f'repos/{repo}/git/{path}']))['object']
